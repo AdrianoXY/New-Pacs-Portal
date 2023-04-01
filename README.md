@@ -7,3 +7,6 @@ V1.1 Login Page update
 V1.2
 Sign up page
 connect backend
+
+2023/4/2 AM01:09
+input bug

@@ -17,7 +17,7 @@ const Login = () => {
 
   useEffect(() => {
     userRef.current.focus();
-  }, []);
+  },[]);
 
   useEffect(() => {
     setErrMsg("");
@@ -71,7 +71,7 @@ const Login = () => {
       });
   };
 
-  const LoginSection = () =>{ 
+  const LoginSection = () => {
     return (
       <div class="flex h-screen content-center items-center justify-evenly">
         <div class="inset-0 hidden xl:flex">
@@ -84,19 +84,20 @@ const Login = () => {
         <div class="inset-0 flex">
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-stone-500">
             <section class="w-full px-10">
-              <p>{errMsg}</p>
+              <p ref={errRef} aria-live="assertive">
+                {errMsg}
+              </p>
               <h1 class="text-center text-4xl font-bold text-white">Login</h1>
               <form class="flex flex-col py-6" onSubmit={handleSubmit}>
                 <div class="mt-5 flex flex-col py-2">
                   <label class="text-white">Email</label>
                   <input
                     class="h-8 rounded-lg"
-                    type="Email"
+                    type="email"
                     id="email"
                     ref={userRef}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {setEmail(e.target.value)}}
                     value={email}
-                    autoComplete="email"
                     required
                   />
                 </div>
@@ -108,11 +109,13 @@ const Login = () => {
                     id="password"
                     onChange={(e) => setPass(e.target.value)}
                     value={pass}
-                    autoComplete="current-password"
                     required
                   />
                 </div>
-                <button class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite" onClick={handleSubmit}>
+                <button
+                  class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite"
+                  onClick={handleSubmit}
+                >
                   Sing In
                 </button>
               </form>
@@ -170,6 +173,7 @@ const Login = () => {
                     id="email"
                     ref={userRef}
                     onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="off"
                     value={email}
                     required
                   />
@@ -185,7 +189,10 @@ const Login = () => {
                     required
                   />
                 </div>
-                <button class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite" onClick={handleSignup}>
+                <button
+                  class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite"
+                  onClick={handleSignup}
+                >
                   Sing Up
                 </button>
               </form>

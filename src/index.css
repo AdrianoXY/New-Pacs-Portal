@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-antiquewhite;
+  @apply bg-gradient-to-l from-antiquewhite to-slate-300;
 }

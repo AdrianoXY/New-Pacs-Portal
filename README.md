@@ -13,3 +13,7 @@ input bug
 
 2023/4/2 AM 09:42
 input bug fixed
+
+2023/4/2 PM 03:55
+V1.3
+Sidebar

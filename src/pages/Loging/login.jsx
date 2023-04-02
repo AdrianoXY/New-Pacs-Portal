@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
 import * as BiIcons from "react-icons/bi";
 import axios from "../../axios/axios";
@@ -9,6 +9,7 @@ const Login = () => {
 
   const [page, setPage] = useState("login");
   const [errMsg, setErrMsg] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ const Login = () => {
       .post("/user/Login", JSON.stringify({ email, pass }))
       .then((response) => {
         if (response.status === 200) {
-          alert("登入成功");
+          navigate("/home");
         }
       })
       .catch((err) => {
@@ -48,7 +49,7 @@ const Login = () => {
     const pass = formData.get("password");
 
     axios
-      .post("/user/creatuser", JSON.stringify({ username, email, pass  }))
+      .post("/user/creatuser", JSON.stringify({ username, email, pass }))
       .then((response) => {
         if (response.status === 401) {
           setErrMsg("Account already exists");
@@ -56,7 +57,7 @@ const Login = () => {
           setErrMsg("Incomplete data entry");
         } else if (response.status === 200) {
           alert("註冊成功");
-          setPage('login')
+          setPage("login");
         } else {
           setErrMsg("Sign up Failed");
         }
@@ -76,13 +77,24 @@ const Login = () => {
         <div class="inset-0 hidden xl:flex">
           <BsIcons.BsPersonAdd
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
-            onClick={() => {setPage('signup');setErrMsg("")}}
+            onClick={() => {
+              setPage("signup");
+              setErrMsg("");
+            }}
           />
         </div>
         <div class="inset-0 flex">
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-stone-500">
             <section class="w-full px-10">
-              <p class={`${errMsg ? 'text-white bg-red-700 rounded-lg font-bold p-4 mb-5' : 'sr-only'}`} ref={errRef} aria-live="assertive">
+              <p
+                class={`${
+                  errMsg
+                    ? "mb-5 rounded-lg bg-red-700 p-4 font-bold text-white"
+                    : "sr-only"
+                }`}
+                ref={errRef}
+                aria-live="assertive"
+              >
                 {errMsg}
               </p>
               <h1 class="text-center text-4xl font-bold text-white">Login</h1>
@@ -119,7 +131,10 @@ const Login = () => {
                 <Link to="#">
                   <span
                     class="text-blue-700 underline"
-                    onClick={() => {setPage('signup');setErrMsg("")}}
+                    onClick={() => {
+                      setPage("signup");
+                      setErrMsg("");
+                    }}
                   >
                     Sign up
                   </span>
@@ -132,7 +147,10 @@ const Login = () => {
         <div class="inset-0 hidden xl:flex">
           <BiIcons.BiLogInCircle
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
-            onClick={() => {setPage('login');setErrMsg("")}}
+            onClick={() => {
+              setPage("login");
+              setErrMsg("");
+            }}
           />
         </div>
       </div>
@@ -145,7 +163,10 @@ const Login = () => {
         <div class="inset-0 hidden xl:flex">
           <BiIcons.BiLogInCircle
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
-            onClick={() => {setPage('login');setErrMsg("")}}
+            onClick={() => {
+              setPage("login");
+              setErrMsg("");
+            }}
           />
         </div>
 
@@ -197,7 +218,10 @@ const Login = () => {
                 <Link to="#">
                   <span
                     class="text-blue-700 underline"
-                    onClick={() => {setPage('login');setErrMsg("")}}
+                    onClick={() => {
+                      setPage("login");
+                      setErrMsg("");
+                    }}
                   >
                     Sign In
                   </span>
@@ -210,7 +234,10 @@ const Login = () => {
         <div class="inset-0 hidden xl:flex">
           <BsIcons.BsPersonAdd
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
-            onClick={() => {setPage('signup');setErrMsg("")}}
+            onClick={() => {
+              setPage("signup");
+              setErrMsg("");
+            }}
           />
         </div>
       </div>

@@ -38,7 +38,7 @@ const Sidebar = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseOut}
     >
-      <div class="p-6 text-3xl text-white">
+      <div class={`${isHovered ? "drop-shadow-xl border-4 rounded-2xl border-antiquewhite transition-all p-6 text-3xl text-white delay-300" : "p-6 text-3xl text-white delay-300" }`}>
         <span>
           <FaIcons.FaRegUserCircle />
         </span>

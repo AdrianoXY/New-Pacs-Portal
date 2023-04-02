@@ -3,7 +3,7 @@ import { SidebarData } from "./data";
 import { Link, useNavigate } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as RiIcons from "react-icons/ri";
-import axios from "../../axios/axios"
+import axios from "../../axios/axios";
 
 const Sidebar = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,19 +18,20 @@ const Sidebar = () => {
   };
 
   const Logout = () => {
-    axios.post("/user/Logout")
-    .then((response) => {
-      if(response.status === 200){
-        alert("登出成功");
-        navigate("/");
-      }
-    })
-    .catch((err) => {
-      if(!err.response){
-        alert("error");
-      }
-    })
-  }
+    axios
+      .post("/user/Logout")
+      .then((response) => {
+        if (response.status === 200) {
+          alert("登出成功");
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        if (!err.response) {
+          alert("error");
+        }
+      });
+  };
 
   return (
     <div
@@ -38,7 +39,13 @@ const Sidebar = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseOut}
     >
-      <div class={`${isHovered ? "drop-shadow-xl border-4 rounded-2xl border-antiquewhite transition-all p-6 text-3xl text-white delay-300" : "p-6 text-3xl text-white delay-300" }`}>
+      <div
+        class={`${
+          isHovered
+            ? "rounded-2xl border-4 border-antiquewhite p-6 text-3xl text-white drop-shadow-xl transition-all delay-300"
+            : "p-6 text-3xl text-white delay-300"
+        }`}
+      >
         <span>
           <FaIcons.FaRegUserCircle />
         </span>

@@ -128,6 +128,13 @@ const Login = () => {
             </section>
           </div>
         </div>
+
+        <div class="inset-0 hidden xl:flex">
+          <BiIcons.BiLogInCircle
+            class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
+            onClick={() => {setPage('login');setErrMsg("")}}
+          />
+        </div>
       </div>
     );
   };
@@ -198,6 +205,13 @@ const Login = () => {
               </p>
             </section>
           </div>
+        </div>
+
+        <div class="inset-0 hidden xl:flex">
+          <BsIcons.BsPersonAdd
+            class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
+            onClick={() => {setPage('signup');setErrMsg("")}}
+          />
         </div>
       </div>
     );

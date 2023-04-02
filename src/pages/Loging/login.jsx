@@ -1,30 +1,23 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
 import * as BiIcons from "react-icons/bi";
 import axios from "../../axios/axios";
 
 const Login = () => {
-  const userRef = useRef();
   const errRef = useRef();
 
   const [page, setPage] = useState("login");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    userRef.current.focus();
-  },[]);
-
-  useEffect(() => {
-    setErrMsg("");
-  }, [email, pass]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    const pass = formData.get("password");
+    console.log(email, pass);
+
     axios
       .post("/user/Login", JSON.stringify({ email, pass }))
       .then((response) => {
@@ -48,8 +41,14 @@ const Login = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const username = formData.get("name");
+    const email = formData.get("email");
+    const pass = formData.get("password");
+
     axios
-      .post("/user/creatuser", JSON.stringify({ email, pass, name }))
+      .post("/user/creatuser", JSON.stringify({ username, email, pass  }))
       .then((response) => {
         if (response.status === 401) {
           setErrMsg("Account already exists");
@@ -57,7 +56,7 @@ const Login = () => {
           setErrMsg("Incomplete data entry");
         } else if (response.status === 200) {
           alert("註冊成功");
-          navigate("/");
+          setPage('login')
         } else {
           setErrMsg("Sign up Failed");
         }
@@ -77,14 +76,13 @@ const Login = () => {
         <div class="inset-0 hidden xl:flex">
           <BsIcons.BsPersonAdd
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
-            onClick={() => setPage("Signup")}
+            onClick={() => {setPage('signup');setErrMsg("")}}
           />
         </div>
-
         <div class="inset-0 flex">
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-stone-500">
             <section class="w-full px-10">
-              <p ref={errRef} aria-live="assertive">
+              <p class={`${errMsg ? 'text-white bg-red-700 rounded-lg font-bold p-4 mb-5' : 'sr-only'}`} ref={errRef} aria-live="assertive">
                 {errMsg}
               </p>
               <h1 class="text-center text-4xl font-bold text-white">Login</h1>
@@ -95,9 +93,7 @@ const Login = () => {
                     class="h-8 rounded-lg"
                     type="email"
                     id="email"
-                    ref={userRef}
-                    onChange={(e) => {setEmail(e.target.value)}}
-                    value={email}
+                    name="email"
                     required
                   />
                 </div>
@@ -107,14 +103,13 @@ const Login = () => {
                     class="h-8 rounded-lg"
                     type="password"
                     id="password"
-                    onChange={(e) => setPass(e.target.value)}
-                    value={pass}
+                    name="password"
                     required
                   />
                 </div>
                 <button
                   class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite"
-                  onClick={handleSubmit}
+                  type="submit"
                 >
                   Sing In
                 </button>
@@ -124,7 +119,7 @@ const Login = () => {
                 <Link to="#">
                   <span
                     class="text-blue-700 underline"
-                    onClick={() => setPage("Signup")}
+                    onClick={() => {setPage('signup');setErrMsg("")}}
                   >
                     Sign up
                   </span>
@@ -143,7 +138,7 @@ const Login = () => {
         <div class="inset-0 hidden xl:flex">
           <BiIcons.BiLogInCircle
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 hover:h-[400px] hover:w-[400px] hover:transition-all "
-            onClick={() => setPage("login")}
+            onClick={() => {setPage('login');setErrMsg("")}}
           />
         </div>
 
@@ -159,9 +154,7 @@ const Login = () => {
                     class="h-8 rounded-lg"
                     type="name"
                     id="name"
-                    ref={userRef}
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
+                    name="name"
                     required
                   />
                 </div>
@@ -171,10 +164,7 @@ const Login = () => {
                     class="h-8 rounded-lg"
                     type="email"
                     id="email"
-                    ref={userRef}
-                    onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="off"
-                    value={email}
+                    name="email"
                     required
                   />
                 </div>
@@ -184,14 +174,13 @@ const Login = () => {
                     class="h-8 rounded-lg"
                     type="password"
                     id="password"
-                    onChange={(e) => setPass(e.target.value)}
-                    value={pass}
+                    name="password"
                     required
                   />
                 </div>
                 <button
                   class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite"
-                  onClick={handleSignup}
+                  type="submit"
                 >
                   Sing Up
                 </button>
@@ -201,7 +190,7 @@ const Login = () => {
                 <Link to="#">
                   <span
                     class="text-blue-700 underline"
-                    onClick={() => setPage("login")}
+                    onClick={() => {setPage('login');setErrMsg("")}}
                   >
                     Sign In
                   </span>
@@ -217,7 +206,7 @@ const Login = () => {
   return (
     <div>
       {page === "login" && <LoginSection />}
-      {page === "Signup" && <Signup />}
+      {page === "signup" && <Signup />}
     </div>
   );
 };

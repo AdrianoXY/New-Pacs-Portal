@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div class='w-screen'>
+    <div class="w-screen">
       <h1>Home</h1>
     </div>
   );

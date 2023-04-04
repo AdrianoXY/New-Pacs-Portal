@@ -60,7 +60,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {SidebarData.map((item,index) => {
+      {SidebarData.map((item, index) => {
         return (
           <div key={index} class="flex space-x-4">
             <Link to={item.path} class="grid grid-cols-2 items-start">

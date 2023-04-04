@@ -5,8 +5,8 @@ const Manage = () => {
   const [qname, setQname] = useState("");
   const [acc, setAcc] = useState([]);
 
-  const Del = (dname) => {
-    axios.delete(`/user/delete/${dname}`,{params:{dname}})
+  const Del = (id) => {
+    axios.delete(`/api/delete/${id}`,{params:{id}})
     .then((response) => {
       if(response.status === 200){
         alert("Delete Success")
@@ -15,7 +15,7 @@ const Manage = () => {
     .catch((err) => {
       if(err.response.status === 404){
         console.log("No User");
-        console.log(dname);
+        console.log(id);
       }
       else if (err.response.status === 403){
         console.log("Error");
@@ -93,7 +93,7 @@ const Manage = () => {
                       {item.management}
                     </td>
                     <td class="border bg-slate-300 px-4 py-2 text-center font-bold ">
-                      <button class="rounded-lg border-2 border-slate-600 bg-slate-600 px-3 font-bold text-white" onClick={() => Del(item.name)}>
+                      <button class="rounded-lg border-2 border-slate-600 bg-slate-600 px-3 font-bold text-white" onClick={() => Del(item._id)}>
                         Delete
                       </button>
                     </td>

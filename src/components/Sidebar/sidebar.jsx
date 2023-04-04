@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SidebarData } from "./data";
 import { Link, useNavigate } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
@@ -32,6 +32,17 @@ const Sidebar = () => {
         }
       });
   };
+
+  useEffect(() => {
+    axios
+      .post('/auth/verify')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        navigate('/')
+      })
+  })
 
   return (
     <div

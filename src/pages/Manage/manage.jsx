@@ -2,10 +2,9 @@ import React from "react";
 
 const Manage = () => {
   return (
-    <div className="flex justify-around">
-      <div>01</div>
-      <div>02</div>
-      <div>03</div>
+    <div class="grid grid-rows-6 justify-evenly">
+      <div class='w-full '>01</div>
+      <div class='w-full row-span-5'>02</div>
     </div>
   );
 };

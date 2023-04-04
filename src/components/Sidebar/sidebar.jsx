@@ -21,7 +21,7 @@ const Sidebar = () => {
     axios
       .post("/user/Logout")
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 150) {
           alert("登出成功");
           navigate("/");
         }
@@ -42,8 +42,8 @@ const Sidebar = () => {
       <div
         class={`${
           isHovered
-            ? "rounded-2xl border-4 border-antiquewhite p-6 text-3xl text-white drop-shadow-xl transition-all delay-300"
-            : "p-6 text-3xl text-white delay-300"
+            ? "rounded-2xl p-6 text-3xl text-white transition-all delay-200"
+            : "p-6 text-3xl text-white delay-200"
         }`}
       >
         <span>
@@ -52,24 +52,24 @@ const Sidebar = () => {
         <div
           class={`${
             isHovered
-              ? "pt-5 text-white delay-200 duration-500"
-              : "opacity-0 delay-200 duration-500"
+              ? "pt-5 text-white delay-150 duration-500"
+              : "opacity-0 delay-150 duration-500"
           }`}
         >
           Username
         </div>
       </div>
 
-      {SidebarData.map((item) => {
+      {SidebarData.map((item,index) => {
         return (
-          <div class="flex space-x-4">
+          <div key={index} class="flex space-x-4">
             <Link to={item.path} class="grid grid-cols-2 items-start">
               <span class="p-6 pt-5 text-3xl text-white">{item.icon}</span>
               <div
                 class={`${
                   isHovered
-                    ? "pt-6 text-white delay-200 duration-500"
-                    : "opacity-0 delay-200 duration-500"
+                    ? "pt-6 text-white delay-150 duration-500"
+                    : "opacity-0 delay-150 duration-500"
                 }`}
               >
                 {item.title}
@@ -86,8 +86,8 @@ const Sidebar = () => {
         <span
           class={`${
             isHovered
-              ? "pt-1 text-white delay-200 duration-500"
-              : "opacity-0 delay-200 duration-500"
+              ? "pt-1 text-white delay-150 duration-500"
+              : "opacity-0 delay-150 duration-500"
           }`}
         >
           Logout

@@ -55,7 +55,7 @@ const Manage = () => {
     <div class="grid w-full grid-rows-6">
       <div class="flex w-full justify-center self-center">
         <input
-          class="h-10 w-96 rounded-2xl"
+          class="h-10 w-96 rounded-2xl border-2 border-black"
           placeholder="Search..."
           onChange={(e) => setQname(e.target.value)}
         ></input>

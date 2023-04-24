@@ -33,16 +33,16 @@ const Sidebar = () => {
       });
   };
 
-  useEffect(() => {
-    axios
-      .post('/auth/verify')
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        navigate('/')
-      })
-  })
+  // useEffect(() => {
+  //   axios
+  //     .post('/auth/verify')
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       navigate('/')
+  //     })
+  // })
 
   return (
     <div

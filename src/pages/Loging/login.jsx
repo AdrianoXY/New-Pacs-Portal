@@ -73,7 +73,7 @@ const Login = () => {
 
   const LoginSection = () => {
     return (
-      <div class="flex h-screen content-center items-center justify-evenly">
+      <div class="flex h-screen content-center items-center justify-evenly bg-antiquewhite">
         <div class="inset-0 hidden xl:flex">
           <BsIcons.BsPersonAdd
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 transition-all duration-500 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-500 "
@@ -143,23 +143,13 @@ const Login = () => {
             </section>
           </div>
         </div>
-
-        <div class="inset-0 hidden xl:flex">
-          <BiIcons.BiLogInCircle
-            class="h-[300px] w-[300px] rounded-full bg-yellow-600 transition-all duration-300 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-300 "
-            onClick={() => {
-              setPage("login");
-              setErrMsg("");
-            }}
-          />
-        </div>
       </div>
     );
   };
 
   const Signup = () => {
     return (
-      <div class="flex h-screen flex-row-reverse content-center items-center justify-evenly">
+      <div class="flex h-screen flex-row-reverse content-center items-center justify-evenly bg-antiquewhite">
         <div class="inset-0 hidden xl:flex">
           <BiIcons.BiLogInCircle
             class="h-[300px] w-[300px] rounded-full bg-yellow-600 transition-all duration-300 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-300 "
@@ -174,7 +164,7 @@ const Login = () => {
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-stone-500">
             <section class="w-full px-10">
               <p>{errMsg}</p>
-              <h1 class="text-center text-4xl font-bold text-white">Login</h1>
+              <h1 class="text-center text-4xl font-bold text-white">Sign Up</h1>
               <form class="flex flex-col py-6" onSubmit={handleSignup}>
                 <div class="mt-5 flex flex-col py-2">
                   <label class="text-white">Name</label>
@@ -229,16 +219,6 @@ const Login = () => {
               </p>
             </section>
           </div>
-        </div>
-
-        <div class="inset-0 hidden xl:flex">
-          <BsIcons.BsPersonAdd
-            class="h-[300px] w-[300px] rounded-full bg-yellow-600 transition-all duration-300 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-300 "
-            onClick={() => {
-              setPage("signup");
-              setErrMsg("");
-            }}
-          />
         </div>
       </div>
     );

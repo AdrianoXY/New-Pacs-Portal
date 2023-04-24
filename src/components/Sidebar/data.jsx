@@ -1,7 +1,7 @@
 import React from "react";
 import * as AiIcons from "react-icons/ai";
-import * as GiIcons from "react-icons/gi";
 import * as MdIcons from "react-icons/md";
+import * as GoIcons from "react-icons/go"
 
 export const SidebarData = [
   {
@@ -11,9 +11,9 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Dashboard",
-    path: "/dashboard",
-    icon: <GiIcons.GiMatterStates />,
+    title: "Patient",
+    path: "/patient",
+    icon: <MdIcons.MdSwitchAccount />,
     cName: "nav-text",
   },
   {
@@ -23,15 +23,9 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Manage",
-    path: "/manage",
-    icon: <MdIcons.MdManageAccounts />,
-    cName: "nav-text",
-  },
-  {
-    title: "Payment",
-    path: "/payment",
-    icon: <MdIcons.MdPayment />,
+    title: "Recently",
+    path: "/recently",
+    icon: <GoIcons.GoFileDirectory />,
     cName: "nav-text",
   },
 ];

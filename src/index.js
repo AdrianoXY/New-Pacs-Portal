@@ -2,13 +2,12 @@ import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import "./index.css";
 import { HashRouter, Routes, Route, Outlet } from "react-router-dom";
+import Sidebar from "./components/Sidebar/sidebar";
 import Login from "./pages/Loging/login";
 import Home from "./pages/Home/home";
-import Sidebar from "./components/Sidebar/sidebar";
-import Manage from "./pages/Manage/manage";
-import Dashboard from "./pages/Dashboard/dashboard";
+import Patient from "./pages/Patient/patient";
 import Search from "./pages/Search/search";
-import Payment from "./pages/Payment/payment";
+import Recently from "./pages/Recently/recently";
 
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
@@ -26,10 +25,9 @@ root.render(
       <Route index element={<Login />} />
       <Route path="/" element={<AppLayout />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/patient" element={<Patient />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/manage" element={<Manage />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/recently" element={<Recently />} />
       </Route>
     </Routes>
   </HashRouter>

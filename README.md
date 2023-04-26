@@ -25,3 +25,7 @@ Logout function, Sidebar update
 2023/4/4 PM 07:41
 V1.4
 Manage page, Delete button:can send to backend, but return 404
+
+2023/4/26 PM 08:05
+V1.5
+Home Page

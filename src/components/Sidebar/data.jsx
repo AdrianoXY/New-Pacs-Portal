@@ -1,7 +1,7 @@
 import React from "react";
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
-import * as GoIcons from "react-icons/go"
+import * as GoIcons from "react-icons/go";
 
 export const SidebarData = [
   {

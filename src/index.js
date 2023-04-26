@@ -7,7 +7,7 @@ import Login from "./pages/Loging/login";
 import Home from "./pages/Home/home";
 import Patient from "./pages/Patient/patient";
 import Search from "./pages/Search/search";
-import Recently from "./pages/Recently/recently";
+import CTJ from "./pages/CSV2JSON/csvtojson";
 
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
@@ -27,7 +27,7 @@ root.render(
         <Route path="/home" element={<Home />} />
         <Route path="/patient" element={<Patient />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/recently" element={<Recently />} />
+        <Route path="/csvtojson" element={<CTJ />} />
       </Route>
     </Routes>
   </HashRouter>

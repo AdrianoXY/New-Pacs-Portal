@@ -23,8 +23,8 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Recently",
-    path: "/recently",
+    title: "CSV2JSON",
+    path: "/csvtojson",
     icon: <GoIcons.GoFileDirectory />,
     cName: "nav-text",
   },

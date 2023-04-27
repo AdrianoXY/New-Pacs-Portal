@@ -24,5 +24,8 @@ Manage page, Delete button:can send to backend, but return 404
 2023/4/26 PM 08:05
 Home Page
 
-2023/4/27/ AM12:17
+2023/4/27/ AM 12:17
 Patient Page
+
+2023/4/27 PM 07:24
+Patient Page Search Bar

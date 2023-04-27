@@ -6,7 +6,7 @@ const Home = () => {
   // const navigate = useNavigate()
 
   return (
-    <div class="overflow-auto grid h-[977px] w-full grid-cols-8 grid-rows-6">
+    <div class="grid h-[977px] w-full grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-3 row-span-3 flex items-center justify-center drop-shadow-lg">
         <div class="ml-52 h-3/5 w-full rounded-xl bg-stone-300">
           <h1 class="ml-3 mt-5 text-5xl text-black">Patient</h1>
@@ -111,7 +111,7 @@ const Home = () => {
       <div class="col-span-8 row-span-3 flex flex-col items-center">
         <h1 class="text-3xl font-bold">CSVtoJSON</h1>
         <div class="flex h-5/6 w-full flex-col items-center">
-          <table class="mt-5 w-4/5 table-auto overflow-y-scroll">
+          <table class="mt-5 w-4/5 table-auto">
             <thead>
               <tr class="h-[50px]">
                 <th class="rounded-tl-lg bg-stone-500">No.</th>

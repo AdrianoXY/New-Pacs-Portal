@@ -1,46 +1,60 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as BiIcons from "react-icons/bi";
 import * as BsIcons from "react-icons/bs";
 import * as IoIcons from "react-icons/io5";
 
 const Dashboard = () => {
   const [isOnClick, setIsOnClick] = useState(false);
-
+  const navigate = useNavigate();
 
   return (
-    <div class="overflow-auto h-[977px] grid w-full grid-cols-7 grid-rows-6">
+    <div class="grid h-[977px] w-full grid-cols-7 grid-rows-6 overflow-auto">
       <div
         class={`${
           isOnClick
-            ? "col-span-3 col-start-3 flex w-full items-center transition-transform ease-in"
-            : "col-start-4 place-self-center ease-out"
+            ? "flex-rows col-start-4 flex items-center place-self-center"
+            : "col-start-4 flex place-self-center"
         }`}
       >
         <input
           class={`${
-            isOnClick ? "h-12 rounded-lg border border-black " : "hidden"
+            isOnClick
+              ? "h-12 -translate-x-40 rounded-lg border border-black opacity-100 transition-opacity delay-100 duration-500 "
+              : "opacity-0"
           }`}
           placeholder="PID"
         />
         <input
           class={`${
-            isOnClick ? "ml-28 h-12 rounded-lg border border-black" : "hidden"
+            isOnClick
+              ? "h-12 -translate-x-10 rounded-lg border border-black opacity-100 transition-opacity delay-150 duration-700"
+              : "opacity-0"
           }`}
           placeholder="Patient Name"
         />
         <button
           class={`${
-            isOnClick ? "h-16 w-16 rounded-lg bg-stone-600 ml-24" : "h-16 w-16 rounded-lg bg-stone-600"
+            isOnClick
+              ? "h-16 w-16 translate-x-24 rounded-lg bg-stone-600 transition duration-500"
+              : "h-16 w-16 -translate-x-40 rounded-lg bg-stone-600 transition duration-500"
           }`}
           onClick={() => setIsOnClick(!isOnClick)}
         >
-          <BiIcons.BiSearchAlt class={`${isOnClick ? 'hidden' : 'ml-2 text-5xl text-white'}`} />
-          <IoIcons.IoCloseSharp class={`${isOnClick ? 'ml-2 text-5xl text-white' :'hidden' }`} />
+          <BiIcons.BiSearchAlt
+            class={`${isOnClick ? "hidden" : "ml-2 text-5xl text-white"}`}
+          />
+          <IoIcons.IoCloseSharp
+            class={`${isOnClick ? "ml-2 text-5xl text-white" : "hidden"}`}
+          />
         </button>
       </div>
 
       <div class="col-start-6 place-self-center">
-        <button class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg bg-stone-600">
+        <button
+          class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg bg-stone-600"
+          onClick={() => navigate("/create")}
+        >
           <BsIcons.BsPersonFillAdd class="text-5xl text-white" />
           <h2 class="text-4xl text-white">Create</h2>
         </button>

@@ -65,12 +65,12 @@ const Dashboard = () => {
           <table class="w-full table-auto">
             <thead>
               <tr class="h-[50px]">
-                <th class="rounded-tl-lg bg-emerald-800">No.</th>
-                <th class="border-l-2 bg-emerald-800">PID</th>
-                <th class="border-l-2 bg-emerald-800">Patient Name</th>
-                <th class="border-l-2 bg-emerald-800">Gender</th>
-                <th class="border-x-2 bg-emerald-800">Birth</th>
-                <th class="rounded-tr-lg bg-emerald-800">Sample</th>
+                <th class="rounded-tl-lg bg-emerald-800 text-white">No.</th>
+                <th class="border-l-2 bg-emerald-800 text-white">PID</th>
+                <th class="border-l-2 bg-emerald-800 text-white">Patient Name</th>
+                <th class="border-l-2 bg-emerald-800 text-white">Gender</th>
+                <th class="border-x-2 bg-emerald-800 text-white">Birth</th>
+                <th class="rounded-tr-lg bg-emerald-800 text-white">Sample</th>
               </tr>
             </thead>
             <tbody class="overflow-y-auto">

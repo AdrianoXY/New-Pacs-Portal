@@ -46,7 +46,7 @@ const Sidebar = () => {
 
   return (
     <div
-      class="grid h-[977px] w-[80px] bg-stone-600 transition-all delay-75 duration-500 hover:w-[250px] hover:transition-all hover:duration-500"
+      class="grid h-screen w-[80px] bg-gray-900 transition-all delay-75 duration-500 hover:w-[250px] hover:transition-all hover:duration-500"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseOut}
     >

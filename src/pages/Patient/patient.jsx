@@ -36,8 +36,8 @@ const Dashboard = () => {
         <button
           class={`${
             isOnClick
-              ? "h-16 w-16 translate-x-24 rounded-lg bg-stone-600 transition duration-500"
-              : "h-16 w-16 -translate-x-40 rounded-lg bg-stone-600 transition duration-500"
+              ? "h-16 w-16 translate-x-24 rounded-lg bg-emerald-800 transition duration-500"
+              : "h-16 w-16 -translate-x-40 rounded-lg bg-emerald-800 transition duration-500"
           }`}
           onClick={() => setIsOnClick(!isOnClick)}
         >
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
       <div class="col-start-6 place-self-center">
         <button
-          class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg bg-stone-600"
+          class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg bg-emerald-800"
           onClick={() => navigate("/create")}
         >
           <BsIcons.BsPersonFillAdd class="text-5xl text-white" />
@@ -65,22 +65,22 @@ const Dashboard = () => {
           <table class="w-full table-auto">
             <thead>
               <tr class="h-[50px]">
-                <th class="rounded-tl-lg bg-stone-500">No.</th>
-                <th class="border-l-2 bg-stone-500">PID</th>
-                <th class="border-l-2 bg-stone-500">Patient Name</th>
-                <th class="border-l-2 bg-stone-500">Gender</th>
-                <th class="border-x-2 bg-stone-500">Birth</th>
-                <th class="rounded-tr-lg bg-stone-500">Sample</th>
+                <th class="rounded-tl-lg bg-emerald-800">No.</th>
+                <th class="border-l-2 bg-emerald-800">PID</th>
+                <th class="border-l-2 bg-emerald-800">Patient Name</th>
+                <th class="border-l-2 bg-emerald-800">Gender</th>
+                <th class="border-x-2 bg-emerald-800">Birth</th>
+                <th class="rounded-tr-lg bg-emerald-800">Sample</th>
               </tr>
             </thead>
             <tbody class="overflow-y-auto">
               <tr class="h-[50px]">
-                <th class="bg-stone-200">1</th>
-                <th class="bg-stone-200">1</th>
-                <th class="bg-stone-200">1</th>
-                <th class="bg-stone-200">1</th>
-                <th class="bg-stone-200">1</th>
-                <th class="bg-stone-200">1</th>
+                <th class="bg-white border border-black">1</th>
+                <th class="bg-white border border-black">1</th>
+                <th class="bg-white border border-black">1</th>
+                <th class="bg-white border border-black">1</th>
+                <th class="bg-white border border-black">1</th>
+                <th class="bg-white border border-black">1</th>
               </tr>
             </tbody>
           </table>

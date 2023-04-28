@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply min-h-[977px] min-w-[1858px];
+  @apply bg-gray-800;
 }

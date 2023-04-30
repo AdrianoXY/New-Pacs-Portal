@@ -71,12 +71,14 @@ const Login = () => {
       });
   };
 
+
+
   const LoginSection = () => {
     return (
-      <div class="flex h-screen content-center items-center justify-evenly bg-antiquewhite">
+      <div class="flex h-screen content-center items-center justify-evenly bg-logbg ">
         <div class="inset-0 hidden xl:flex">
           <BsIcons.BsPersonAdd
-            class="h-[300px] w-[300px] rounded-full bg-yellow-600 transition-all duration-500 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-500 "
+            class="h-[300px] w-[300px] rounded-full bg-deepgreen text-white transition-all duration-500 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-500 "
             onClick={() => {
               setPage("signup");
               setErrMsg("");
@@ -84,12 +86,12 @@ const Login = () => {
           />
         </div>
         <div class="inset-0 flex">
-          <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-stone-500">
-            <section class="w-full px-10">
+          <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-bgcol drop-shadow-2xl">
+            <section class="w-full px-10 drop-shadow-md">
               <p
                 class={`${
                   errMsg
-                    ? "mb-5 rounded-lg bg-red-700 p-4 font-bold text-white"
+                    ? "mb-5 bg-red-700 p-4 font-bold "
                     : "sr-only"
                 }`}
                 ref={errRef}
@@ -97,12 +99,12 @@ const Login = () => {
               >
                 {errMsg}
               </p>
-              <h1 class="text-center text-4xl font-bold text-white">Login</h1>
+              <h1 class="text-center text-4xl font-bold ">Login</h1>
               <form class="flex flex-col py-6" onSubmit={handleSubmit}>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-white">Email</label>
+                  <label class="text-base font-medium ">Email</label>
                   <input
-                    class="h-8 rounded-lg"
+                    class="h-8 border border-black"
                     type="email"
                     id="email"
                     name="email"
@@ -110,9 +112,11 @@ const Login = () => {
                   />
                 </div>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-white">Password</label>
+                  <label class="text-base font-medium ">
+                    Password
+                  </label>
                   <input
-                    class="h-8 rounded-lg"
+                    class="h-8 border border-black"
                     type="password"
                     id="password"
                     name="password"
@@ -120,13 +124,13 @@ const Login = () => {
                   />
                 </div>
                 <button
-                  class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite"
+                  class="mt-10 h-10 rounded-md bg-lightgreen font-bold "
                   type="submit"
                 >
                   Sing In
                 </button>
               </form>
-              <p class="text-white">
+              <p class='text-deepgreen'>
                 Need An Account?
                 <Link to="#">
                   <span
@@ -149,10 +153,10 @@ const Login = () => {
 
   const Signup = () => {
     return (
-      <div class="flex h-screen flex-row-reverse content-center items-center justify-evenly bg-antiquewhite">
+      <div class="flex h-screen flex-row-reverse content-center items-center justify-evenly bg-logbg">
         <div class="inset-0 hidden xl:flex">
           <BiIcons.BiLogInCircle
-            class="h-[300px] w-[300px] rounded-full bg-yellow-600 transition-all duration-300 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-300 "
+            class="h-[300px] w-[300px] rounded-full bg-deepgreen text-white transition-all duration-300 hover:h-[400px] hover:w-[400px] hover:transition-all hover:duration-300 "
             onClick={() => {
               setPage("login");
               setErrMsg("");
@@ -161,15 +165,15 @@ const Login = () => {
         </div>
 
         <div class="inset-0 flex">
-          <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-stone-500">
-            <section class="w-full px-10">
+          <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-bgcol drop-shadow-2xl transition-all duration-500">
+            <section class="w-full px-10 drop-shadow-md">
               <p>{errMsg}</p>
-              <h1 class="text-center text-4xl font-bold text-white">Sign Up</h1>
+              <h1 class="text-center text-4xl font-bold">Sign Up</h1>
               <form class="flex flex-col py-6" onSubmit={handleSignup}>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-white">Name</label>
+                  <label class="text-base font-normal">Name</label>
                   <input
-                    class="h-8 rounded-lg"
+                    class="h-8 border border-black"
                     type="name"
                     id="name"
                     name="name"
@@ -177,9 +181,9 @@ const Login = () => {
                   />
                 </div>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-white">Email</label>
+                  <label class="text-base font-normal">Email</label>
                   <input
-                    class="h-8 rounded-lg"
+                    class="h-8 border border-black"
                     type="email"
                     id="email"
                     name="email"
@@ -187,9 +191,11 @@ const Login = () => {
                   />
                 </div>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-white">Password</label>
+                  <label class="text-base font-normal">
+                    Password
+                  </label>
                   <input
-                    class="h-8 rounded-lg"
+                    class="h-8 border border-black"
                     type="password"
                     id="password"
                     name="password"
@@ -197,13 +203,13 @@ const Login = () => {
                   />
                 </div>
                 <button
-                  class="mt-10 h-10 rounded-md bg-slate-500 font-bold text-white ring-4 ring-antiquewhite"
+                  class="mt-10 h-10 rounded-md bg-lightgreen font-bold"
                   type="submit"
                 >
                   Sing Up
                 </button>
               </form>
-              <p class="text-white">
+              <p class='text-deepgreen'>
                 Already Have Account?
                 <Link to="#">
                   <span

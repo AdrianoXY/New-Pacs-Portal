@@ -9,7 +9,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div class="grid h-[977px] w-full grid-cols-7 grid-rows-6 overflow-auto">
+    <div class="grid h-screen w-full grid-cols-7 grid-rows-6 overflow-auto">
       <div
         class={`${
           isOnClick
@@ -36,8 +36,8 @@ const Dashboard = () => {
         <button
           class={`${
             isOnClick
-              ? "h-16 w-16 translate-x-24 rounded-lg bg-emerald-800 transition duration-500"
-              : "h-16 w-16 -translate-x-40 rounded-lg bg-emerald-800 transition duration-500"
+              ? "h-16 w-16 translate-x-24 rounded-lg bg-graygreen transition duration-500"
+              : "h-16 w-16 -translate-x-40 rounded-lg bg-graygreen transition duration-500"
           }`}
           onClick={() => setIsOnClick(!isOnClick)}
         >
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
       <div class="col-start-6 place-self-center">
         <button
-          class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg bg-emerald-800"
+          class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg bg-lightgreen"
           onClick={() => navigate("/create")}
         >
           <BsIcons.BsPersonFillAdd class="text-5xl text-white" />
@@ -65,22 +65,22 @@ const Dashboard = () => {
           <table class="w-full table-auto">
             <thead>
               <tr class="h-[50px]">
-                <th class="rounded-tl-lg bg-emerald-800 text-white">No.</th>
-                <th class="border-l-2 bg-emerald-800 text-white">PID</th>
-                <th class="border-l-2 bg-emerald-800 text-white">Patient Name</th>
-                <th class="border-l-2 bg-emerald-800 text-white">Gender</th>
-                <th class="border-x-2 bg-emerald-800 text-white">Birth</th>
-                <th class="rounded-tr-lg bg-emerald-800 text-white">Sample</th>
+                <th class="rounded-tl-lg bg-graygreen text-white">No.</th>
+                <th class="border-l-2 bg-graygreen text-white">PID</th>
+                <th class="border-l-2 bg-graygreen text-white">Patient Name</th>
+                <th class="border-l-2 bg-graygreen text-white">Gender</th>
+                <th class="border-x-2 bg-graygreen text-white">Birth</th>
+                <th class="rounded-tr-lg bg-graygreen text-white">Sample</th>
               </tr>
             </thead>
             <tbody class="overflow-y-auto">
               <tr class="h-[50px]">
-                <th class="bg-white border border-black">1</th>
-                <th class="bg-white border border-black">1</th>
-                <th class="bg-white border border-black">1</th>
-                <th class="bg-white border border-black">1</th>
-                <th class="bg-white border border-black">1</th>
-                <th class="bg-white border border-black">1</th>
+                <th class="border border-black bg-white">1</th>
+                <th class="border border-black bg-white">1</th>
+                <th class="border border-black bg-white">1</th>
+                <th class="border border-black bg-white">1</th>
+                <th class="border border-black bg-white">1</th>
+                <th class="border border-black bg-white">1</th>
               </tr>
             </tbody>
           </table>

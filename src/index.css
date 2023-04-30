@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-800;
+  @apply bg-bgcol;
+}
+
+button {
+  @apply bg-lightgreen;
+}
+
+label {
+  @apply text-2xl font-normal;
+}
+
+input {
+  @apply rounded-lg;
 }

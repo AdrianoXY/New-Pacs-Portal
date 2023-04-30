@@ -8,13 +8,13 @@ module.exports = {
       },
       colors:{
         'antiquewhite': '#faebd7',
-        'ablue': '#A9D6E5',
-        'bblue': '#89C2D9',
-        'cblud': '#61a5c2',
-        'dblud': '#468faf',
-        'eblud': '#2C7DAO',
-        'fblue': '#014F86',
-        'bcolor': '#DBE4EE'
+        'bgcol': '#F6F7F9',
+        'gren': '#0A586C',
+        'lightgreen': '#44BC8E',
+        'deepgreen': '#425A58',
+        'graygreen': '#6F8F97',
+        'logbg': '#B8C8BE'
+
       }
     },
   },

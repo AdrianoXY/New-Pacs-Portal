@@ -17,3 +17,11 @@ label {
 input {
   @apply h-8 w-72 rounded-md border-2;
 }
+
+tr {
+  @apply h-[50px];
+}
+
+th {
+  @apply text-slate-600;
+}

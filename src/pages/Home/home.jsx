@@ -23,66 +23,56 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="col-span-8 row-span-3 flex flex-col items-center bg-white w-5/6 h-[450px] place-self-center rounded-2xl drop-shadow-lg ">
+      <div class="col-span-8 row-span-3 flex h-[450px] w-5/6 flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg ">
         <div class="flex h-5/6 w-full flex-col items-center">
           <table class="mt-5 w-[90%] table-auto">
-            <caption class="mb-4 text-left text-5xl font-semibold">
+            <caption class="mb-4 text-left text-5xl font-black">
               Variation Point
             </caption>
             <thead>
-              <tr class="h-[50px]">
-                <th class=" text-slate-600 border-b-2">No.</th>
-                <th class=" text-slate-600 border-b-2">File Name</th>
-                <th class=" text-slate-600 border-b-2">Status</th>
-                <th class=" text-slate-600 border-b-2">Process Rate</th>
-                <th class=" text-slate-600 border-b-2">Operation</th>
+              <tr>
+                <th class="border-b-2">No.</th>
+                <th class="border-b-2">File Name</th>
+                <th class="border-b-2">Status</th>
+                <th class="border-b-2">Process Rate</th>
+                <th class="border-b-2">Operation</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="h-[50px]">
-                <td class="border-t-2 text-center text-slate-700">1</td>
-                <td class="border-t-2 text-center text-slate-700">70146</td>
-                <td class="border-t-2 text-center text-slate-700">77701</td>
-                <td class="border-t-2 text-center text-slate-700">72212</td>
-                <td class="border-t-2 text-center text-slate-700">
-                  AAAGAATACTTTTAC
-                </td>
+              <tr>
+                <td class="border-t-2 text-center">1</td>
+                <td class="border-t-2 text-center">70146</td>
+                <td class="border-t-2 text-center">77701</td>
+                <td class="border-t-2 text-center">72212</td>
+                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
               </tr>
-              <tr class="h-[50px]">
-                <td class="border-t-2 text-center text-slate-700">2</td>
-                <td class="border-t-2 text-center text-slate-700">70146</td>
-                <td class="border-t-2 text-center text-slate-700">77701</td>
-                <td class="border-t-2 text-center text-slate-700">72212</td>
-                <td class="border-t-2 text-center text-slate-700">
-                  AAAGAATACTTTTAC
-                </td>
+              <tr>
+                <td class="border-t-2 text-center">2</td>
+                <td class="border-t-2 text-center">70146</td>
+                <td class="border-t-2 text-center">77701</td>
+                <td class="border-t-2 text-center">72212</td>
+                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
               </tr>
-              <tr class="h-[50px]">
-                <td class="border-t-2 text-center text-slate-700">3</td>
-                <td class="border-t-2 text-center text-slate-700">70146</td>
-                <td class="border-t-2 text-center text-slate-700">77701</td>
-                <td class="border-t-2 text-center text-slate-700">72212</td>
-                <td class="border-t-2 text-center text-slate-700">
-                  AAAGAATACTTTTAC
-                </td>
+              <tr>
+                <td class="border-t-2 text-center">3</td>
+                <td class="border-t-2 text-center">70146</td>
+                <td class="border-t-2 text-center">77701</td>
+                <td class="border-t-2 text-center">72212</td>
+                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
               </tr>
-              <tr class="h-[50px]">
-                <td class="border-t-2 text-center text-slate-700">4</td>
-                <td class="border-t-2 text-center text-slate-700">70146</td>
-                <td class="border-t-2 text-center text-slate-700">77701</td>
-                <td class="border-t-2 text-center text-slate-700">72212</td>
-                <td class="border-t-2 text-center text-slate-700">
-                  AAAGAATACTTTTAC
-                </td>
+              <tr>
+                <td class="border-t-2 text-center">4</td>
+                <td class="border-t-2 text-center">70146</td>
+                <td class="border-t-2 text-center">77701</td>
+                <td class="border-t-2 text-center">72212</td>
+                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
               </tr>
-              <tr class="h-[50px]">
-                <td class="border-t-2 text-center text-slate-700">5</td>
-                <td class="border-t-2 text-center text-slate-700">70146</td>
-                <td class="border-t-2 text-center text-slate-700">77701</td>
-                <td class="border-t-2 text-center text-slate-700">72212</td>
-                <td class="border-t-2 text-center text-slate-700">
-                  AAAGAATACTTTTAC
-                </td>
+              <tr>
+                <td class="border-t-2 text-center">5</td>
+                <td class="border-t-2 text-center">70146</td>
+                <td class="border-t-2 text-center">77701</td>
+                <td class="border-t-2 text-center">72212</td>
+                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
               </tr>
             </tbody>
           </table>

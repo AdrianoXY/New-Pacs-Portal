@@ -36,8 +36,8 @@ const Patient = () => {
         <button
           class={`${
             isOnClick
-              ? "h-16 w-16 translate-x-24 rounded-lg bg-graygreen transition duration-500"
-              : "h-16 w-16 -translate-x-40 rounded-lg bg-graygreen transition duration-500"
+              ? "h-16 w-16 translate-x-16 rounded-lg bg-graygreen transition duration-500"
+              : "h-16 w-16 -translate-x-72 rounded-lg bg-graygreen transition duration-500"
           }`}
           onClick={() => setIsOnClick(!isOnClick)}
         >
@@ -60,27 +60,29 @@ const Patient = () => {
         </button>
       </div>
 
-      <div class="col-span-5 col-start-2 row-span-5 row-start-2 flex flex-col bg-white place-self-center w-[1500px] h-[750px] rounded-2xl drop-shadow-xl overflow-y-auto ">
+      <div class="col-span-5 col-start-2 row-span-5 row-start-2 flex h-[750px] w-[1500px] flex-col place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">
-          <table class="w-[1400px] table-auto mt-5 overflow-y-scroll">
+          <table class="mt-5 w-[1400px] table-auto overflow-y-scroll">
             <thead>
-              <tr class="h-[50px]">
-                <th class="text-slate-600 border-b-4">No.</th>
-                <th class="text-slate-600 border-b-4">PID</th>
-                <th class="text-slate-600 border-b-4">Patient Name</th>
-                <th class="text-slate-600 border-b-4">Gender</th>
-                <th class="text-slate-600 border-b-4">Birth</th>
-                <th class="text-slate-600 border-b-4">Sample</th>
+              <tr>
+                <th class=" border-b-4">No.</th>
+                <th class=" border-b-4">PID</th>
+                <th class=" border-b-4">Patient Name</th>
+                <th class=" border-b-4">Gender</th>
+                <th class=" border-b-4">Birth</th>
+                <th class=" border-b-4">Sample</th>
               </tr>
             </thead>
             <tbody class="overflow-y-auto">
-              <tr class="h-[50px]">
-                <th class="border-t-2 text-slate-600">1</th>
-                <th class="border-t-2 text-slate-600">123456</th>
-                <th class="border-t-2 text-slate-600">Apollo</th>
-                <th class="border-t-2 text-slate-600">M</th>
-                <th class="border-t-2 text-slate-600">2023/1/1</th>
-                <th class="border-t-2 text-slate-600"><button>123</button></th>
+              <tr>
+                <th class="border-t-2 ">1</th>
+                <th class="border-t-2 ">123456</th>
+                <th class="border-t-2 ">Apollo</th>
+                <th class="border-t-2 ">M</th>
+                <th class="border-t-2 ">2023/1/1</th>
+                <th class="border-t-2 ">
+                  <button>123</button>
+                </th>
               </tr>
             </tbody>
           </table>

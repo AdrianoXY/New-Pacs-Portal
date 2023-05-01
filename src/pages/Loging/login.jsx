@@ -71,8 +71,6 @@ const Login = () => {
       });
   };
 
-
-
   const LoginSection = () => {
     return (
       <div class="flex h-screen content-center items-center justify-evenly bg-logbg ">
@@ -87,12 +85,10 @@ const Login = () => {
         </div>
         <div class="inset-0 flex">
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-bgcol drop-shadow-2xl">
-            <section class="w-full px-10 drop-shadow-md">
+            <section class="w-full px-10 drop-shadow-sm">
               <p
                 class={`${
-                  errMsg
-                    ? "mb-5 bg-red-700 p-4 font-bold "
-                    : "sr-only"
+                  errMsg ? "mb-5 bg-red-700 p-4 font-bold " : "sr-only"
                 }`}
                 ref={errRef}
                 aria-live="assertive"
@@ -104,7 +100,7 @@ const Login = () => {
                 <div class="mt-5 flex flex-col py-2">
                   <label class="text-base font-medium ">Email</label>
                   <input
-                    class="h-8 w-80  border"
+                    class="w-80  border"
                     type="email"
                     id="email"
                     name="email"
@@ -112,11 +108,9 @@ const Login = () => {
                   />
                 </div>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-base font-medium ">
-                    Password
-                  </label>
+                  <label class="text-base font-medium ">Password</label>
                   <input
-                    class="h-8 w-80 border"
+                    class="w-80 border"
                     type="password"
                     id="password"
                     name="password"
@@ -130,7 +124,7 @@ const Login = () => {
                   Sing In
                 </button>
               </form>
-              <p class='text-deepgreen'>
+              <p class="text-deepgreen">
                 Need An Account?
                 <Link to="#">
                   <span
@@ -166,14 +160,14 @@ const Login = () => {
 
         <div class="inset-0 flex">
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-bgcol drop-shadow-2xl transition-all duration-500">
-            <section class="w-full px-10 drop-shadow-md">
+            <section class="w-full px-10 drop-shadow-sm">
               <p>{errMsg}</p>
               <h1 class="text-center text-4xl font-bold">Sign Up</h1>
               <form class="flex flex-col py-6" onSubmit={handleSignup}>
                 <div class="mt-5 flex flex-col py-2">
                   <label class="text-base font-normal">Name</label>
                   <input
-                    class="h-8 border border-black"
+                    class="w-80 border"
                     type="name"
                     id="name"
                     name="name"
@@ -183,7 +177,7 @@ const Login = () => {
                 <div class="mt-5 flex flex-col py-2">
                   <label class="text-base font-normal">Email</label>
                   <input
-                    class="h-8 border border-black"
+                    class="w-80 border"
                     type="email"
                     id="email"
                     name="email"
@@ -191,11 +185,9 @@ const Login = () => {
                   />
                 </div>
                 <div class="mt-5 flex flex-col py-2">
-                  <label class="text-base font-normal">
-                    Password
-                  </label>
+                  <label class="text-base font-normal">Password</label>
                   <input
-                    class="h-8 border border-black"
+                    class="w-80 border"
                     type="password"
                     id="password"
                     name="password"
@@ -209,7 +201,7 @@ const Login = () => {
                   Sing Up
                 </button>
               </form>
-              <p class='text-deepgreen'>
+              <p class="text-deepgreen">
                 Already Have Account?
                 <Link to="#">
                   <span

@@ -104,7 +104,7 @@ const Login = () => {
                 <div class="mt-5 flex flex-col py-2">
                   <label class="text-base font-medium ">Email</label>
                   <input
-                    class="h-8 border border-black"
+                    class="h-8 w-80  border"
                     type="email"
                     id="email"
                     name="email"
@@ -116,7 +116,7 @@ const Login = () => {
                     Password
                   </label>
                   <input
-                    class="h-8 border border-black"
+                    class="h-8 w-80 border"
                     type="password"
                     id="password"
                     name="password"

@@ -2,73 +2,87 @@ import React from "react";
 
 const Create = () => {
   return (
-    <div class="flex h-screen w-screen flex-col items-center justify-center">
+    <div class="flex h-screen w-full flex-col items-center justify-center">
       <div class="flex h-screen w-full flex-col items-center justify-center">
-        <form class="h-5/6 w-3/4 overflow-y-auto rounded-lg bg-white drop-shadow-lg">
-          <h1 class="py-3 text-center text-6xl font-bold bg-graygreen text-white">Create Patient</h1>
+        <form class="h-[90%] w-3/4 overflow-y-auto rounded-lg bg-white drop-shadow-lg">
+
+          <h1 class="py-3 text-center text-6xl font-bold border-b-4">Create Patient</h1>
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Patient Info</h2>
-          <section class="ml-40 mt-5 flex h-60 w-3/4 flex-col rounded-lg border-2 border-black drop-shadow-lg">
-            <section class="mt-5">
+
+          <section class="mt-5 flex w-5/6 flex-col">
+            <section class="grid grid-cols-2 grid-rows-2 ml-20">
               <label>First Name:</label>
-              <input class="ml-1 w-60 border border-black" />
-              <label class="ml-10">Last Name:</label>
-              <input class="ml-1 w-60 border border-black" />
+              <label>Last Name:</label>
+              <input />
+              <input  />
             </section>
-            <section class="mt-5">
+
+            <section class="grid grid-cols-3 grid-rows-2 mt-3 ml-20">
               <label>Gender:</label>
-              <select class="ml-1 border border-black">
+              <label class='-translate-x-14'>Birth:</label>
+              <label class='-translate-x-[10.8rem]'>ID:</label>
+              <select class="ml-1 border w-20 rounded-md">
                 <option>Male</option>
                 <option>Female</option>
               </select>
-              <label class="ml-5">Birth:</label>
-              <input class="ml-1 w-52 border border-black" type="date" />
-              <label class="ml-5">ID:</label>
-              <input class="ml-1 w-[259px] border border-black" />
+              <input class='w-40 -translate-x-14'  type="date" />
+              <input class='-translate-x-[10.8rem]' />
             </section>
-            <section class="mt-5">
+
+            <section class="grid grid-cols-2 grid-rows-2 mt-3 ml-20">
               <label>Phone:</label>
-              <input class="ml-1 w-72 border border-black" />
-              <label class="ml-10">Email:</label>
-              <input class="ml-1 w-[295px] border border-black" />
+              <label>Email:</label>
+              <input  />
+              <input  />
             </section>
-            <section class="mt-5">
+
+            <section class="grid grid-cols-2 grid-rows-2 mt-3 ml-20">
               <label>Address:</label>
-              <input class="ml-1 w-[675px] border border-black" />
+              <input class="w-[795px] row-start-2 col-span-2" />
             </section>
           </section>
-          <hr class="mx-10 mt-10 border border-black" />
+
+          <hr class="mx-10 mt-10 border" />
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Emergency Contact</h2>
-          <section class="ml-40 mt-5 flex h-60 w-3/4 flex-col rounded-lg border-2 border-black drop-shadow-lg">
-            <section class="mt-5">
+
+          <section class="mt-5 flex w-5/6 flex-col">
+            <section class="grid grid-cols-2 grid-rows-2 ml-20">
               <label>First Name:</label>
-              <input class="ml-1 w-60 border border-black" />
-              <label class="ml-10">Last Name:</label>
-              <input class="ml-1 w-[230px] border border-black" />
+              <label>Last Name:</label>
+              <input />
+              <input  />
             </section>
-            <section class="mt-5">
+
+            <section class="grid grid-cols-2 grid-rows-2 mt-3 ml-20">
               <label>Gender:</label>
-              <select class="ml-1 border border-black">
+              <label>Relation:</label>
+              <select class="ml-1 border w-20 rounded-md">
                 <option>Male</option>
                 <option>Female</option>
               </select>
-              <label class='ml-60'>Relation:</label>
-              <input class="ml-1 w-[255px] border border-black" />
+              <input  />
             </section>
-            <section class="mt-5">
+
+            <section class="grid grid-cols-2 grid-rows-2 mt-3 ml-20">
               <label>Phone:</label>
-              <input class="ml-1 w-72 border border-black" />
-              <label class="ml-10">Email:</label>
-              <input class="ml-1 w-72 border border-black" />
+              <label>Email:</label>
+              <input  />
+              <input  />
             </section>
-            <section class="mt-5">
+
+            <section class="grid grid-cols-2 grid-rows-2 mt-3 ml-20">
               <label>Address:</label>
-              <input class="ml-1 w-[665px] border border-black" />
+              <input class="w-[795px] row-start-2 col-span-2" />
             </section>
+
           </section>
+
         </form>
+
         <button class="mt-4 h-16 w-40 rounded-lg text-3xl font-bold text-white">
           Create
         </button>
+
       </div>
     </div>
   );

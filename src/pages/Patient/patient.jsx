@@ -20,7 +20,7 @@ const Patient = () => {
         <input
           class={`${
             isOnClick
-              ? "h-12 -translate-x-40 rounded-lg border border-black opacity-100 transition-opacity delay-100 duration-500 "
+              ? "h-12 -translate-x-40 rounded-lg border-2 opacity-100 transition-opacity delay-100 duration-500 "
               : "opacity-0"
           }`}
           placeholder="PID"
@@ -28,7 +28,7 @@ const Patient = () => {
         <input
           class={`${
             isOnClick
-              ? "h-12 -translate-x-10 rounded-lg border border-black opacity-100 transition-opacity delay-150 duration-700"
+              ? "h-12 -translate-x-10 rounded-lg border-2 opacity-100 transition-opacity delay-150 duration-700"
               : "opacity-0"
           }`}
           placeholder="Patient Name"

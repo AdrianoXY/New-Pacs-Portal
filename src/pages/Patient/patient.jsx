@@ -64,7 +64,7 @@ const Patient = () => {
         <div class="flex justify-center">
           <table class="w-[1400px] table-auto mt-5 overflow-y-scroll">
             <thead>
-              <tr class="h-[50px] absol">
+              <tr class="h-[50px]">
                 <th class="text-slate-600 border-b-4">No.</th>
                 <th class="text-slate-600 border-b-4">PID</th>
                 <th class="text-slate-600 border-b-4">Patient Name</th>

@@ -7,6 +7,7 @@ import Login from "./pages/Loging/login";
 import Home from "./pages/Home/home";
 import Patient from "./pages/Patient/patient";
 import Create from "./pages/Patient/create";
+import Sample from "./pages/Patient/sample";
 import Search from "./pages/Search/search";
 import CTJ from "./pages/CSV2JSON/csvtojson";
 
@@ -28,6 +29,7 @@ root.render(
         <Route path="/home" element={<Home />} />
         <Route path="/patient" element={<Patient />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/sample" element={<Sample />} />
         <Route path="/search" element={<Search />} />
         <Route path="/csvtojson" element={<CTJ />} />
       </Route>

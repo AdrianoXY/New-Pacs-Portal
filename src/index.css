@@ -7,7 +7,7 @@ body {
 }
 
 button {
-  @apply bg-lightgreen;
+  @apply bg-lightgreen text-white;
 }
 
 label {

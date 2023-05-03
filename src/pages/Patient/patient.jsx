@@ -9,7 +9,7 @@ const Patient = () => {
   const navigate = useNavigate();
 
   return (
-    <div class="grid h-screen w-full grid-cols-7 grid-rows-6 overflow-auto">
+    <div class="grid h-screen w-screen grid-cols-7 grid-rows-6 overflow-auto">
       <div
         class={`${
           isOnClick
@@ -60,7 +60,7 @@ const Patient = () => {
         </button>
       </div>
 
-      <div class="col-span-5 col-start-2 row-span-5 row-start-2 flex flex-col h-[750px] w-[1500px] place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl ">
+      <div class="col-span-7 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">
           <table class="mt-5 w-[1400px] table-auto">
             <thead>

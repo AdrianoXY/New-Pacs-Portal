@@ -12,7 +12,7 @@ const Create = () => {
           </h1>
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Patient Info</h2>
 
-          <div class="grid w-full grid-cols-3 mt-3">
+          <div class="mt-3 grid w-full grid-cols-3">
             <div class="col-span-2 col-start-1">
               <section class="ml-20 grid grid-cols-2 grid-rows-2">
                 <label>First Name:</label>
@@ -51,9 +51,8 @@ const Create = () => {
           <hr class="mx-10 mt-5 border" />
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Emergency Contact</h2>
 
-          <div class="grid w-full grid-cols-3 mt-3">
-
-          <MdIcons.MdContactEmergency class="text-[15rem] text-red-600 place-self-center" />
+          <div class="mt-3 grid w-full grid-cols-3">
+            <MdIcons.MdContactEmergency class="place-self-center text-[15rem] text-red-600" />
 
             <div class="col-span-2 col-start-2">
               <section class=" grid grid-cols-2 grid-rows-2">

@@ -62,7 +62,7 @@ const Patient = () => {
 
       <div class="col-span-7 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">
-          <table class="mt-5 w-[1400px] table-auto">
+          <table class="mt-5 w-[90%] table-auto">
             <thead>
               <tr>
                 <th class=" border-b-4">No.</th>

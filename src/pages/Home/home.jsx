@@ -23,8 +23,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="col-span-8 row-span-3 flex h-[450px] w-5/6 flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg ">
-        <div class="flex h-5/6 w-full flex-col items-center">
+      <div class="col-span-8 row-span-3 flex flex-col h-[450px] w-5/6 items-center place-self-center rounded-2xl bg-white drop-shadow-lg ">
+        <div class="flex flex-col h-5/6 w-full items-center">
           <table class="mt-5 w-[90%] table-auto">
             <caption class="mb-4 text-left text-5xl font-black">
               Variation Point

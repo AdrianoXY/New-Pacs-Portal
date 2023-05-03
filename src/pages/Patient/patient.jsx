@@ -60,9 +60,9 @@ const Patient = () => {
         </button>
       </div>
 
-      <div class="col-span-5 col-start-2 row-span-5 row-start-2 flex h-[750px] w-[1500px] flex-col place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl ">
+      <div class="col-span-5 col-start-2 row-span-5 row-start-2 flex flex-col h-[750px] w-[1500px] place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">
-          <table class="mt-5 w-[1400px] table-auto overflow-y-scroll">
+          <table class="mt-5 w-[1400px] table-auto">
             <thead>
               <tr>
                 <th class=" border-b-4">No.</th>

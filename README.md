@@ -32,3 +32,6 @@ Patient Page Search Bar
 
 2023/5/1 AM 01:07
 Create Patient Page, Color Change
+
+2023/5/3 PM 07:45
+Sample Page

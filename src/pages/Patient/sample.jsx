@@ -3,7 +3,7 @@ import * as AiIcons from "react-icons/ai";
 
 const Sample = () => {
   return (
-    <div class="grid w-screen h-screen grid-rows-2">
+    <div class="grid w-screen h-screen grid-rows-2 overflow-auto">
       <div class="flex items-center justify-center">
         <div class="h-4/5 w-3/4 rounded-md bg-white drop-shadow-md">
           <h1 class="ml-2 mt-2 text-5xl font-black">Information</h1>

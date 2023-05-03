@@ -4,7 +4,7 @@ import * as MdIcons from "react-icons/md";
 
 const Create = () => {
   return (
-    <div class="flex h-screen w-full flex-col items-center justify-center">
+    <div class="flex h-screen w-full flex-col items-center justify-center overflow-auto">
       <div class="flex h-screen w-full flex-col items-center justify-center">
         <form class="h-[88%] w-3/4 overflow-y-auto rounded-lg bg-white drop-shadow-lg">
           <h1 class="border-b-4 py-3 text-center text-6xl font-bold">

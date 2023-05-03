@@ -52,15 +52,18 @@ const Create = () => {
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Emergency Contact</h2>
 
           <div class="grid w-full grid-cols-3 mt-3">
-            <div class="col-span-2 col-start-1">
-              <section class="ml-20 grid grid-cols-2 grid-rows-2">
+
+          <MdIcons.MdContactEmergency class="text-[15rem] text-red-600 place-self-center" />
+
+            <div class="col-span-2 col-start-2">
+              <section class=" grid grid-cols-2 grid-rows-2">
                 <label>First Name:</label>
                 <label>Last Name:</label>
                 <input />
                 <input />
               </section>
 
-              <section class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
+              <section class=" mt-3 grid grid-cols-2 grid-rows-2">
                 <label>Gender:</label>
                 <label>Relation:</label>
                 <select class="ml-1 w-20 rounded-md border">
@@ -70,19 +73,18 @@ const Create = () => {
                 <input />
               </section>
 
-              <section class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
+              <section class=" mt-3 grid grid-cols-2 grid-rows-2">
                 <label>Phone:</label>
                 <label>Email:</label>
                 <input />
                 <input />
               </section>
 
-              <section class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
+              <section class=" mt-3 grid grid-cols-2 grid-rows-2">
                 <label>Address:</label>
                 <input class="col-span-2 row-start-2 w-[85.5%]" />
               </section>
             </div>
-            <MdIcons.MdContactEmergency class="text-[15rem] text-red-600" />
           </div>
         </form>
 

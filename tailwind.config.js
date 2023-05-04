@@ -5,12 +5,12 @@ module.exports = {
     extend: {
       keyframes:{
         fadein:{
-          to:{opacity:1,transform:'translateY(0)'},
-          from:{opacity:0,transform:'translateY(-100%)'},
+          to:{opacity:1},
+          from:{opacity:0},
         }
       },
       animation:{
-        'fadein': 'fadein 1s ease-in-out',
+        'fadein': 'fadein 1s ease',
       },
       backgroundImage:{
         'dna': "url('../public/images/background.jpg')"

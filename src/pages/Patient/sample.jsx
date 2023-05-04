@@ -25,7 +25,7 @@ const Sample = () => {
               <label class="font-normal text-slate-600">0912345678</label>
               <label>Address:</label>
               <label class="font-normal text-slate-600">Taipei</label>
-            </div>
+            </div> 
             <button class="col-start-2 mr-10 mt-2 h-10 w-28 place-self-end rounded-md text-2xl">
               Edit
             </button>
@@ -33,12 +33,18 @@ const Sample = () => {
         </div>
       </div>
 
-      <div class="flex h-[440px] w-5/6 place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl">
+      <div class="flex h-[93%] w-[90%] place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl">
         <div class="flex h-5/6 w-full flex-col items-center">
+        <div class='w-full flex items-center justify-between'>
+              <label class='ml-5 mt-5 text-5xl font-black'>Sample</label>
+              <button class='mr-10 mt-5 text-2xl h-12 w-40 rounded-md'>Add Sample</button>
+            </div>
           <table class="w-[95%] table-auto">
-            <caption class="mb-4 ml-2 mt-2 text-left text-5xl font-black">
+            
+            {/* <caption class="mb-4 ml-2 mt-2 text-left text-5xl font-black">
               Sample
-            </caption>
+              <button class='ml-[70rem] text-2xl h-12 w-40 rounded-md'>Add Sample</button>
+            </caption> */}
             <thead>
               <tr>
                 <th class="border-b-2">No.</th>

@@ -1,15 +1,19 @@
 import React from "react";
 import * as BsIcons from "react-icons/bs";
 import * as MdIcons from "react-icons/md";
+import * as AiIcons from "react-icons/ai";
 
-const Create = () => {
-  return (
-    <div class="flex h-screen w-full flex-col items-center justify-center overflow-auto">
-      <div class="flex h-screen w-full flex-col items-center justify-center">
-        <form class="h-[88%] w-3/4 overflow-y-auto rounded-lg bg-white drop-shadow-lg">
-          <h1 class="border-b-4 py-3 text-center text-6xl font-bold">
+const Create = (props) => {
+  return(props.trigger)?(
+    <div class="fixed h-screen w-full flex-col items-center justify-center overflow-auto z-10 bg-gray-600 bg-opacity-70">
+      <div class="flex h-screen w-full flex-col items-center justify-center animate-fadein duration-50">
+        <div class='flex w-screen justify-around'>
+        <h1 class="py-3 text-center text-6xl text-white font-bold">
             Create Patient
           </h1>
+          <AiIcons.AiOutlineClose class='text-7xl text-white cursor-pointer' onClick={() => props.setButtonPop(false)}/>
+        </div>
+        <form class="h-[80%] w-3/4 overflow-y-auto rounded-lg bg-white drop-shadow-lg">
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Patient Info</h2>
 
           <div class="mt-3 grid w-full grid-cols-3">
@@ -92,7 +96,7 @@ const Create = () => {
         </button>
       </div>
     </div>
-  );
+  ):"";
 };
 
 export default Create;

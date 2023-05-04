@@ -3,6 +3,15 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      keyframes:{
+        fadein:{
+          to:{opacity:1,transform:'translateY(0)'},
+          from:{opacity:0,transform:'translateY(-100%)'},
+        }
+      },
+      animation:{
+        'fadein': 'fadein 1s ease-in-out',
+      },
       backgroundImage:{
         'dna': "url('../public/images/background.jpg')"
       },

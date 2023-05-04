@@ -28,7 +28,7 @@ root.render(
       <Route path="/" element={<AppLayout />}>
         <Route path="/home" element={<Home />} />
         <Route path="/patient" element={<Patient />} />
-        <Route path="/create" element={<Create />} />
+        {/* <Route path="/create" element={<Create />} /> */}
         <Route path="/sample" element={<Sample />} />
         <Route path="/search" element={<Search />} />
         <Route path="/csvtojson" element={<CTJ />} />

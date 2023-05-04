@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Create from './create'
 import * as BiIcons from "react-icons/bi";
 import * as BsIcons from "react-icons/bs";
 import * as IoIcons from "react-icons/io5";
 
 const Patient = () => {
   const [isOnClick, setIsOnClick] = useState(false);
+  const [ButtonPop, setButtonPop] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -53,12 +55,14 @@ const Patient = () => {
       <div class="col-start-6 place-self-center">
         <button
           class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg"
-          onClick={() => navigate("/create")}
+          onClick={() => setButtonPop(true)}
         >
           <BsIcons.BsPersonFillAdd class="text-5xl" />
           <h2 class="text-4xl">Create</h2>
         </button>
       </div>
+
+      <Create trigger={ButtonPop} setButtonPop={setButtonPop} />
 
       <div class="col-span-7 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">

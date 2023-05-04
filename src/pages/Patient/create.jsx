@@ -4,16 +4,19 @@ import * as MdIcons from "react-icons/md";
 import * as AiIcons from "react-icons/ai";
 
 const Create = (props) => {
-  return(props.trigger)?(
-    <div class="fixed h-screen w-full flex-col items-center justify-center overflow-auto z-10 bg-gray-600 bg-opacity-70">
-      <div class="flex h-screen w-full flex-col items-center justify-center animate-fadein duration-50">
-        <div class='flex w-screen justify-around'>
-        <h1 class="py-3 text-center text-6xl text-white font-bold">
+  return props.trigger ? (
+    <div class="fixed z-10 h-screen w-full flex-col items-center justify-center overflow-auto bg-gray-600 bg-opacity-70">
+      <div class="duration-50 flex h-screen w-full animate-fadein flex-col items-center justify-center">
+        <div class="flex w-screen justify-around">
+          <h1 class="py-3 text-center text-6xl font-bold text-white">
             Create Patient
           </h1>
-          <AiIcons.AiOutlineClose class='text-7xl text-white cursor-pointer' onClick={() => props.setButtonPop(false)}/>
+          <AiIcons.AiOutlineClose
+            class="ml-[45%] cursor-pointer text-7xl text-white"
+            onClick={() => props.setButtonPop(false)}
+          />
         </div>
-        <form class="h-[80%] w-3/4 overflow-y-auto rounded-lg bg-white drop-shadow-lg">
+        <form class="h-[80%] w-[85%] overflow-y-auto rounded-lg bg-white drop-shadow-lg">
           <h2 class="ml-5 mt-2 text-4xl font-semibold">Patient Info</h2>
 
           <div class="mt-3 grid w-full grid-cols-3">
@@ -49,13 +52,13 @@ const Create = (props) => {
                 <input class="col-span-2 row-start-2 w-[85.5%]" />
               </section>
             </div>
-            <BsIcons.BsFillPersonBadgeFill class="text-[15rem] text-graygreen" />
+            <BsIcons.BsFillPersonBadgeFill class="place-self-center text-[15rem] text-graygreen" />
           </div>
 
           <hr class="mx-10 mt-5 border" />
-          <h2 class="ml-5 mt-2 text-4xl font-semibold">Emergency Contact</h2>
+          <h2 class="ml-5 mt-5 text-4xl font-semibold">Emergency Contact</h2>
 
-          <div class="mt-3 grid w-full grid-cols-3">
+          <div class="mt-6 grid w-full grid-cols-3">
             <MdIcons.MdContactEmergency class="place-self-center text-[15rem] text-red-600" />
 
             <div class="col-span-2 col-start-2">
@@ -96,7 +99,9 @@ const Create = (props) => {
         </button>
       </div>
     </div>
-  ):"";
+  ) : (
+    ""
+  );
 };
 
 export default Create;

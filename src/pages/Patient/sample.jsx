@@ -37,14 +37,9 @@ const Sample = () => {
         <div class="flex h-5/6 w-full flex-col items-center">
         <div class='w-full flex items-center justify-between'>
               <label class='ml-5 mt-5 text-5xl font-black'>Sample</label>
-              <button class='mr-10 mt-5 text-2xl h-12 w-40 rounded-md'>Add Sample</button>
+              <button class='flex flex-row items-center justify-center mr-10 mt-5 h-12 w-52 rounded-md'><AiIcons.AiFillFolderAdd class='text-4xl' /><h2 class='text-2xl'>Add Sample</h2></button>
             </div>
           <table class="w-[95%] table-auto">
-            
-            {/* <caption class="mb-4 ml-2 mt-2 text-left text-5xl font-black">
-              Sample
-              <button class='ml-[70rem] text-2xl h-12 w-40 rounded-md'>Add Sample</button>
-            </caption> */}
             <thead>
               <tr>
                 <th class="border-b-2">No.</th>

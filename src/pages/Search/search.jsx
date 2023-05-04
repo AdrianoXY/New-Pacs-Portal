@@ -31,6 +31,11 @@ const Search = () => {
       </div>
 
       <div class="col-span-2 flex items-center">
+        <span class={`${
+            isOnClick
+              ? "opacity-100 transition-opacity delay-200 duration-700"
+              : "opacity-0"
+          }`}>Window Range</span>
           <input type="number"  class={`${
             isOnClick
               ? "h-12 rounded-lg border-2 opacity-100 transition-opacity delay-200 duration-700"

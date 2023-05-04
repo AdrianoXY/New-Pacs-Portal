@@ -65,7 +65,7 @@ const Sample = () => {
                 <th class="border-t-2">Blood</th>
                 <th class="border-t-2">2020-01-01</th>
                 <th class="border-t-2">
-                  <button>View</button>
+                  <button class='h-10 w-20 rounded-md'>View</button>
                 </th>
               </tr>
             </tbody>

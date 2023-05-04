@@ -31,31 +31,50 @@ const Search = () => {
       </div>
 
       <div class="col-span-2 flex items-center">
-        <span class={`${
+        <span
+          class={`${
             isOnClick
               ? "opacity-100 transition-opacity delay-200 duration-700"
               : "opacity-0"
-          }`}>Window Range</span>
-          <input type="number"  class={`${
+          }`}
+        >
+          Window Range
+        </span>
+        <input
+          type="number"
+          class={`${
             isOnClick
               ? "h-12 rounded-lg border-2 opacity-100 transition-opacity delay-200 duration-700"
               : "opacity-0"
           }`}
-          placeholder="Min"/>
-          <div class={`${isOnClick ? "text-4xl opacity-100 transition-opacity delay-200 duration-700" : "opacity-0"}`}>-</div>
-          <input type="number"class={`${
+          placeholder="Min"
+        />
+        <div
+          class={`${
+            isOnClick
+              ? "text-4xl opacity-100 transition-opacity delay-200 duration-700"
+              : "opacity-0"
+          }`}
+        >
+          -
+        </div>
+        <input
+          type="number"
+          class={`${
             isOnClick
               ? "h-12 rounded-lg border-2 opacity-100 transition-opacity delay-200 duration-700"
               : "opacity-0"
-          }`} placeholder="Max"/>
+          }`}
+          placeholder="Max"
+        />
       </div>
 
       <div class="flex items-center justify-end">
         <button
           class={`${
             isOnClick
-              ? "h-16 w-16 rounded-lg bg-graygreen transition duration-500"
-              : "h-16 w-16 -translate-x-[40rem] rounded-lg bg-graygreen transition duration-500"
+              ? "h-16 w-16 rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
+              : "h-16 w-16 -translate-x-[40rem] rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
           }`}
           onClick={() => setIsOnClick(!isOnClick)}
         >

@@ -67,7 +67,7 @@ const Sidebar = () => {
               : "opacity-0 delay-150 duration-500"
           }`}
         >
-          <span class='cursor-pointer'>Username</span>
+          <span class="cursor-pointer">Username</span>
         </div>
       </div>
 
@@ -97,7 +97,7 @@ const Sidebar = () => {
         <span
           class={`${
             isHovered
-              ? "pt-1 text-white delay-150 duration-500 cursor-pointer"
+              ? "cursor-pointer pt-1 text-white delay-150 duration-500"
               : "opacity-0 delay-150 duration-500"
           }`}
         >

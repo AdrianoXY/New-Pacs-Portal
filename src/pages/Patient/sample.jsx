@@ -25,7 +25,7 @@ const Sample = () => {
               <label class="font-normal text-slate-600">0912345678</label>
               <label>Address:</label>
               <label class="font-normal text-slate-600">Taipei</label>
-            </div> 
+            </div>
             <button class="col-start-2 mr-10 mt-2 h-10 w-28 place-self-end rounded-md text-2xl">
               Edit
             </button>
@@ -35,10 +35,13 @@ const Sample = () => {
 
       <div class="flex h-[93%] w-[90%] place-self-center overflow-y-auto rounded-2xl bg-white drop-shadow-xl">
         <div class="flex h-5/6 w-full flex-col items-center">
-        <div class='w-full flex items-center justify-between'>
-              <label class='ml-5 mt-5 text-5xl font-black'>Sample</label>
-              <button class='flex flex-row items-center justify-center mr-10 mt-5 h-12 w-52 rounded-md'><AiIcons.AiFillFolderAdd class='text-4xl' /><h2 class='text-2xl'>Add Sample</h2></button>
-            </div>
+          <div class="flex w-full items-center justify-between">
+            <label class="ml-5 mt-5 text-5xl font-black">Sample</label>
+            <button class="mr-10 mt-5 flex h-12 w-52 flex-row items-center justify-center rounded-md">
+              <AiIcons.AiFillFolderAdd class="text-4xl" />
+              <h2 class="text-2xl">Add Sample</h2>
+            </button>
+          </div>
           <table class="w-[95%] table-auto">
             <thead>
               <tr>
@@ -60,7 +63,7 @@ const Sample = () => {
                 <th class="border-t-2">Blood</th>
                 <th class="border-t-2">2020-01-01</th>
                 <th class="border-t-2">
-                  <button class='h-10 w-20 rounded-md'>View</button>
+                  <button class="h-10 w-20 rounded-md">View</button>
                 </th>
               </tr>
             </tbody>

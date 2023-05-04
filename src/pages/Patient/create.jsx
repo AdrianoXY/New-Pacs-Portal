@@ -55,14 +55,14 @@ const Create = () => {
             <MdIcons.MdContactEmergency class="place-self-center text-[15rem] text-red-600" />
 
             <div class="col-span-2 col-start-2">
-              <section class=" grid grid-cols-2 grid-rows-2 ml-20">
+              <section class=" ml-20 grid grid-cols-2 grid-rows-2">
                 <label>First Name:</label>
                 <label>Last Name:</label>
                 <input />
                 <input />
               </section>
 
-              <section class=" mt-3 grid grid-cols-2 grid-rows-2 ml-20">
+              <section class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
                 <label>Gender:</label>
                 <label>Relation:</label>
                 <select class="ml-1 w-20 rounded-md border">
@@ -72,14 +72,14 @@ const Create = () => {
                 <input />
               </section>
 
-              <section class=" mt-3 grid grid-cols-2 grid-rows-2 ml-20">
+              <section class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
                 <label>Phone:</label>
                 <label>Email:</label>
                 <input />
                 <input />
               </section>
 
-              <section class=" mt-3 grid grid-cols-2 grid-rows-2 ml-20">
+              <section class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
                 <label>Address:</label>
                 <input class="col-span-2 row-start-2 w-[85.5%]" />
               </section>

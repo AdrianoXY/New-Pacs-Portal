@@ -118,7 +118,7 @@ const Login = () => {
                   />
                 </div>
                 <button
-                  class="mt-10 h-10 rounded-md bg-lightgreen font-bold "
+                  class="mt-10 h-10 w-80 rounded-md bg-lightgreen font-bold "
                   type="submit"
                 >
                   Sing In
@@ -195,7 +195,7 @@ const Login = () => {
                   />
                 </div>
                 <button
-                  class="mt-10 h-10 rounded-md bg-lightgreen font-bold"
+                  class="mt-10 h-10 w-80 rounded-md bg-lightgreen font-bold"
                   type="submit"
                 >
                   Sing Up

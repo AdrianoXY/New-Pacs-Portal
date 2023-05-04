@@ -11,7 +11,7 @@ const Home = () => {
         <div class="h-3/5 w-3/5 rounded-xl bg-white">
           <h1 class="ml-3 mt-5 text-5xl text-black">Patient</h1>
           <hr class="mx-3 mt-3 border-2 border-black " />
-          <BsIcons.BsPeopleFill class="ml-2 mt-5 text-9xl" />
+          <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl xl:text-9xl" />
         </div>
       </div>
 
@@ -19,7 +19,7 @@ const Home = () => {
         <div class="h-3/5 w-3/5 rounded-xl bg-white">
           <h1 class="ml-3 mt-5 text-5xl text-black">Sample</h1>
           <hr class="mx-3 mt-3 border-2 border-black " />
-          <BsIcons.BsClipboardData class="ml-2 mt-5 text-9xl" />
+          <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl xl:text-9xl" />
         </div>
       </div>
 

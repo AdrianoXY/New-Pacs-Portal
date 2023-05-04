@@ -36,8 +36,8 @@ const Patient = () => {
         <button
           class={`${
             isOnClick
-              ? "h-16 w-16 translate-x-16 rounded-lg bg-graygreen transition duration-500"
-              : "h-16 w-16 -translate-x-72 rounded-lg bg-graygreen transition duration-500"
+              ? "h-16 w-16 translate-x-16 rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
+              : "h-16 w-16 -translate-x-72 rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
           }`}
           onClick={() => setIsOnClick(!isOnClick)}
         >
@@ -81,7 +81,12 @@ const Patient = () => {
                 <th class="border-t-2 ">M</th>
                 <th class="border-t-2 ">2023/1/1</th>
                 <th class="border-t-2 ">
-                  <button class='h-10 w-32 rounded-md' onClick={() => navigate("/sample")}>Sample</button>
+                  <button
+                    class="h-10 w-32 rounded-md"
+                    onClick={() => navigate("/sample")}
+                  >
+                    Sample
+                  </button>
                 </th>
               </tr>
             </tbody>

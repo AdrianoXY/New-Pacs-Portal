@@ -7,7 +7,7 @@ body {
 }
 
 button {
-  @apply bg-lightgreen text-white;
+  @apply w-60 bg-lightgreen text-white hover:bg-green-400;
 }
 
 label {

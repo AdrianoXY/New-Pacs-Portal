@@ -26,9 +26,14 @@ const Sample = () => {
               <label>Address:</label>
               <label class="font-normal text-slate-600">Taipei</label>
             </div>
-            <button class="col-start-2 mr-10 mt-2 h-10 w-28 place-self-end rounded-md text-2xl">
-              Edit
-            </button>
+            <div class="col-start-2 flex w-full justify-end">
+              <button class="mr-10 mt-2 h-10 w-28 rounded-md text-2xl">
+                Edit
+              </button>
+              <button class="mr-10 mt-2 h-10 w-28 rounded-md bg-red-600 text-2xl">
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>

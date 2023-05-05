@@ -54,7 +54,7 @@ const Patient = () => {
 
       <div class="col-start-6 place-self-center">
         <button
-          class=" flex h-16 w-48 flex-row items-center justify-center rounded-lg"
+          class=" flex h-16 w-48 flex-row items-center justify-center"
           onClick={() => setButtonPop(true)}
         >
           <BsIcons.BsPersonFillAdd class="text-5xl" />
@@ -85,10 +85,7 @@ const Patient = () => {
                 <th class="border-t-2 ">M</th>
                 <th class="border-t-2 ">2023/1/1</th>
                 <th class="border-t-2 ">
-                  <button
-                    class="h-10 w-32 rounded-md"
-                    onClick={() => navigate("/sample")}
-                  >
+                  <button class="h-10 w-32" onClick={() => navigate("/sample")}>
                     Sample
                   </button>
                 </th>

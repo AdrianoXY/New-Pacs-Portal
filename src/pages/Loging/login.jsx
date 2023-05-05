@@ -17,7 +17,6 @@ const Login = () => {
     const formData = new FormData(e.target);
     const email = formData.get("email");
     const pass = formData.get("password");
-    console.log(email, pass);
 
     axios
       .post("/user/Login", JSON.stringify({ email, pass }))
@@ -65,8 +64,10 @@ const Login = () => {
       .catch((err) => {
         if (!err.response) {
           setErrMsg("NoServer Response");
+        } else if (err.response.status === 401) {
+          setErrMsg("Account already exists");
         } else {
-          setErrMsg("Sing up Failed");
+          setErrMsg("Sign up Failed");
         }
       });
   };
@@ -88,7 +89,9 @@ const Login = () => {
             <section class="w-full px-10 drop-shadow-sm">
               <p
                 class={`${
-                  errMsg ? "mb-5 bg-red-700 p-4 font-bold " : "sr-only"
+                  errMsg
+                    ? "mb-5 rounded-md bg-red-700 p-4 text-center font-bold text-white "
+                    : "sr-only"
                 }`}
                 ref={errRef}
                 aria-live="assertive"
@@ -118,7 +121,7 @@ const Login = () => {
                   />
                 </div>
                 <button
-                  class="mt-10 h-10 w-80 rounded-md bg-lightgreen font-bold "
+                  class="mt-10 h-10 w-80 bg-lightgreen font-bold "
                   type="submit"
                 >
                   Sing In
@@ -161,7 +164,17 @@ const Login = () => {
         <div class="inset-0 flex">
           <div class="flex h-[550px] w-1/4 min-w-[400px] items-center rounded-3xl bg-bgcol drop-shadow-2xl transition-all duration-500">
             <section class="w-full px-10 drop-shadow-sm">
-              <p>{errMsg}</p>
+              <p
+                class={`${
+                  errMsg
+                    ? "mb-5 rounded-md bg-red-700 p-4 text-center font-bold text-white "
+                    : "sr-only"
+                }`}
+                ref={errRef}
+                aria-live="assertive"
+              >
+                {errMsg}
+              </p>
               <h1 class="text-center text-4xl font-bold">Sign Up</h1>
               <form class="flex flex-col py-6" onSubmit={handleSignup}>
                 <div class="mt-5 flex flex-col py-2">
@@ -195,7 +208,7 @@ const Login = () => {
                   />
                 </div>
                 <button
-                  class="mt-10 h-10 w-80 rounded-md bg-lightgreen font-bold"
+                  class="mt-10 h-10 w-80 bg-lightgreen font-bold"
                   type="submit"
                 >
                   Sing Up

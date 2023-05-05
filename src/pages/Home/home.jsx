@@ -1,29 +1,67 @@
-import React from "react";
-// import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import * as BsIcons from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import axios from "../../axios/axios";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [patient, setPatient] = useState(0);
+  const [sample, setSample] = useState(0);
+
+  useEffect(() => {
+    axios.get("/api/count/patient").then((res) => {
+      setPatient(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get("/api/count/sample").then((res) => {
+      setSample(res.data);
+    });
+  }, []);
 
   return (
     <div class="grid h-screen w-screen grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
         <div
-          class="h-3/5 w-3/5 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[65%] hover:transition-all hover:duration-300 hover:ease-in-out"
+          class="h-3/5 w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => navigate("/patient")}
         >
           <h1 class="ml-3 mt-5 text-5xl text-black">Patient</h1>
           <hr class="mx-3 mt-3 border-2 border-black " />
-          <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl xl:text-9xl" />
+          <div class="grid w-full grid-cols-2 items-center">
+            <div class="w-1/2">
+              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl xl:text-9xl" />
+            </div>
+
+            <div class="w-1/2 place-self-center">
+              <h1 class="text-center text-8xl text-graygreen">{patient}</h1>
+            </div>
+
+            <div class="col-start-2 place-self-center">
+              <h2 class="text-4xl">Total</h2>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
-        <div class="h-3/5 w-3/5 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[65%] hover:transition-all hover:duration-300 hover:ease-in-out">
+        <div class="h-3/5 w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
           <h1 class="ml-3 mt-5 text-5xl text-black">Sample</h1>
           <hr class="mx-3 mt-3 border-2 border-black " />
-          <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl xl:text-9xl" />
+          <div class="grid w-full grid-cols-2 items-center">
+            <div class="w-1/2">
+              <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl xl:text-9xl" />
+            </div>
+
+            <div class="w-1/2 place-self-center">
+              <h1 class="text-center text-8xl text-graygreen">{sample}</h1>
+            </div>
+
+            <div class="col-start-2 place-self-center">
+              <h2 class="text-4xl">Total</h2>
+            </div>
+          </div>
         </div>
       </div>
 

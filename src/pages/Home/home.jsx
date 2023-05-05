@@ -35,7 +35,7 @@ const Home = () => {
             </div>
 
             <div class="w-1/2 place-self-center">
-              <h1 class="text-center text-8xl text-graygreen">{patient}</h1>
+              <h1 class="text-center text-8xl text-graygreen">{JSON.stringify(patient)}</h1>
             </div>
 
             <div class="col-start-2 place-self-center">
@@ -55,7 +55,7 @@ const Home = () => {
             </div>
 
             <div class="w-1/2 place-self-center">
-              <h1 class="text-center text-8xl text-graygreen">{sample}</h1>
+              <h1 class="text-center text-8xl text-graygreen">{JSON.stringify(sample)}</h1>
             </div>
 
             <div class="col-start-2 place-self-center">

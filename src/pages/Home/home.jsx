@@ -20,6 +20,7 @@ const Home = () => {
     });
   }, []);
 
+  
   return (
     <div class="grid h-screen w-screen grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">

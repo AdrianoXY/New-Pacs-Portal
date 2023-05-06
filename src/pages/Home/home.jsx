@@ -20,7 +20,6 @@ const Home = () => {
     });
   }, []);
 
-  
   return (
     <div class="grid h-screen w-screen grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
@@ -36,7 +35,9 @@ const Home = () => {
             </div>
 
             <div class="w-1/2 place-self-center">
-              <h1 class="text-center text-8xl text-graygreen">{JSON.stringify(patient)}</h1>
+              <h1 class="text-center text-8xl text-graygreen">
+                {JSON.stringify(patient)}
+              </h1>
             </div>
 
             <div class="col-start-2 place-self-center">
@@ -46,7 +47,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
+      <div class="col-span-4 row-span-3 row-start-4 flex items-center justify-center drop-shadow-lg">
         <div class="h-3/5 w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
           <h1 class="ml-3 mt-5 text-5xl text-black">Sample</h1>
           <hr class="mx-3 mt-3 border-2 border-black " />
@@ -56,7 +57,9 @@ const Home = () => {
             </div>
 
             <div class="w-1/2 place-self-center">
-              <h1 class="text-center text-8xl text-graygreen">{JSON.stringify(sample)}</h1>
+              <h1 class="text-center text-8xl text-graygreen">
+                {JSON.stringify(sample)}
+              </h1>
             </div>
 
             <div class="col-start-2 place-self-center">
@@ -67,7 +70,7 @@ const Home = () => {
       </div>
 
       <div
-        class="col-span-8 row-span-3 flex h-[88%] w-5/6 cursor-pointer flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg transition-all duration-300 ease-in-out hover:h-[90%] hover:w-[85%] hover:transition-all hover:duration-300 hover:ease-in-out "
+        class="col-span-4 col-start-5 row-span-6 flex h-[88%] w-5/6 cursor-pointer flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg transition-all duration-300 ease-in-out hover:h-[90%] hover:w-[85%] hover:transition-all hover:duration-300 hover:ease-in-out "
         onClick={() => navigate("/search")}
       >
         <div class="flex h-5/6 w-full flex-col items-center">

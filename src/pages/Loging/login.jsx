@@ -17,6 +17,7 @@ const Login = () => {
     const formData = new FormData(e.target);
     const email = formData.get("email");
     const pass = formData.get("password");
+    console.log(email, pass);
 
     axios
       .post("/user/Login", JSON.stringify({ email, pass }))

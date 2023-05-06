@@ -12,44 +12,11 @@ const Patient = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-7 grid-rows-6 overflow-auto">
-      <div
-        class={`${
-          isOnClick
-            ? "flex-rows col-start-4 flex items-center place-self-center"
-            : "col-start-4 flex place-self-center"
-        }`}
-      >
-        <input
-          class={`${
-            isOnClick
-              ? "h-12 -translate-x-40 rounded-lg border-2 opacity-100 transition-opacity delay-100 duration-500 "
-              : "opacity-0"
-          }`}
-          placeholder="PID"
-        />
-        <input
-          class={`${
-            isOnClick
-              ? "h-12 -translate-x-10 rounded-lg border-2 opacity-100 transition-opacity delay-150 duration-700"
-              : "opacity-0"
-          }`}
-          placeholder="Patient Name"
-        />
-        <button
-          class={`${
-            isOnClick
-              ? "h-16 w-16 translate-x-16 rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
-              : "h-16 w-16 -translate-x-72 rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
-          }`}
-          onClick={() => setIsOnClick(!isOnClick)}
-        >
-          <BiIcons.BiSearchAlt
-            class={`${isOnClick ? "hidden" : "ml-2 text-5xl "}`}
-          />
-          <IoIcons.IoCloseSharp
-            class={`${isOnClick ? "ml-2 text-5xl" : "hidden"}`}
-          />
-        </button>
+      <div class="flex-rows col-start-2 flex w-full items-center justify-center">
+        <input class="h-12 border-2 " placeholder="PID" />
+      </div>
+      <div class="flex-rows col-start-4 flex w-full items-center justify-center">
+        <input class="h-12 border-2" placeholder="Patient Name" />
       </div>
 
       <div class="col-start-6 place-self-center">

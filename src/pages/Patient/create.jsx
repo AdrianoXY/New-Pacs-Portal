@@ -19,7 +19,7 @@ const Create = (props) => {
     const city = formData.get("city");
     const area = formData.get("area");
     const address = formData.get("address");
-    const postalcode = formData.get("postalcode");
+    const postcode = formData.get("postcode");
     const ufirstName = formData.get("ufirstName");
     const ulastName = formData.get("ulastName");
     const ugender = formData.get("ugender");
@@ -29,7 +29,7 @@ const Create = (props) => {
     const ucity = formData.get("ucity");
     const uarea = formData.get("uarea");
     const uaddress = formData.get("uaddress");
-    const upostalcode = formData.get("upostalcode");
+    const upostcode = formData.get("upostcode");
 
     console.log(
       firstName,
@@ -42,7 +42,7 @@ const Create = (props) => {
       city,
       area,
       address,
-      postalcode,
+      postcode,
       ufirstName,
       ulastName,
       ugender,
@@ -52,7 +52,7 @@ const Create = (props) => {
       ucity,
       uarea,
       uaddress,
-      upostalcode
+      upostcode
     );
   };
 

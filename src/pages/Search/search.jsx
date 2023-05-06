@@ -8,83 +8,33 @@ const Search = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
-      <div class="col-span-2 col-start-2 flex items-center">
-        <input
-          class={`${
-            isOnClick
-              ? "h-12  rounded-lg border-2 opacity-100 transition-opacity delay-100 duration-500 "
-              : "opacity-0"
-          }`}
-          placeholder="PID"
-        />
+      <div class="col-span-2 col-start-2 flex place-self-center">
+        <input class="h-12  rounded-lg border-2  " placeholder="PID" />
       </div>
 
-      <div class="col-span-2 flex items-center">
-        <input
-          class={`${
-            isOnClick
-              ? "h-12 rounded-lg border-2 opacity-100 transition-opacity delay-150 duration-700"
-              : "opacity-0"
-          }`}
-          placeholder="Chromosome"
-        />
+      <div class="col-span-2 flex place-self-center">
+        <input class="h-12 rounded-lg border-2" placeholder="Chromosome" />
       </div>
 
-      <div class="col-span-2 flex items-center">
-        <span
-          class={`${
-            isOnClick
-              ? "opacity-100 transition-opacity delay-200 duration-700"
-              : "opacity-0"
-          }`}
-        >
-          Window Range
-        </span>
-        <input
-          type="number"
-          class={`${
-            isOnClick
-              ? "h-12 rounded-lg border-2 opacity-100 transition-opacity delay-200 duration-700"
-              : "opacity-0"
-          }`}
-          placeholder="Min"
-        />
-        <div
-          class={`${
-            isOnClick
-              ? "text-4xl opacity-100 transition-opacity delay-200 duration-700"
-              : "opacity-0"
-          }`}
-        >
-          -
+      <div class="col-span-4 flex flex-col place-self-center -translate-y-3">
+        <div>
+          <span>Window Range</span>
         </div>
-        <input
-          type="number"
-          class={`${
-            isOnClick
-              ? "h-12 rounded-lg border-2 opacity-100 transition-opacity delay-200 duration-700"
-              : "opacity-0"
-          }`}
-          placeholder="Max"
-        />
-      </div>
-
-      <div class="flex items-center justify-end">
-        <button
-          class={`${
-            isOnClick
-              ? "h-16 w-16 rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
-              : "h-16 w-16 -translate-x-[40rem] rounded-lg bg-graygreen transition duration-500 hover:bg-logbg"
-          }`}
-          onClick={() => setIsOnClick(!isOnClick)}
-        >
-          <BiIcons.BiSearchAlt
-            class={`${isOnClick ? "hidden" : "ml-2 text-5xl "}`}
+        <div class="flex flex-rows items-center">
+          <input
+            type="number"
+            class="h-12 rounded-lg border-2 "
+            placeholder="Min"
           />
-          <IoIcons.IoCloseSharp
-            class={`${isOnClick ? "ml-2 text-5xl" : "hidden"}`}
+          <div class="text-4xl ">
+            -
+          </div>
+          <input
+            type="number"
+            class="h-12 rounded-lg border-2"
+            placeholder="Max"
           />
-        </button>
+        </div>
       </div>
 
       <div class="col-span-9 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[95%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">

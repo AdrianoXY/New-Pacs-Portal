@@ -21,12 +21,12 @@ const Home = () => {
     <div class="grid h-screen w-screen grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
         <div
-          class="h-[50%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[55%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
+          class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => navigate("/patient")}
         >
           <div class="grid w-full grid-cols-2 items-center">
             <div class="w-1/2">
-              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl text-blue-900 xl:text-9xl" />
+              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl text-blue-900 2xl:text-9xl" />
             </div>
 
             <div class="row-start-2">
@@ -43,10 +43,10 @@ const Home = () => {
       </div>
 
       <div class="col-span-4 row-span-3 row-start-4 flex items-center justify-center drop-shadow-lg">
-        <div class="h-[50%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[55%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
+        <div class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
           <div class="grid w-full grid-cols-2 items-center">
             <div>
-              <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 xl:text-9xl" />
+              <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 2xl:text-9xl" />
             </div>
 
             <div class="row-start-2">
@@ -71,7 +71,7 @@ const Home = () => {
             <caption class="mb-4 text-left text-5xl font-black text-blue-400">
               Variation Point
             </caption>
-            <thead>
+            <thead class='sticky'>
               <tr>
                 <th class="border-b-2">No.</th>
                 <th class="border-b-2">File Name</th>
@@ -80,7 +80,7 @@ const Home = () => {
                 <th class="border-b-2">Operation</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class='overflow-y-scroll'>
               <tr>
                 <td class="border-t-2 text-center">1</td>
                 <td class="border-t-2 text-center">70146</td>

@@ -24,46 +24,42 @@ const Home = () => {
     <div class="grid h-screen w-screen grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
         <div
-          class="h-3/5 w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
+          class="h-[50%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[55%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => navigate("/patient")}
         >
-          <h1 class="ml-3 mt-5 text-5xl text-black">Patient</h1>
-          <hr class="mx-3 mt-3 border-2 border-black " />
           <div class="grid w-full grid-cols-2 items-center">
             <div class="w-1/2">
               <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl xl:text-9xl" />
             </div>
 
-            <div class="w-1/2 place-self-center">
+            <div class="row-start-2">
+              <h1 class="ml-3 mt-5 text-5xl text-black">Patient</h1>
+            </div>
+
+            <div class="row-span-2">
               <h1 class="text-center text-8xl text-graygreen">
                 {JSON.stringify(patient)}
               </h1>
-            </div>
-
-            <div class="col-start-2 place-self-center">
-              <h2 class="text-4xl">Total</h2>
             </div>
           </div>
         </div>
       </div>
 
       <div class="col-span-4 row-span-3 row-start-4 flex items-center justify-center drop-shadow-lg">
-        <div class="h-3/5 w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[65%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
-          <h1 class="ml-3 mt-5 text-5xl text-black">Sample</h1>
-          <hr class="mx-3 mt-3 border-2 border-black " />
+        <div class="h-[50%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[55%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
           <div class="grid w-full grid-cols-2 items-center">
             <div class="w-1/2">
               <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl xl:text-9xl" />
             </div>
 
-            <div class="w-1/2 place-self-center">
+            <div class="row-start-2">
+              <h1 class="ml-3 mt-5 text-5xl text-black">Sample</h1>
+            </div>
+
+            <div class="row-span-2">
               <h1 class="text-center text-8xl text-graygreen">
                 {JSON.stringify(sample)}
               </h1>
-            </div>
-
-            <div class="col-start-2 place-self-center">
-              <h2 class="text-4xl">Total</h2>
             </div>
           </div>
         </div>

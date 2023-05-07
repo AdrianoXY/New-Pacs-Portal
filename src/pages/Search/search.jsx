@@ -16,19 +16,17 @@ const Search = () => {
         <input class="h-12 rounded-lg border-2" placeholder="Chromosome" />
       </div>
 
-      <div class="col-span-4 flex flex-col place-self-center -translate-y-3">
+      <div class="col-span-4 flex -translate-y-3 flex-col place-self-center">
         <div>
           <span>Window Range</span>
         </div>
-        <div class="flex flex-rows items-center">
+        <div class="flex-rows flex items-center">
           <input
             type="number"
             class="h-12 rounded-lg border-2 "
             placeholder="Min"
           />
-          <div class="text-4xl ">
-            -
-          </div>
+          <div class="text-4xl ">-</div>
           <input
             type="number"
             class="h-12 rounded-lg border-2"

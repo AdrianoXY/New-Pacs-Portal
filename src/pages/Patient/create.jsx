@@ -60,7 +60,6 @@ const Create = (props) => {
     <div class="fixed z-10 h-screen w-full flex-col items-center justify-center overflow-auto bg-gray-600 bg-opacity-70">
       <form onSubmit={createPatient}>
         <div class="duration-50 flex h-screen w-full animate-fadein flex-col items-center justify-center">
-          
           <div class="flex w-[60%] justify-around">
             <h1 class="py-3 text-center text-6xl font-bold text-white">
               Create Patient
@@ -71,9 +70,10 @@ const Create = (props) => {
             />
           </div>
 
-          <div class="h-[78%] w-[60%] overflow-y-auto rounded-lg bg-bgcol drop-shadow-lg">
-
-            <h2 class="ml-5 mt-2 text-4xl font-semibold text text-deepgreen">Patient Info</h2>
+          <div class="h-[78%] w-[60%] overflow-y-auto rounded-md bg-bgcol drop-shadow-lg">
+            <h2 class="text ml-5 mt-2 text-4xl font-semibold text-deepgreen">
+              Patient Info
+            </h2>
 
             <div class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
               <label>First Name:</label>
@@ -124,17 +124,17 @@ const Create = (props) => {
               <label>Province:</label>
               <label>Address</label>
               <label>Postal Code</label>
-              <input class="w-56" type="text" id="city" name="city" required />
-              <input class="w-56" type="text" id="area" name="area" required />
+              <input class="w-44" type="text" id="city" name="city" required />
+              <input class="w-44" type="text" id="area" name="area" required />
               <input
-                class="w-56"
+                class="w-44"
                 type="text"
                 id="address"
                 name="address"
                 required
               />
               <input
-                class="w-56"
+                class="w-44"
                 type="text"
                 id="postalcode"
                 name="postcode"
@@ -144,7 +144,9 @@ const Create = (props) => {
 
             <hr class="mx-10 mt-5 border" />
 
-            <h2 class="ml-5 text-4xl font-semibold text-red-500">Emergency Contact</h2>
+            <h2 class="ml-5 text-4xl font-semibold text-red-500">
+              Emergency Contact
+            </h2>
 
             <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
               <label>First Name:</label>
@@ -182,28 +184,28 @@ const Create = (props) => {
               <label>Address</label>
               <label>Postal Code</label>
               <input
-                class="w-56"
+                class="w-44"
                 type="text"
                 id="ucity"
                 name="ucity"
                 required
               />
               <input
-                class="w-56"
+                class="w-44"
                 type="text"
                 id="uarea"
                 name="uarea"
                 required
               />
               <input
-                class="w-56"
+                class="w-44"
                 type="text"
                 id="uaddress"
                 name="uaddress"
                 required
               />
               <input
-                class="w-56"
+                class="w-44"
                 type="text"
                 id="upostalcode"
                 name="upostcode"

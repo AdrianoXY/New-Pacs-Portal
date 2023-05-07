@@ -12,9 +12,6 @@ const Home = () => {
     axios.get("/api/count/patient").then((res) => {
       setPatient(res.data);
     });
-  }, []);
-
-  useEffect(() => {
     axios.get("/api/count/sample").then((res) => {
       setSample(res.data);
     });
@@ -71,7 +68,7 @@ const Home = () => {
       >
         <div class="flex h-5/6 w-full flex-col items-center">
           <table class="mt-5 w-[90%] table-auto">
-            <caption class="mb-4 text-left text-5xl text-blue-400 font-black">
+            <caption class="mb-4 text-left text-5xl font-black text-blue-400">
               Variation Point
             </caption>
             <thead>

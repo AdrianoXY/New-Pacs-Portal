@@ -1,37 +1,89 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation,useNavigate } from "react-router-dom";
+import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
 const Sample = () => {
+  const { state } = useLocation();
+  const { PID, name } = state;
+  const [acc, setAcc] = useState([]);
+  const navigate = useNavigate();
+
+  const Del = (PID) => {
+    axios.delete(`/api/patient/${PID}`,{params:{PID}})
+    .then((response) => {
+      if(response.status === 200){
+        alert("Delete Successfully")
+        navigate("/patient")
+      }
+    })
+    .catch((err) => {
+      if(err.response.status === 403){
+        console.log("Fail");
+      }else{
+        alert("Delete Fail")
+      }
+    })
+  }
+
+useEffect(() => {
+  axios
+    .get("/api/patient", { params: { name, PID } })
+    .then((res) => {
+      setAcc(res.data);
+    })
+    .catch((err) => {
+      if (err.response.status === 402) {
+        console.log("fail");
+      } else if (err.response.status === 403) {
+        console.log("Fail");
+      } else {
+        console.log("No server response");
+      }
+    });
+},[])
+  
+
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-6 overflow-auto">
       <div class="col-span-3 row-span-2 flex h-full w-full items-center justify-center ">
         <div class="flex h-[90%] w-[90%] flex-col items-center justify-center rounded-lg bg-white drop-shadow-md ">
           <AiIcons.AiOutlineUser class="rounded-full border-2 p-2 text-[12rem]" />
-          <label class="mt-2">Name:Apollo</label>
+          <label class="mt-5">Name:{name}</label>
         </div>
       </div>
 
       <div class="row-star-3 col-span-3 col-start-1 row-span-4 flex h-full w-full flex-col items-center justify-center ">
-        <div class="grid h-[80%] w-[90%] grid-cols-2 rounded-lg bg-white drop-shadow-md">
+        <div class="grid h-[80%] w-[90%] grid-cols-2 grid-rows-6 rounded-lg bg-white drop-shadow-md">
           <h1 class="col-span-2 ml-5 mt-5 text-4xl font-black">Information:</h1>
-          <label class="text-center">ID:</label>
-          <label class="font-normal text-slate-600">F123456789</label>
-          <label class="text-center">Gender:</label>
-          <label class="font-normal text-slate-600">Male</label>
-          <label class="text-center">Age:</label>
-          <label class="font-normal text-slate-600">20</label>
-          <label class="text-center">Birth:</label>
-          <label class="font-normal text-slate-600">2020-01-01</label>
-          <label class="text-center">Phone:</label>
-          <label class="font-normal text-slate-600">0912345678</label>
-          <label class="text-center">Address:</label>
-          <label class="font-normal text-slate-600">Taipei</label>
+          {acc.map((item, index) => {
+            return (
+              <div class="row-start-2 row-span-4 col-span-2 grid grid-cols-2" key={index}>
+                <label class="text-center">ID:</label>
+                <label class="font-normal text-lg text-slate-600">
+                  {item.Identifier}
+                </label>
+                <label class="text-center">Gender:</label>
+                <label class="font-normal text-lg text-slate-600">{item.gender}</label>
+                <label class="text-center">Birth:</label>
+                <label class="font-normal text-lg text-slate-600">
+                  {item.birthday}
+                </label>
+                <label class="text-center">Email:</label>
+                <label class="font-normal text-lg text-slate-600 break-words">{item.email}</label>
+                <label class="text-center">Phone:</label>
+                <label class="font-normal text-lg text-slate-600">{item.phone}</label>
+                <label class="text-center">Address:</label>
+                <label class="font-normal text-lg text-slate-600">{item.address}</label>
+              </div>
+            );
+          })}
 
-          <div class="col-start-2 flex w-full justify-end">
+          <div class="mt-4 row-start-6 col-span-2 flex w-full justify-center">
             <button class="mr-10 mt-2 h-10 w-28 rounded-md text-xl">
               Edit
             </button>
-            <button class="mr-10 mt-2 h-10 w-28 rounded-md bg-red-600 text-xl">
+            <button class="mr-10 mt-2 h-10 w-28 rounded-md bg-red-600 text-xl" onClick={() => window.confirm("Are you sure to delete?") && Del(PID)}>
               Delete
             </button>
           </div>

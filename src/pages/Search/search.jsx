@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import * as IoIcons from "react-icons/io5";
 
 const Search = () => {
-
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
       <div class="col-span-2 col-start-2 flex place-self-center">

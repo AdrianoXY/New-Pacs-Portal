@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
@@ -29,21 +29,48 @@ const Create = (props) => {
     const uaddress = formData.get("uaddress");
     const upostcode = formData.get("upostcode");
 
-    axios.post("/api/patient", JSON.stringify({firstname, lastname, gender, birthday, identifier, phone, email, city, area, address, postcode, ufirstname, ulastname, ugender, relation, uphone, uemail, ucity, uarea, uaddress, upostcode}))
-    .then((response) => {
-      if(response.status === 200) {
-        alert("Patient created successfully!")
-        props.setButtonPop(false)
-      }
-  })
-    .catch((err) => {
-      if(!err.response){
-        alert("Network Error!")
-      } else if(err.response.status === 403){
-        alert("Create Fail!")
-      }
-  })
-  }
+    axios
+      .post(
+        "/api/patient",
+        JSON.stringify({
+          firstname,
+          lastname,
+          gender,
+          birthday,
+          identifier,
+          phone,
+          email,
+          city,
+          area,
+          address,
+          postcode,
+          ufirstname,
+          ulastname,
+          ugender,
+          relation,
+          uphone,
+          uemail,
+          ucity,
+          uarea,
+          uaddress,
+          upostcode,
+        })
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Patient created successfully!");
+          props.setButtonPop(false);
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        if (!err.response) {
+          alert("Network Error!");
+        } else if (err.response.status === 403) {
+          alert("Create Fail!");
+        }
+      });
+  };
 
   return props.trigger ? (
     <div class="fixed z-10 h-screen w-full flex-col items-center justify-center overflow-auto bg-gray-600 bg-opacity-70">

@@ -71,11 +71,11 @@ const Create = (props) => {
             />
           </div>
 
-          <div class="h-[75%] w-[60%] overflow-y-auto rounded-lg bg-white drop-shadow-lg">
+          <div class="h-[78%] w-[60%] overflow-y-auto rounded-lg bg-bgcol drop-shadow-lg">
 
-            <h2 class="ml-5 mt-2 text-4xl">Patient Info</h2>
+            <h2 class="ml-5 mt-2 text-4xl font-semibold text text-deepgreen">Patient Info</h2>
 
-            <div class="ml-20 grid grid-cols-2 grid-rows-2">
+            <div class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
               <label>First Name:</label>
               <label>Last Name:</label>
               <input type="text" id="firstName" name="firstName" required />
@@ -144,9 +144,9 @@ const Create = (props) => {
 
             <hr class="mx-10 mt-5 border" />
 
-            <h2 class="ml-5 mt-5 text-4xl font-semibold">Emergency Contact</h2>
+            <h2 class="ml-5 text-4xl font-semibold text-red-500">Emergency Contact</h2>
 
-            <div class=" ml-20 grid grid-cols-2 grid-rows-2">
+            <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
               <label>First Name:</label>
               <label>Last Name:</label>
               <input type="text" id="ufirstName" name="ufirstName" required />

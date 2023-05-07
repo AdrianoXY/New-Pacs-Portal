@@ -29,15 +29,15 @@ const Home = () => {
         >
           <div class="grid w-full grid-cols-2 items-center">
             <div class="w-1/2">
-              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl xl:text-9xl" />
+              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl text-blue-900 xl:text-9xl" />
             </div>
 
             <div class="row-start-2">
-              <h1 class="ml-3 mt-5 text-5xl text-black">Patient</h1>
+              <h1 class="ml-3 mt-5 text-5xl text-blue-900">Patient</h1>
             </div>
 
             <div class="row-span-2">
-              <h1 class="text-center text-8xl text-graygreen">
+              <h1 class="text-center text-8xl text-slate-400">
                 {JSON.stringify(patient)}
               </h1>
             </div>
@@ -48,16 +48,16 @@ const Home = () => {
       <div class="col-span-4 row-span-3 row-start-4 flex items-center justify-center drop-shadow-lg">
         <div class="h-[50%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[55%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
           <div class="grid w-full grid-cols-2 items-center">
-            <div class="w-1/2">
-              <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl xl:text-9xl" />
+            <div>
+              <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 xl:text-9xl" />
             </div>
 
             <div class="row-start-2">
-              <h1 class="ml-3 mt-5 text-5xl text-black">Sample</h1>
+              <h1 class="ml-3 mt-5 text-5xl text-green-900">Sample</h1>
             </div>
 
             <div class="row-span-2">
-              <h1 class="text-center text-8xl text-graygreen">
+              <h1 class="text-center text-8xl text-slate-400">
                 {JSON.stringify(sample)}
               </h1>
             </div>
@@ -71,7 +71,7 @@ const Home = () => {
       >
         <div class="flex h-5/6 w-full flex-col items-center">
           <table class="mt-5 w-[90%] table-auto">
-            <caption class="mb-4 text-left text-5xl font-black">
+            <caption class="mb-4 text-left text-5xl text-blue-400 font-black">
               Variation Point
             </caption>
             <thead>

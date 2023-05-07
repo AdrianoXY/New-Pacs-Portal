@@ -1,7 +1,5 @@
 import React from "react";
 import axios from "../../axios/axios";
-import * as BsIcons from "react-icons/bs";
-import * as MdIcons from "react-icons/md";
 import * as AiIcons from "react-icons/ai";
 
 const Create = (props) => {
@@ -9,8 +7,8 @@ const Create = (props) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const firstName = formData.get("firstName");
-    const lastName = formData.get("lastName");
+    const firstname = formData.get("firstName");
+    const lastname = formData.get("lastName");
     const gender = formData.get("gender");
     const birthday = formData.get("birthday");
     const identifier = formData.get("identifier");
@@ -20,8 +18,8 @@ const Create = (props) => {
     const area = formData.get("area");
     const address = formData.get("address");
     const postcode = formData.get("postcode");
-    const ufirstName = formData.get("ufirstName");
-    const ulastName = formData.get("ulastName");
+    const ufirstname = formData.get("ufirstName");
+    const ulastname = formData.get("ulastName");
     const ugender = formData.get("ugender");
     const relation = formData.get("relation");
     const uphone = formData.get("uphone");
@@ -31,30 +29,21 @@ const Create = (props) => {
     const uaddress = formData.get("uaddress");
     const upostcode = formData.get("upostcode");
 
-    console.log(
-      firstName,
-      lastName,
-      gender,
-      birthday,
-      identifier,
-      phone,
-      email,
-      city,
-      area,
-      address,
-      postcode,
-      ufirstName,
-      ulastName,
-      ugender,
-      relation,
-      uphone,
-      uemail,
-      ucity,
-      uarea,
-      uaddress,
-      upostcode
-    );
-  };
+    axios.post("/api/patient", JSON.stringify({firstname, lastname, gender, birthday, identifier, phone, email, city, area, address, postcode, ufirstname, ulastname, ugender, relation, uphone, uemail, ucity, uarea, uaddress, upostcode}))
+    .then((response) => {
+      if(response.status === 200) {
+        alert("Patient created successfully!")
+        props.setButtonPop(false)
+      }
+  })
+    .catch((err) => {
+      if(!err.response){
+        alert("Network Error!")
+      } else if(err.response.status === 403){
+        alert("Create Fail!")
+      }
+  })
+  }
 
   return props.trigger ? (
     <div class="fixed z-10 h-screen w-full flex-col items-center justify-center overflow-auto bg-gray-600 bg-opacity-70">

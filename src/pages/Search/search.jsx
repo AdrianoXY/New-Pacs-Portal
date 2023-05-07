@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as BiIcons from "react-icons/bi";
 import * as IoIcons from "react-icons/io5";
 
 const Search = () => {
-  const [isOnClick, setIsOnClick] = useState(false);
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">

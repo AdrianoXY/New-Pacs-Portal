@@ -49,7 +49,7 @@ useEffect(() => {
       <div class="col-span-3 row-span-2 flex h-full w-full items-center justify-center ">
         <div class="flex h-[90%] w-[90%] flex-col items-center justify-center rounded-lg bg-white drop-shadow-md ">
           <AiIcons.AiOutlineUser class="rounded-full border-2 p-2 text-[12rem]" />
-          <label class="mt-5">Name:{name}</label>
+          <label class="mt-5">Name:<span class='text-xl font-normal ml-2 text-graygreen'>{name}</span></label>
         </div>
       </div>
 

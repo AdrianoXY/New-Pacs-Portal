@@ -3,16 +3,16 @@ import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
 const Create = (props) => {
-  const[firstName,setfirstName] = useState("");
-  const[lastName,setLastName] = useState("");
-  const[ufirstName,setufirstName] = useState(""); 
-  const[ulastName,setulastName] = useState("");
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [ufirstName, setufirstName] = useState("");
+  const [ulastName, setulastName] = useState("");
 
   const createPatient = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const name = firstName + '' + lastName;
+    const name = firstName + " " + lastName;
     const gender = formData.get("gender");
     const birthday = formData.get("birthday");
     const identifier = formData.get("identifier");
@@ -22,7 +22,7 @@ const Create = (props) => {
     const area = formData.get("area");
     const address = formData.get("address");
     const postcode = formData.get("postcode");
-    const uname = ufirstName + '' + ulastName;
+    const uname = ufirstName + " " + ulastName;
     const ugender = formData.get("ugender");
     const relation = formData.get("relation");
     const uphone = formData.get("uphone");
@@ -32,7 +32,7 @@ const Create = (props) => {
     const uaddress = formData.get("uaddress");
     const upostcode = formData.get("upostcode");
 
-    console.log(name,uname,birthday);
+    console.log(name, uname, birthday);
 
     axios
       .post(
@@ -89,7 +89,7 @@ const Create = (props) => {
             />
           </div>
 
-          <div class="h-[78%] w-[60%] overflow-y-auto rounded-md bg-bgcol drop-shadow-lg scrollbar">
+          <div class="scrollbar h-[78%] w-[60%] overflow-y-auto rounded-md bg-bgcol drop-shadow-lg">
             <h2 class="text ml-5 mt-2 text-4xl font-semibold text-deepgreen">
               Patient Info
             </h2>
@@ -97,8 +97,14 @@ const Create = (props) => {
             <div class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
               <label>First Name:</label>
               <label>Last Name:</label>
-              <input type="text" onChange={(e)=>setfirstName(e.target.value)} />
-              <input type="text" onChange={(e)=>setLastName(e.target.value)} />
+              <input
+                type="text"
+                onChange={(e) => setfirstName(e.target.value)}
+              />
+              <input
+                type="text"
+                onChange={(e) => setLastName(e.target.value)}
+              />
             </div>
 
             <div class="ml-20 mt-3 grid grid-cols-4 grid-rows-2">
@@ -170,8 +176,14 @@ const Create = (props) => {
             <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
               <label>First Name:</label>
               <label>Last Name:</label>
-              <input type="text" onChange={(e)=>setufirstName(e.target.value)} />
-              <input type="text" onChange={(e)=>setulastName(e.target.value)} />
+              <input
+                type="text"
+                onChange={(e) => setufirstName(e.target.value)}
+              />
+              <input
+                type="text"
+                onChange={(e) => setulastName(e.target.value)}
+              />
             </div>
 
             <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">

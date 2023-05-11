@@ -71,7 +71,7 @@ const Home = () => {
             <caption class="mb-4 text-left text-5xl font-black text-blue-400">
               Variation Point
             </caption>
-            <thead class='sticky'>
+            <thead class="sticky">
               <tr>
                 <th class="border-b-2">No.</th>
                 <th class="border-b-2">File Name</th>
@@ -80,7 +80,7 @@ const Home = () => {
                 <th class="border-b-2">Operation</th>
               </tr>
             </thead>
-            <tbody class='overflow-y-scroll'>
+            <tbody class="overflow-y-scroll">
               <tr>
                 <td class="border-t-2 text-center">1</td>
                 <td class="border-t-2 text-center">70146</td>

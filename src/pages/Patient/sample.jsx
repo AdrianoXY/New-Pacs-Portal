@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Edit from "./edit";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
@@ -7,49 +8,53 @@ const Sample = () => {
   const { state } = useLocation();
   const { PID, name } = state;
   const [acc, setAcc] = useState([]);
+  const [ButtonPop, setButtonPop] = useState(false);
   const navigate = useNavigate();
 
   const Del = (PID) => {
-    axios.delete(`/api/patient/${PID}`,{params:{PID}})
-    .then((response) => {
-      if(response.status === 200){
-        alert("Delete Successfully")
-        navigate("/patient")
-      }
-    })
-    .catch((err) => {
-      if(err.response.status === 403){
-        console.log("Fail");
-      }else{
-        alert("Delete Fail")
-      }
-    })
-  }
+    axios
+      .delete(`/api/patient/${PID}`, { params: { PID } })
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Delete Successfully");
+          navigate("/patient");
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 403) {
+          console.log("Fail");
+        } else {
+          alert("Delete Fail");
+        }
+      });
+  };
 
-useEffect(() => {
-  axios
-    .get("/api/patient", { params: { name, PID } })
-    .then((res) => {
-      setAcc(res.data);
-    })
-    .catch((err) => {
-      if (err.response.status === 402) {
-        console.log("fail");
-      } else if (err.response.status === 403) {
-        console.log("Fail");
-      } else {
-        console.log("No server response");
-      }
-    });
-},[])
-  
+  useEffect(() => {
+    axios
+      .get("/api/patient", { params: { name, PID } })
+      .then((res) => {
+        setAcc(res.data);
+      })
+      .catch((err) => {
+        if (err.response.status === 402) {
+          console.log("fail");
+        } else if (err.response.status === 403) {
+          console.log("Fail");
+        } else {
+          console.log("No server response");
+        }
+      });
+  }, []);
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-6 overflow-auto">
       <div class="col-span-3 row-span-2 flex h-full w-full items-center justify-center ">
         <div class="flex h-[90%] w-[90%] flex-col items-center justify-center rounded-lg bg-white drop-shadow-md ">
           <AiIcons.AiOutlineUser class="rounded-full border-2 p-2 text-[12rem]" />
-          <label class="mt-5">Name:<span class='text-xl font-normal ml-2 text-graygreen'>{name}</span></label>
+          <label class="mt-5">
+            Name:
+            <span class="ml-2 text-xl font-normal text-graygreen">{name}</span>
+          </label>
         </div>
       </div>
 
@@ -58,37 +63,63 @@ useEffect(() => {
           <h1 class="col-span-2 ml-5 mt-5 text-4xl font-black">Information:</h1>
           {acc.map((item, index) => {
             return (
-              <div class="row-start-2 row-span-4 col-span-2 grid grid-cols-2" key={index}>
+              <div
+                class="col-span-2 row-span-4 row-start-2 grid grid-cols-2"
+                key={index}
+              >
                 <label class="text-center">ID:</label>
-                <label class="font-normal text-lg text-slate-600">
+                <label class="text-lg font-normal text-slate-600">
                   {item.Identifier}
                 </label>
                 <label class="text-center">Gender:</label>
-                <label class="font-normal text-lg text-slate-600">{item.gender}</label>
+                <label class="text-lg font-normal text-slate-600">
+                  {item.gender}
+                </label>
                 <label class="text-center">Birth:</label>
-                <label class="font-normal text-lg text-slate-600">
+                <label class="text-lg font-normal text-slate-600">
                   {item.birthday}
                 </label>
                 <label class="text-center">Email:</label>
-                <label class="font-normal text-lg text-slate-600 break-words">{item.email}</label>
+                <label class="break-words text-lg font-normal text-slate-600">
+                  {item.email}
+                </label>
                 <label class="text-center">Phone:</label>
-                <label class="font-normal text-lg text-slate-600">{item.phone}</label>
+                <label class="text-lg font-normal text-slate-600">
+                  {item.phone}
+                </label>
                 <label class="text-center">Address:</label>
-                <label class="font-normal text-lg text-slate-600">{item.address}</label>
+                <label class="text-lg font-normal text-slate-600">
+                  {item.address}
+                </label>
               </div>
             );
           })}
 
-          <div class="mt-4 row-start-6 col-span-2 flex w-full justify-center">
-            <button class="mr-10 mt-2 h-10 w-28 rounded-md text-xl">
+          <div class="col-span-2 row-start-6 mt-4 flex w-full justify-center">
+            <button
+              class="mr-10 mt-2 h-10 w-28 rounded-md text-xl"
+              onClick={() => setButtonPop(true)}
+            >
               Edit
             </button>
-            <button class="mr-10 mt-2 h-10 w-28 rounded-md bg-red-600 text-xl" onClick={() => window.confirm("Are you sure to delete?") && Del(PID)}>
+            <button
+              class="mr-10 mt-2 h-10 w-28 rounded-md bg-red-600 text-xl"
+              onClick={() =>
+                window.confirm("Are you sure to delete?") && Del(PID)
+              }
+            >
               Delete
             </button>
           </div>
         </div>
       </div>
+
+      <Edit
+        trigger={ButtonPop}
+        setButtonPop={setButtonPop}
+        PID={PID}
+        name={name}
+      />
 
       <div class="col-span-7 col-start-4 row-span-6 row-start-1 flex h-full w-full items-center justify-center">
         <div class="flex h-[96.5%] w-[95%] flex-col items-center rounded-lg bg-white drop-shadow-md">

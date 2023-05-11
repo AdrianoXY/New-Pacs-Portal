@@ -68,12 +68,7 @@ const Patient = () => {
         </button>
       </div>
 
-      <Create
-        trigger={ButtonPop}
-        acc={acc}
-        setButtonPop={setButtonPop}
-        setAcc={setAcc}
-      />
+      <Create trigger={ButtonPop} setButtonPop={setButtonPop} />
 
       <div class="col-span-7 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">

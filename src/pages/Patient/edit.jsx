@@ -109,7 +109,6 @@ const Edit = (props) => {
     e.preventDefault();
 
     const name = firstName + " " + lastName;
-    const uname = ufirstName + " " + ulastName;
 
     const updatedPatientData = {
       name,gender,birthday,Identifier,phone,email,city,area,address,Urgent:updatedUrgent

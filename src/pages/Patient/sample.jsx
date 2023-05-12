@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Edit from "./edit";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
 const Sample = () => {
-  const { state } = useLocation();
-  const { PID, name } = state;
+  const { PID } = useParams();
+  const [name, setName] = useState("");
   const [acc, setAcc] = useState([]);
   const [ButtonPop, setButtonPop] = useState(false);
   const navigate = useNavigate();
@@ -31,9 +31,10 @@ const Sample = () => {
 
   useEffect(() => {
     axios
-      .get("/api/patient", { params: { name, PID } })
+      .get("/api/patient", { params: { PID } })
       .then((res) => {
         setAcc(res.data);
+        setName(res.data[0].name);
       })
       .catch((err) => {
         if (err.response.status === 402) {
@@ -114,12 +115,14 @@ const Sample = () => {
         </div>
       </div>
 
-      <Edit
-        trigger={ButtonPop}
-        setButtonPop={setButtonPop}
-        PID={PID}
-        name={name}
-      />
+      {ButtonPop && (
+        <Edit
+          trigger={ButtonPop}
+          setButtonPop={setButtonPop}
+          PID={PID}
+          acc={acc}
+        />
+      )}
 
       <div class="col-span-7 col-start-4 row-span-6 row-start-1 flex h-full w-full items-center justify-center">
         <div class="flex h-[96.5%] w-[95%] flex-col items-center rounded-lg bg-white drop-shadow-md">

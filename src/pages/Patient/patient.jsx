@@ -97,9 +97,7 @@ const Patient = () => {
                         <button
                           class="h-10 w-32"
                           onClick={() =>
-                            navigate("/sample", {
-                              state: { PID: item.PID, name: item.name },
-                            })
+                            navigate(`/sample/${item.PID}`)
                           }
                         >
                           Sample

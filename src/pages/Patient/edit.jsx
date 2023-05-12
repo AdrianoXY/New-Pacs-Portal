@@ -1,57 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
 const Edit = (props) => {
   const { PID, acc } = props;
-  const urgent = Object.values(acc[0].Urgent);
-  const addressArr = acc[0].address;
-  const uaddressArr = urgent[6];
+  const urgent = acc[0].Urgent;
   const [firstName, setfirstName] = useState(acc[0].name.split(" ")[0]);
   const [lastName, setLastName] = useState(acc[0].name.split(" ")[1]);
   const [gender, setGender] = useState(acc[0].gender);
   const [birthday, setBirthday] = useState(acc[0].birthday);
-  const [identifier, setIdentifier] = useState(acc[0].Identifier);
+  const [Identifier, setIdentifier] = useState(acc[0].Identifier);
   const [phone, setPhone] = useState(acc[0].phone);
   const [email, setEmail] = useState(acc[0].email);
-  const [city, setCity] = useState("");
-  const [area, setArea] = useState("");
-  const [address, setAddress] = useState("");
-  const [ufirstName, setufirstName] = useState(urgent[2].split(" ")[0]);
-  const [ulastName, setulastName] = useState(urgent[2].split(" ")[1]);
-  const [ugender, setugender] = useState(urgent[3]);
-  const [relation, setRelation] = useState(urgent[4]);
-  const [uphone, setUphone] = useState(urgent[7]);
-  const [uemail, setUemail] = useState(urgent[5]);
-  const [ucity, setUcity] = useState("");
-  const [uarea, setUarea] = useState("");
-  const [uaddress, setUaddress] = useState("");
-  const navigate = useNavigate();
-
-  const cityIndex = addressArr.indexOf("市");
-  const districtIndex = addressArr.indexOf("區");
-  if (cityIndex !== -1 && districtIndex !== -1 && districtIndex > cityIndex) {
-    var dcity = addressArr.slice(0, cityIndex + 1);
-    var darea = addressArr.slice(cityIndex + 1, districtIndex + 1);
-    var daddress = addressArr.slice(districtIndex + 1);
-  }
-
-  const ucityIndex = uaddressArr.indexOf("市");
-  const udistrictIndex = uaddressArr.indexOf("區");
-  if (
-    ucityIndex !== -1 &&
-    udistrictIndex !== -1 &&
-    udistrictIndex > ucityIndex
-  ) {
-    var ducity = uaddressArr.slice(0, ucityIndex + 1);
-    var duarea = uaddressArr.slice(ucityIndex + 1, udistrictIndex + 1);
-    var duaddress = uaddressArr.slice(udistrictIndex + 1);
-  }
+  const [city, setCity] = useState(acc[0].city);
+  const [area, setArea] = useState(acc[0].area);
+  const [address, setAddress] = useState(acc[0].address);
+  const [ufirstName, setufirstName] = useState(urgent.name.split(" ")[0]);
+  const [ulastName, setulastName] = useState(urgent.name.split(" ")[1]);
+  const [ugender, setugender] = useState(urgent.gender);
+  const [relation, setRelation] = useState(urgent.relation);
+  const [uphone, setUphone] = useState(urgent.phone);
+  const [uemail, setUemail] = useState(urgent.email);
+  const [ucity, setUcity] = useState(urgent.city);
+  const [uarea, setUarea] = useState(urgent.area);
+  const [uaddress, setUaddress] = useState(urgent.address);
 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
-    console.log("in");
 
     switch(name){
       case 'firstName':
@@ -66,7 +41,7 @@ const Edit = (props) => {
       case 'birthday':
         setBirthday(value);
         break;
-      case 'identifier':
+      case 'Identifier':
         setIdentifier(value);
         break;
       case 'phone':
@@ -117,6 +92,18 @@ const Edit = (props) => {
     }
   }
 
+  const updatedUrgent = {
+    ...urgent,
+    name:ufirstName + " " + ulastName,
+    gender:ugender,
+    relation:relation,
+    phone:uphone,
+    email:uemail,
+    city:ucity,
+    area:uarea,
+    address:uaddress
+  }
+
 
   const editPatient = async (e) => {
     e.preventDefault();
@@ -125,8 +112,9 @@ const Edit = (props) => {
     const uname = ufirstName + " " + ulastName;
 
     const updatedPatientData = {
-      name,gender,birthday,identifier,phone,email
+      name,gender,birthday,Identifier,phone,email,city,area,address,Urgent:updatedUrgent
     }
+    console.log(updatedUrgent);
 
     axios
       .put(
@@ -211,8 +199,8 @@ const Edit = (props) => {
               <input
                 class="row-start-2"
                 type="text"
-                name="identifier"
-                defaultValue={identifier}
+                name="Identifier"
+                defaultValue={Identifier}
                 onChange={handleInputChange}
                 required
               />
@@ -245,7 +233,7 @@ const Edit = (props) => {
                 class="w-44 row-start-2"
                 type="text"
                 name="city"
-                defaultValue={dcity}
+                defaultValue={city}
                 onChange={handleInputChange}
                 required
               />
@@ -253,7 +241,7 @@ const Edit = (props) => {
                 class="w-44 row-start-2"
                 type="text"
                 name="area"
-                defaultValue={darea}
+                defaultValue={area}
                 onChange={handleInputChange}
                 required
               />
@@ -261,7 +249,7 @@ const Edit = (props) => {
                 class="row-start-2"
                 type="text"
                 name="address"
-                defaultValue={daddress}
+                defaultValue={address}
                 onChange={handleInputChange}
                 required
               />
@@ -340,7 +328,7 @@ const Edit = (props) => {
                 class="w-44 row-start-2"
                 type="text"
                 name="ucity"
-                defaultValue={ducity}
+                defaultValue={ucity}
                 onChange={handleInputChange}
                 required
               />
@@ -348,7 +336,7 @@ const Edit = (props) => {
                 class="w-44 row-start-2"
                 type="text"
                 name="uarea"
-                defaultValue={duarea}
+                defaultValue={uarea}
                 onChange={handleInputChange}
                 required
               />
@@ -356,7 +344,7 @@ const Edit = (props) => {
                 class="row-start-2 "
                 type="text"
                 name="uaddress"
-                defaultValue={duaddress}
+                defaultValue={uaddress}
                 onChange={handleInputChange}
                 required
               />

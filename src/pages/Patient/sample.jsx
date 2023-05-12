@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Edit from "./edit";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
@@ -45,7 +45,7 @@ const Sample = () => {
           console.log("No server response");
         }
       });
-  }, []);
+  }, [PID]);
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-6 overflow-auto">
@@ -90,7 +90,7 @@ const Sample = () => {
                 </label>
                 <label class="text-center">Address:</label>
                 <label class="text-lg font-normal text-slate-600">
-                  {item.address}
+                  {item.city}{item.area}{item.address}
                 </label>
               </div>
             );

@@ -8,7 +8,7 @@ const Patient = () => {
   const [name, setname] = useState("");
   const [PID, setPID] = useState("");
   const [acc, setAcc] = useState([]);
-  const [ButtonPop, setButtonPop] = useState(false);
+  const [create, setCreate] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,14 +61,14 @@ const Patient = () => {
       <div class="col-start-6 place-self-center">
         <button
           class=" flex h-16 w-48 flex-row items-center justify-center"
-          onClick={() => setButtonPop(true)}
+          onClick={() => setCreate(true)}
         >
           <BsIcons.BsPersonFillAdd class="text-5xl" />
           <h2 class="text-4xl">Create</h2>
         </button>
       </div>
 
-      <Create trigger={ButtonPop} setButtonPop={setButtonPop} />
+      <Create trigger={create} setCreate={setCreate} />
 
       <div class="col-span-7 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex justify-center">
@@ -96,9 +96,7 @@ const Patient = () => {
                       <th class="border-t-2 ">
                         <button
                           class="h-10 w-32"
-                          onClick={() =>
-                            navigate(`/sample/${item.PID}`)
-                          }
+                          onClick={() => navigate(`/sample/${item.PID}`)}
                         >
                           Sample
                         </button>

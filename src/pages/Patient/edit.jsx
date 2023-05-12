@@ -26,84 +26,83 @@ const Edit = (props) => {
   const [uaddress, setUaddress] = useState(urgent.address);
 
   const handleInputChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
-    switch(name){
-      case 'firstName':
+    switch (name) {
+      case "firstName":
         setfirstName(value);
         break;
-      case 'lastName':
+      case "lastName":
         setLastName(value);
         break;
-      case 'gender':
+      case "gender":
         setGender(value);
         break;
-      case 'birthday':
+      case "birthday":
         setBirthday(value);
         break;
-      case 'Identifier':
+      case "Identifier":
         setIdentifier(value);
         break;
-      case 'phone':
+      case "phone":
         setPhone(value);
         break;
-      case 'email':
+      case "email":
         setEmail(value);
         break;
-      case 'city':
+      case "city":
         setCity(value);
         break;
-      case  'area':
+      case "area":
         setArea(value);
         break;
-      case 'address':
+      case "address":
         setAddress(value);
         break;
-      case 'ufirstName':
+      case "ufirstName":
         setufirstName(value);
         break;
-      case 'ulastName':
+      case "ulastName":
         setulastName(value);
         break;
-      case 'ugender':
+      case "ugender":
         setugender(value);
         break;
-      case 'relation':
+      case "relation":
         setRelation(value);
         break;
-      case 'uphone':
+      case "uphone":
         setUphone(value);
         break;
-      case 'uemail':
+      case "uemail":
         setUemail(value);
         break;
-      case 'ucity':
+      case "ucity":
         setUcity(value);
         break;
-      case 'uarea':
+      case "uarea":
         setUarea(value);
         break;
-      case 'uaddress':
+      case "uaddress":
         setUaddress(value);
         break;
 
       default:
-      break;
+        break;
     }
-  }
+  };
 
   const updatedUrgent = {
     ...urgent,
-    name:ufirstName + " " + ulastName,
-    gender:ugender,
-    relation:relation,
-    phone:uphone,
-    email:uemail,
-    city:ucity,
-    area:uarea,
-    address:uaddress
-  }
-
+    name: ufirstName + " " + ulastName,
+    gender: ugender,
+    relation: relation,
+    phone: uphone,
+    email: uemail,
+    city: ucity,
+    area: uarea,
+    address: uaddress,
+  };
 
   const editPatient = async (e) => {
     e.preventDefault();
@@ -111,19 +110,25 @@ const Edit = (props) => {
     const name = firstName + " " + lastName;
 
     const updatedPatientData = {
-      name,gender,birthday,Identifier,phone,email,city,area,address,Urgent:updatedUrgent
-    }
+      name,
+      gender,
+      birthday,
+      Identifier,
+      phone,
+      email,
+      city,
+      area,
+      address,
+      Urgent: updatedUrgent,
+    };
     console.log(updatedUrgent);
 
     axios
-      .put(
-        `/api/patient/${PID}`,
-        updatedPatientData
-      )
+      .put(`/api/patient/${PID}`, updatedPatientData)
       .then((response) => {
         if (response.status === 200) {
           alert("Patient Update successfully!");
-          props.setButtonPop(false);
+          props.setEdit(false);
           window.location.reload();
         }
       })
@@ -146,7 +151,7 @@ const Edit = (props) => {
             </h1>
             <AiIcons.AiOutlineClose
               class="ml-[45%] cursor-pointer text-7xl text-white"
-              onClick={() => props.setButtonPop(false)}
+              onClick={() => props.setEdit(false)}
             />
           </div>
 
@@ -229,7 +234,7 @@ const Edit = (props) => {
               <label>Province:</label>
               <label>Address</label>
               <input
-                class="w-44 row-start-2"
+                class="row-start-2 w-44"
                 type="text"
                 name="city"
                 defaultValue={city}
@@ -237,7 +242,7 @@ const Edit = (props) => {
                 required
               />
               <input
-                class="w-44 row-start-2"
+                class="row-start-2 w-44"
                 type="text"
                 name="area"
                 defaultValue={area}
@@ -324,7 +329,7 @@ const Edit = (props) => {
               <label>Province:</label>
               <label>Address</label>
               <input
-                class="w-44 row-start-2"
+                class="row-start-2 w-44"
                 type="text"
                 name="ucity"
                 defaultValue={ucity}
@@ -332,7 +337,7 @@ const Edit = (props) => {
                 required
               />
               <input
-                class="w-44 row-start-2"
+                class="row-start-2 w-44"
                 type="text"
                 name="uarea"
                 defaultValue={uarea}

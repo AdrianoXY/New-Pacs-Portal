@@ -9,6 +9,10 @@ module.exports = {
           from:{opacity:0},
         }
       },
+      gridTemplateColumns:{
+        '8':'repeat(8, minmax(0, 1fr))',
+        '9':'repeat(9, minmax(0, 1fr))'
+      },
       animation:{
         'fadein': 'fadein 1s ease',
       },

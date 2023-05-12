@@ -62,7 +62,7 @@ const Create = (props) => {
       .then((response) => {
         if (response.status === 200) {
           alert("Patient created successfully!");
-          props.setButtonPop(false);
+          props.setCreate(false);
           window.location.reload();
         }
       })
@@ -85,7 +85,7 @@ const Create = (props) => {
             </h1>
             <AiIcons.AiOutlineClose
               class="ml-[45%] cursor-pointer text-7xl text-white"
-              onClick={() => props.setButtonPop(false)}
+              onClick={() => props.setCreate(false)}
             />
           </div>
 

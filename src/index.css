@@ -11,11 +11,11 @@ button {
 }
 
 label {
-  @apply text-2xl font-bold;
+  @apply font-bold;
 }
 
 input {
-  @apply h-8 w-72 rounded-md border-2;
+  @apply h-8 w-56 rounded-md border-2;
 }
 
 tr {

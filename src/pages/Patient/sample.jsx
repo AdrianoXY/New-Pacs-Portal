@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Edit from "./edit";
+import Add from "./add";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
@@ -8,7 +9,8 @@ const Sample = () => {
   const { PID } = useParams();
   const [name, setName] = useState("");
   const [acc, setAcc] = useState([]);
-  const [ButtonPop, setButtonPop] = useState(false);
+  const [edited, setEdit] = useState(false);
+  const [add, setAdd] = useState(false);
   const navigate = useNavigate();
 
   const Del = (PID) => {
@@ -90,7 +92,9 @@ const Sample = () => {
                 </label>
                 <label class="text-center">Address:</label>
                 <label class="text-lg font-normal text-slate-600">
-                  {item.city}{item.area}{item.address}
+                  {item.city}
+                  {item.area}
+                  {item.address}
                 </label>
               </div>
             );
@@ -99,7 +103,7 @@ const Sample = () => {
           <div class="col-span-2 row-start-6 mt-4 flex w-full justify-center">
             <button
               class="mr-10 mt-2 h-10 w-28 rounded-md text-xl"
-              onClick={() => setButtonPop(true)}
+              onClick={() => setEdit(true)}
             >
               Edit
             </button>
@@ -115,24 +119,18 @@ const Sample = () => {
         </div>
       </div>
 
-      {ButtonPop && (
-        <Edit
-          trigger={ButtonPop}
-          setButtonPop={setButtonPop}
-          PID={PID}
-          acc={acc}
-        />
-      )}
-
       <div class="col-span-7 col-start-4 row-span-6 row-start-1 flex h-full w-full items-center justify-center">
         <div class="flex h-[96.5%] w-[95%] flex-col items-center rounded-lg bg-white drop-shadow-md">
           <div class="flex w-full items-center justify-between">
             <label class="ml-5 mt-5 text-5xl font-black">Sample</label>
             <button class="mr-10 mt-5 flex h-12 w-52 flex-row items-center justify-center rounded-md">
               <AiIcons.AiFillFolderAdd class="text-4xl" />
-              <h2 class="text-2xl">Add Sample</h2>
+              <h2 class="text-2xl" onClick={() => setAdd(true)}>
+                Add Sample
+              </h2>
             </button>
           </div>
+
           <table class="w-[95%] table-auto">
             <thead>
               <tr>
@@ -161,6 +159,11 @@ const Sample = () => {
           </table>
         </div>
       </div>
+
+      <Add trigger={add} setAdd={setAdd} />
+      {edited && (
+        <Edit trigger={edited} setEdit={setEdit} PID={PID} acc={acc} />
+      )}
     </div>
   );
 };

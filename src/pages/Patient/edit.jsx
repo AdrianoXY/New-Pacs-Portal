@@ -184,7 +184,7 @@ const Edit = (props) => {
             <div class="row-start-3 flex flex-col">
               <label class="">Gender</label>
               <select
-                class="row-start-2 ml-1 w-20 rounded-md border"
+                class=" w-40 h-8 rounded-md border"
                 type="text"
                 name="gender"
                 defaultValue={gender}
@@ -297,7 +297,7 @@ const Edit = (props) => {
             <div class="row-start-3 flex flex-col">
               <label class="">Gender</label>
               <select
-                class="ml-1 w-20 rounded-md border"
+                class="w-40 h-8 rounded-md border"
                 type="text"
                 name="ugender"
                 defaultValue={ugender}
@@ -341,7 +341,6 @@ const Edit = (props) => {
             <div class="row-start-5 flex flex-col">
               <label class="">City</label>
               <input
-                class="row-start-2 w-44"
                 type="text"
                 name="ucity"
                 defaultValue={ucity}
@@ -352,7 +351,6 @@ const Edit = (props) => {
             <div class="row-start-5 flex flex-col">
               <label class="">Province</label>
               <input
-                class="row-start-2 w-44"
                 type="text"
                 name="uarea"
                 defaultValue={uarea}
@@ -363,7 +361,6 @@ const Edit = (props) => {
             <div class="row-start-5 flex flex-col">
               <label class="">Address</label>
               <input
-                class="row-start-2 "
                 type="text"
                 name="uaddress"
                 defaultValue={uaddress}

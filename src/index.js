@@ -5,9 +5,8 @@ import { HashRouter, Routes, Route, Outlet } from "react-router-dom";
 import Sidebar from "./components/Sidebar/sidebar";
 import Login from "./pages/Loging/login";
 import Home from "./pages/Home/home";
-import Patient from "./pages/Patient/patient";
-import Create from "./pages/Patient/create";
-import Sample from "./pages/Patient/sample";
+import Patient from "./pages/Patient/all";
+import Sample from "./pages/Patient/patient";
 import Search from "./pages/Search/search";
 import CTJ from "./pages/CSV2JSON/csvtojson";
 
@@ -28,7 +27,7 @@ root.render(
       <Route path="/" element={<AppLayout />}>
         <Route path="/home" element={<Home />} />
         <Route path="/patient" element={<Patient />} />
-        <Route path="/sample/:PID" element={<Sample />} />
+        <Route path="/patient/:PID" element={<Sample />} />
         <Route path="/search" element={<Search />} />
         <Route path="/csvtojson" element={<CTJ />} />
       </Route>

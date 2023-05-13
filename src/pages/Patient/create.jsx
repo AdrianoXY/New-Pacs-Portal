@@ -114,7 +114,7 @@ const Create = (props) => {
             <div class="row-start-3 flex flex-col">
               <label class="">Gender</label>
               <select
-                class="w-40 rounded-md border-2"
+                class="w-40 h-8 rounded-md border-2"
                 id="gender"
                 name="gender"
                 type="text"
@@ -179,7 +179,7 @@ const Create = (props) => {
             <div class="row-start-3 flex flex-col">
               <label class="">Gender</label>
               <select
-                class="w-40 rounded-md border-2"
+                class="w-40 h-8 rounded-md border-2"
                 type="text"
                 id="ugender"
                 name="ugender"

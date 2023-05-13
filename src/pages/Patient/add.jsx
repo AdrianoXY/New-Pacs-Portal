@@ -133,7 +133,19 @@ const Add = (props) => {
           </div>
 
           <div class="row-start-9 col-span-7 col-start-2 row-span-2 mt-7 h-full">
-            <input type="file" multiple />
+            <label
+              for="dropzone-file"
+              class="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100"
+            >
+              <div class="flex flex-col items-center justify-center pb-6 pt-5">
+                <AiIcons.AiOutlineCloudUpload class="mb-3 h-10 w-10 text-gray-400" />
+                <p class="mb-2 text-sm text-gray-500">
+                  <span class="font-semibold">Click to upload</span> or drag and
+                  drop
+                </p>
+              </div>
+              <input id="dropzone-file" type="file" class="hidden" multiple />
+            </label>
           </div>
         </div>
         <div class="col-span-3 col-start-3 flex items-center justify-center">

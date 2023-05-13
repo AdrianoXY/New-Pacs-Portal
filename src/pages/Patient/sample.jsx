@@ -31,7 +31,7 @@ const Sample = () => {
                 <label>345</label>
               
             </div>
-            <div class="col-span-2 row-span-3 grid grid-cols-3 grid-rows-7 border-t-2">
+            <div class="col-span-2 row-span-3 grid grid-cols-3 grid-rows-7 border-t-2 h-[95%]">
               <h1 class="col-span-3 flex text-2xl font-semibold">Collection Details</h1>
 
               

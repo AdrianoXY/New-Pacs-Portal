@@ -4,7 +4,7 @@ import Create from "./create";
 import axios from "../../axios/axios";
 import * as BsIcons from "react-icons/bs";
 
-const Patient = () => {
+const All = () => {
   const [name, setname] = useState("");
   const [PID, setPID] = useState("");
   const [acc, setAcc] = useState([]);
@@ -112,4 +112,4 @@ const Patient = () => {
   );
 };
 
-export default Patient;
+export default All;

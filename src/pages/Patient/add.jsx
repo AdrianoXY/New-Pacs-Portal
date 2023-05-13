@@ -16,7 +16,7 @@ const Add = (props) => {
           />
         </div>
 
-        <div class="grid-rows-9 scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2">
+        <div class="scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2">
           <div class="col-span-8 col-start-2 row-span-2 row-start-1 grid h-full grid-cols-3 grid-rows-3">
             <h1 class="col-span-3 flex items-center text-2xl font-semibold">
               Sample Info

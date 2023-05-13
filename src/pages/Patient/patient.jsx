@@ -5,7 +5,7 @@ import Add from "./add";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
-const Sample = () => {
+const Patient = () => {
   const { PID } = useParams();
   const [name, setName] = useState("");
   const [acc, setAcc] = useState([]);
@@ -168,4 +168,4 @@ const Sample = () => {
   );
 };
 
-export default Sample;
+export default Patient;

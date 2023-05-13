@@ -158,7 +158,7 @@ const Edit = (props) => {
           />
         </div>
 
-        <div class="grid-rows-9 scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2">
+        <div class="scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2">
           <div class="col-span-8 col-start-2 row-span-2 row-start-1 grid h-full grid-cols-3 grid-rows-5">
             <h1 class="col-span-5 flex items-center text-2xl font-semibold">
               Patient Info
@@ -184,7 +184,7 @@ const Edit = (props) => {
             <div class="row-start-3 flex flex-col">
               <label class="">Gender</label>
               <select
-                class=" w-40 h-8 rounded-md border"
+                class=" h-8 w-40 rounded-md border"
                 type="text"
                 name="gender"
                 defaultValue={gender}
@@ -297,7 +297,7 @@ const Edit = (props) => {
             <div class="row-start-3 flex flex-col">
               <label class="">Gender</label>
               <select
-                class="w-40 h-8 rounded-md border"
+                class="h-8 w-40 rounded-md border"
                 type="text"
                 name="ugender"
                 defaultValue={ugender}

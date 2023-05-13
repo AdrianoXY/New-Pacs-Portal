@@ -142,33 +142,38 @@ const Edit = (props) => {
   };
 
   return props.trigger ? (
-    <div class="fixed z-10 h-screen w-full flex-col items-center justify-center overflow-auto bg-gray-600 bg-opacity-70">
-      <form onSubmit={editPatient}>
-        <div class="duration-50 flex h-screen w-full animate-fadein flex-col items-center justify-center">
-          <div class="flex w-[60%] justify-around">
-            <h1 class="py-3 text-center text-6xl font-bold text-white">
-              Edit Patient
-            </h1>
-            <AiIcons.AiOutlineClose
-              class="ml-[45%] cursor-pointer text-7xl text-white"
-              onClick={() => props.setEdit(false)}
-            />
-          </div>
+    <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
+      <form
+        class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-full animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg"
+        onSubmit={editPatient}
+      >
+        <div class="col-span-2 flex items-center justify-center">
+          <h1 class="text-4xl font-bold text-green-600">Edit Patient</h1>
+        </div>
 
-          <div class="scrollbar h-[78%] w-[60%] overflow-y-auto rounded-md bg-bgcol drop-shadow-lg">
-            <h2 class="text ml-5 mt-2 text-4xl font-semibold text-deepgreen">
+        <div class="col-start-7 flex justify-end">
+          <AiIcons.AiOutlineClose
+            class="cursor-pointer text-7xl"
+            onClick={() => props.setEdit(false)}
+          />
+        </div>
+
+        <div class="grid-rows-9 scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2">
+          <div class="col-span-8 col-start-2 row-span-2 row-start-1 grid h-full grid-cols-3 grid-rows-5">
+            <h1 class="col-span-5 flex items-center text-2xl font-semibold">
               Patient Info
-            </h2>
-
-            <div class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
-              <label>First Name:</label>
-              <label>Last Name:</label>
+            </h1>
+            <div class="flex flex-col">
+              <label class="">First Name</label>
               <input
                 type="text"
                 name="firstName"
                 defaultValue={firstName}
                 onChange={handleInputChange}
               />
+            </div>
+            <div class="col-start-3 flex flex-col">
+              <label class="">Last Name</label>
               <input
                 type="text"
                 name="lastName"
@@ -176,11 +181,8 @@ const Edit = (props) => {
                 onChange={handleInputChange}
               />
             </div>
-
-            <div class="ml-20 mt-3 grid grid-cols-4 grid-rows-2">
-              <label>Gender:</label>
-              <label>Birth:</label>
-              <label>ID:</label>
+            <div class="row-start-3 flex flex-col">
+              <label class="">Gender</label>
               <select
                 class="row-start-2 ml-1 w-20 rounded-md border"
                 type="text"
@@ -192,14 +194,20 @@ const Edit = (props) => {
                 <option>Male</option>
                 <option>Female</option>
               </select>
+            </div>
+            <div class="row-start-3 flex flex-col">
+              <label class="">Birth</label>
               <input
-                class="row-start-2 w-40"
+                class="row-start-2"
                 type="date"
                 name="birthday"
                 defaultValue={birthday}
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="row-start-3 flex flex-col">
+              <label class="">ID</label>
               <input
                 class="row-start-2"
                 type="text"
@@ -209,10 +217,8 @@ const Edit = (props) => {
                 required
               />
             </div>
-
-            <div class="ml-20 mt-3 grid grid-cols-2 grid-rows-2">
-              <label>Phone:</label>
-              <label>Email:</label>
+            <div class="row-start-4 flex flex-col">
+              <label class="">Phone</label>
               <input
                 type="text"
                 name="phone"
@@ -220,6 +226,9 @@ const Edit = (props) => {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="col-start-3 row-start-4 flex flex-col">
+              <label class="">Email</label>
               <input
                 type="email"
                 name="email"
@@ -228,11 +237,8 @@ const Edit = (props) => {
                 required
               />
             </div>
-
-            <div class="ml-20 mt-3 grid grid-cols-4 grid-rows-2">
-              <label>City:</label>
-              <label>Province:</label>
-              <label>Address</label>
+            <div class="row-start-5 flex flex-col">
+              <label class="">City</label>
               <input
                 class="row-start-2 w-44"
                 type="text"
@@ -241,6 +247,9 @@ const Edit = (props) => {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="row-start-5 flex flex-col">
+              <label class="">Province</label>
               <input
                 class="row-start-2 w-44"
                 type="text"
@@ -249,6 +258,9 @@ const Edit = (props) => {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="row-start-5 flex flex-col">
+              <label class="">Address</label>
               <input
                 class="row-start-2"
                 type="text"
@@ -258,22 +270,23 @@ const Edit = (props) => {
                 required
               />
             </div>
+          </div>
 
-            <hr class="mx-10 mt-5 border" />
-
-            <h2 class="ml-5 text-4xl font-semibold text-red-500">
+          <div class="col-span-8 col-start-2 row-span-2 row-start-3 grid h-full grid-cols-3 grid-rows-5">
+            <h1 class="col-span-4 flex items-center text-2xl font-semibold">
               Emergency Contact
-            </h2>
-
-            <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
-              <label>First Name:</label>
-              <label>Last Name:</label>
+            </h1>
+            <div class="flex flex-col">
+              <label class="">First Name</label>
               <input
                 type="text"
                 name="ufirstName"
                 defaultValue={ufirstName}
                 onChange={handleInputChange}
               />
+            </div>
+            <div class="col-start-3 flex flex-col">
+              <label class="">Last Name</label>
               <input
                 type="text"
                 name="ulastName"
@@ -281,10 +294,8 @@ const Edit = (props) => {
                 onChange={handleInputChange}
               />
             </div>
-
-            <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
-              <label>Gender:</label>
-              <label>Relation:</label>
+            <div class="row-start-3 flex flex-col">
+              <label class="">Gender</label>
               <select
                 class="ml-1 w-20 rounded-md border"
                 type="text"
@@ -296,6 +307,9 @@ const Edit = (props) => {
                 <option>Male</option>
                 <option>Female</option>
               </select>
+            </div>
+            <div class="col-start-3 row-start-3 flex flex-col">
+              <label class="">Relation</label>
               <input
                 type="text"
                 name="relation"
@@ -304,10 +318,8 @@ const Edit = (props) => {
                 required
               />
             </div>
-
-            <div class=" ml-20 mt-3 grid grid-cols-2 grid-rows-2">
-              <label>Phone:</label>
-              <label>Email:</label>
+            <div class="row-start-4 flex flex-col">
+              <label class="">Phone</label>
               <input
                 type="text"
                 name="uphone"
@@ -315,6 +327,9 @@ const Edit = (props) => {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="col-start-3 row-start-4 flex flex-col">
+              <label class="">Email</label>
               <input
                 type="email"
                 name="uemail"
@@ -323,11 +338,8 @@ const Edit = (props) => {
                 required
               />
             </div>
-
-            <div class=" ml-20 mt-3 grid grid-cols-4 grid-rows-2">
-              <label>City:</label>
-              <label>Province:</label>
-              <label>Address</label>
+            <div class="row-start-5 flex flex-col">
+              <label class="">City</label>
               <input
                 class="row-start-2 w-44"
                 type="text"
@@ -336,6 +348,9 @@ const Edit = (props) => {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="row-start-5 flex flex-col">
+              <label class="">Province</label>
               <input
                 class="row-start-2 w-44"
                 type="text"
@@ -344,6 +359,9 @@ const Edit = (props) => {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+            <div class="row-start-5 flex flex-col">
+              <label class="">Address</label>
               <input
                 class="row-start-2 "
                 type="text"
@@ -354,10 +372,11 @@ const Edit = (props) => {
               />
             </div>
           </div>
-
+        </div>
+        <div class="col-span-3 col-start-3 flex items-center justify-center">
           <button
-            class="mt-4 h-16 w-40 bg-lightgreen text-3xl font-bold"
             type="submit"
+            class="h-12 w-28 bg-lightgreen text-2xl font-semibold"
           >
             Edit
           </button>

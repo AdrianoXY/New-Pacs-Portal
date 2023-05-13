@@ -15,7 +15,7 @@ label {
 }
 
 input {
-  @apply h-8 w-56 rounded-md border-2;
+  @apply h-8 w-40 rounded-md border-2;
 }
 
 tr {
@@ -52,6 +52,6 @@ th {
   }
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #c0a0b9;
+    background: #05ac0d;
   }
 }

@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 const Add = (props) => {
   return props.trigger ? (
     <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
-      <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg animate-fadein">
+      <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg">
         <div class="col-span-2 flex items-center justify-center">
           <h1 class="text-4xl font-bold text-green-600">Add Sample</h1>
         </div>
@@ -23,23 +23,23 @@ const Add = (props) => {
             </h1>
             <div class="flex flex-col">
               <label class="">PID</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">External Identifier</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Accession Identifier</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Type</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Received Time</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
           </div>
 
@@ -49,27 +49,27 @@ const Add = (props) => {
             </h1>
             <div class="flex flex-col">
               <label class="">Collection Time</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Duration</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Quantity</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Method</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Body Site</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Fasting Status</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
           </div>
 
@@ -79,27 +79,27 @@ const Add = (props) => {
             </h1>
             <div class="flex flex-col">
               <label class="">Collection Time</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Duration</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Quantity</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Method</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Body Site</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Fasting Status</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
           </div>
           <div class="col-span-8 col-start-2 row-span-2 row-start-7 grid h-full grid-cols-3 grid-rows-3">
@@ -108,27 +108,27 @@ const Add = (props) => {
             </h1>
             <div class="flex flex-col">
               <label class="">Collection Time</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Duration</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Quantity</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Method</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Body Site</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
             <div class="flex flex-col">
               <label class="">Fasting Status</label>
-              <input type="text" />
+              <input class="w-52" type="text" />
             </div>
           </div>
 
@@ -136,7 +136,9 @@ const Add = (props) => {
             <input type="file" multiple />
           </div>
         </div>
-        <div class='col-start-3 col-span-3 flex justify-center items-center'><button class='h-12 w-28 text-2xl font-semibold'>Add</button></div>
+        <div class="col-span-3 col-start-3 flex items-center justify-center">
+          <button class="h-12 w-28 text-2xl font-semibold">Add</button>
+        </div>
       </form>
     </div>
   ) : (

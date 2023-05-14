@@ -8,7 +8,7 @@ const Sample = () => {
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-9 overflow-auto">
       <div class="col-span-3 row-span-full flex h-[90%] w-[75%] flex-col items-center justify-center place-self-center rounded-md bg-white drop-shadow-md">
-        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-6">
+        <div class="grid h-[90%] w-[90%] grid-cols-3 grid-rows-6">
           <h1 class="col-span-3 flex text-2xl font-semibold">Infomation</h1>
 
           <label class="col-span-2 col-start-1 text-center">SID:</label>
@@ -33,7 +33,7 @@ const Sample = () => {
           <label>345</label>
         </div>
 
-        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-7 border-t-2">
+        <div class="grid h-[90%] w-[90%] grid-cols-3 grid-rows-7 border-t-2">
           <h1 class="col-span-3 flex text-2xl font-semibold">
             Collection Details
           </h1>
@@ -61,7 +61,7 @@ const Sample = () => {
           <label>345</label>
         </div>
 
-        <div class="col-span-2 row-span-2 grid h-[90%] w-[90%] grid-cols-3 grid-rows-4 border-t-2">
+        <div class=" grid h-[90%] w-[90%] grid-cols-3 grid-rows-4 border-t-2">
           <h1 class="col-span-3 flex text-2xl font-semibold">
             Processing Details
           </h1>
@@ -78,7 +78,7 @@ const Sample = () => {
           <label>789</label>
         </div>
 
-        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-6 border-t-2">
+        <div class="grid h-[90%] w-[90%] grid-cols-3 grid-rows-6 border-t-2">
           <h1 class="col-span-3 flex text-2xl font-semibold">Container</h1>
 
           <label class="col-span-2 col-start-1 text-center">Identifier:</label>

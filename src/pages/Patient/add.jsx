@@ -132,7 +132,7 @@ const Add = (props) => {
             </div>
           </div>
 
-          <div class="row-start-9 col-span-7 col-start-2 row-span-2 mt-7 h-full">
+          <div class="col-span-7 col-start-2 row-span-2 row-start-9 mt-7 h-full">
             <label
               for="dropzone-file"
               class="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100"

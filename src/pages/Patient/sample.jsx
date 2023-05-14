@@ -7,7 +7,7 @@ const Sample = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-9 overflow-auto">
-      <div class="col-span-3 row-span-2 flex h-[90%] w-[90%] items-center justify-center place-self-center rounded-md bg-white drop-shadow-md">
+      <div class="col-span-3 row-span-full flex h-[90%] w-[75%] flex-col items-center justify-center place-self-center rounded-md bg-white drop-shadow-md">
         <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-6">
           <h1 class="col-span-3 flex text-2xl font-semibold">Infomation</h1>
 
@@ -32,10 +32,8 @@ const Sample = () => {
           </label>
           <label>345</label>
         </div>
-      </div>
 
-      <div class="col-span-3 row-span-3 row-start-3 flex h-[90%] w-[90%] items-center justify-center place-self-center rounded-md bg-white drop-shadow-md">
-        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-7">
+        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-7 border-t-2">
           <h1 class="col-span-3 flex text-2xl font-semibold">
             Collection Details
           </h1>
@@ -62,10 +60,8 @@ const Sample = () => {
           </label>
           <label>345</label>
         </div>
-      </div>
 
-      <div class="col-span-3 row-span-2 row-start-6 flex h-[90%] w-[90%] items-center justify-center place-self-center rounded-md bg-white drop-shadow-md">
-        <div class="col-span-2 row-span-2 grid h-[90%] w-[90%] grid-cols-3 grid-rows-4">
+        <div class="col-span-2 row-span-2 grid h-[90%] w-[90%] grid-cols-3 grid-rows-4 border-t-2">
           <h1 class="col-span-3 flex text-2xl font-semibold">
             Processing Details
           </h1>
@@ -81,10 +77,8 @@ const Sample = () => {
           <label class="col-span-2 col-start-1 text-center">Description:</label>
           <label>789</label>
         </div>
-      </div>
 
-      <div class="col-span-3 row-span-2 row-start-8 flex h-[90%] w-[90%] items-center justify-center place-self-center rounded-md bg-white drop-shadow-md">
-        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-6">
+        <div class="col-span-2 row-span-3 grid h-[90%] w-[90%] grid-cols-3 grid-rows-6 border-t-2">
           <h1 class="col-span-3 flex text-2xl font-semibold">Container</h1>
 
           <label class="col-span-2 col-start-1 text-center">Identifier:</label>
@@ -106,30 +100,23 @@ const Sample = () => {
         </div>
       </div>
 
-      {/* <div class="col-span-3 row-start-9 col-start-1 mt-10 flex w-full justify-center">
-        <button class="mr-10 mt-2 h-10 w-28 rounded-md bg-red-600 text-xl">
-          Delete
-        </button>
-      </div> */}
-
       <div class="col-span-7 w-[95%]">
-        <div class="flex w-full items-center justify-between">
+        <div class="flex w-full items-center justify-between ">
           <label class="ml-5 mt-5 text-5xl font-black">File</label>
           <div class="flex flex-row">
-        <button class="mr-10 h-10 w-28 rounded-md bg-red-600 text-xl">
-          Delete
-        </button>
-        <button class="flex flex-row h-10 w-40 items-center justify-center rounded-md">
-            <AiIcons.AiFillFolderAdd class="text-4xl" />
-            <h2 class="text-2xl">Edit File</h2>
-          </button>
-      </div>
+            <button class="mr-10 h-10 w-28 rounded-md bg-red-600 text-xl">
+              Delete
+            </button>
+            <button class="mr-10 h-10 w-28 rounded-md text-xl">
+              Edit File
+            </button>
+          </div>
         </div>
       </div>
 
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[98%] table-auto rounded-md bg-white drop-shadow-md">
-          <caption class="text-left text-2xl">
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+          <caption class="text-left text-2xl font-semibold">
             Sequencing raw data(.fastq)
           </caption>
           <thead>
@@ -157,8 +144,10 @@ const Sample = () => {
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[98%] table-auto rounded-md bg-white drop-shadow-md">
-          <caption class="text-left text-2xl">Alignment(.bam,.bai)</caption>
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+          <caption class="text-left text-2xl font-semibold">
+            Alignment(.bam,.bai)
+          </caption>
           <thead>
             <tr>
               <th class="border-b-2">No.</th>
@@ -184,8 +173,8 @@ const Sample = () => {
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[98%] table-auto rounded-md bg-white drop-shadow-md">
-          <caption class="text-left text-2xl">
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+          <caption class="text-left text-2xl font-semibold">
             Variant calling (.vcf, .tbi, .idx)
           </caption>
           <thead>
@@ -213,9 +202,9 @@ const Sample = () => {
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[98%] table-auto rounded-md bg-white drop-shadow-md">
-          <caption class="text-left text-2xl">
-            Annotation (.csvv, .xlsx)
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+          <caption class="text-left text-2xl font-semibold">
+            Annotation (.csv, .xlsx)
           </caption>
           <thead>
             <tr>

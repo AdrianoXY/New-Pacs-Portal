@@ -13,6 +13,8 @@ const Patient = () => {
   const [add, setAdd] = useState(false);
   const navigate = useNavigate();
 
+  console.log(acc);
+
   const Del = (PID) => {
     axios
       .delete(`/api/patient/${PID}`, { params: { PID } })

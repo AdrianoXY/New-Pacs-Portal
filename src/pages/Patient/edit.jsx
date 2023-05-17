@@ -15,15 +15,17 @@ const Edit = (props) => {
   const [city, setCity] = useState(acc[0].city);
   const [area, setArea] = useState(acc[0].area);
   const [address, setAddress] = useState(acc[0].address);
-  const [ufirstName, setufirstName] = useState(urgent.name.split(" ")[0]);
-  const [ulastName, setulastName] = useState(urgent.name.split(" ")[1]);
-  const [ugender, setugender] = useState(urgent.gender);
-  const [relation, setRelation] = useState(urgent.relation);
-  const [uphone, setUphone] = useState(urgent.phone);
-  const [uemail, setUemail] = useState(urgent.email);
-  const [ucity, setUcity] = useState(urgent.city);
-  const [uarea, setUarea] = useState(urgent.area);
-  const [uaddress, setUaddress] = useState(urgent.address);
+  const [ufirstName, setufirstName] = useState(urgent.uname.split(" ")[0]);
+  const [ulastName, setulastName] = useState(urgent.uname.split(" ")[1]);
+  const [ugender, setugender] = useState(urgent.ugender);
+  const [urelation, setuRelation] = useState(urgent.urelation);
+  const [uphone, setUphone] = useState(urgent.uphone);
+  const [uemail, setUemail] = useState(urgent.uemail);
+  const [ucity, setUcity] = useState(urgent.ucity);
+  const [uarea, setUarea] = useState(urgent.uarea);
+  const [uaddress, setUaddress] = useState(urgent.uaddress);
+  const [URID, setURID] = useState(acc[0].URID);
+  console.log(URID);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -68,8 +70,8 @@ const Edit = (props) => {
       case "ugender":
         setugender(value);
         break;
-      case "relation":
-        setRelation(value);
+      case "urelation":
+        setuRelation(value);
         break;
       case "uphone":
         setUphone(value);
@@ -94,14 +96,15 @@ const Edit = (props) => {
 
   const updatedUrgent = {
     ...urgent,
-    name: ufirstName + " " + ulastName,
-    gender: ugender,
-    relation: relation,
-    phone: uphone,
-    email: uemail,
-    city: ucity,
-    area: uarea,
-    address: uaddress,
+    URID,
+    uname: ufirstName + " " + ulastName,
+    ugender,
+    urelation,
+    uphone,
+    uemail,
+    ucity,
+    uarea,
+    uaddress,
   };
 
   const editPatient = async (e) => {
@@ -110,6 +113,7 @@ const Edit = (props) => {
     const name = firstName + " " + lastName;
 
     const updatedPatientData = {
+      URID,
       name,
       gender,
       birthday,
@@ -121,7 +125,6 @@ const Edit = (props) => {
       address,
       Urgent: updatedUrgent,
     };
-    console.log(updatedUrgent);
 
     axios
       .put(`/api/patient/${PID}`, updatedPatientData)
@@ -312,8 +315,8 @@ const Edit = (props) => {
               <label class="">Relation</label>
               <input
                 type="text"
-                name="relation"
-                defaultValue={relation}
+                name="urelation"
+                defaultValue={urelation}
                 onChange={handleInputChange}
                 required
               />

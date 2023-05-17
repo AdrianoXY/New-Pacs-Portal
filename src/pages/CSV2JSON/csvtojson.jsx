@@ -45,15 +45,17 @@ const Manage = () => {
                 <th class="border-t-2 ">123456</th>
                 <th class="border-t-2 ">72212</th>
                 <th class="border-t-2 ">
-                  <div class='w-full flex items-center justify-center'>
-                  <div className="h-3 w-52 bg-gray-300 rounded-md ">
-                    <div
-                      style={{ width: `${progressPercentage}%` }}
-                      className={`h-full rounded-md ${
-                        progressPercentage < 70 ? "bg-red-600" : "bg-green-600"
-                      }`}
-                    />
-                  </div>
+                  <div class="flex w-full items-center justify-center">
+                    <div className="h-3 w-52 rounded-md bg-gray-300 ">
+                      <div
+                        style={{ width: `${progressPercentage}%` }}
+                        className={`h-full rounded-md ${
+                          progressPercentage < 70
+                            ? "bg-red-600"
+                            : "bg-green-600"
+                        }`}
+                      />
+                    </div>
                   </div>
                 </th>
                 <th class="border-t-2 ">DNA</th>

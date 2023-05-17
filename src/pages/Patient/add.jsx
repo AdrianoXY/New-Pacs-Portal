@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import * as AiIcons from "react-icons/ai";
 
 const Add = (props) => {
+  const [files, setFiles] = useState([]);
+
+  const handleFileSelect = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    setFiles(selectedFiles);
+  };
+
   return props.trigger ? (
     <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
       <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg">
@@ -137,14 +144,35 @@ const Add = (props) => {
               for="dropzone-file"
               class="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100"
             >
-              <div class="flex flex-col items-center justify-center pb-6 pt-5">
-                <AiIcons.AiOutlineCloudUpload class="mb-3 h-10 w-10 text-gray-400" />
-                <p class="mb-2 text-sm text-gray-500">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
-                </p>
+              <div class="flex h-[100%] flex-wrap items-start justify-start overflow-y-auto">
+                {files.length > 0 ? (
+                  <>
+                    {files.map((file, index) => (
+                      <div class="m-2" key={index}>
+                        <AiIcons.AiFillFileText />
+                        <p className="mb-2 text-lg text-gray-500">
+                          {file.name}
+                        </p>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <AiIcons.AiOutlineCloudUpload class="mb-3 h-10 w-10 text-gray-400" />
+                    <p class="mb-2 text-sm text-gray-500">
+                      <span class="font-semibold">Click to upload</span> or drag
+                      and drop
+                    </p>
+                  </>
+                )}
               </div>
-              <input id="dropzone-file" type="file" class="hidden" multiple />
+              <input
+                id="dropzone-file"
+                type="file"
+                class="hidden"
+                multiple
+                onChange={handleFileSelect}
+              />
             </label>
           </div>
         </div>

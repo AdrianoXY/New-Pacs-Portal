@@ -39,6 +39,7 @@ const Patient = () => {
       .then((res) => {
         setAcc(res.data);
         setName(res.data[0].name);
+        console.log(acc);
       })
       .catch((err) => {
         if (err.response.status === 402) {

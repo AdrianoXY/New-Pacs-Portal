@@ -9,6 +9,7 @@ const Patient = () => {
   const { PID } = useParams();
   const [name, setName] = useState("");
   const [acc, setAcc] = useState([]);
+  const [asam, setAsam] = useState([]);
   const [edited, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
   const navigate = useNavigate();
@@ -48,6 +49,17 @@ const Patient = () => {
         }
       });
   }, [PID]);
+
+  useEffect(() => {
+    axios
+      .get("/api/Sample")
+      .then((res) => {
+        setAsam(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-6 overflow-auto">

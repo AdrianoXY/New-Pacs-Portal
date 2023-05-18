@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import * as AiIcons from "react-icons/ai";
 
 const Sample = () => {
   const { PID, SID } = useParams();

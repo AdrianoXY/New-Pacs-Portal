@@ -13,8 +13,6 @@ const Patient = () => {
   const [add, setAdd] = useState(false);
   const navigate = useNavigate();
 
-  console.log(acc);
-
   const Del = (PID) => {
     axios
       .delete(`/api/patient/${PID}`, { params: { PID } })
@@ -39,7 +37,6 @@ const Patient = () => {
       .then((res) => {
         setAcc(res.data);
         setName(res.data[0].name);
-        console.log(acc);
       })
       .catch((err) => {
         if (err.response.status === 402) {
@@ -163,7 +160,7 @@ const Patient = () => {
         </div>
       </div>
 
-      <Add trigger={add} setAdd={setAdd} />
+      <Add trigger={add} setAdd={setAdd} PID={PID} />
       {edited && (
         <Edit trigger={edited} setEdit={setEdit} PID={PID} acc={acc} />
       )}

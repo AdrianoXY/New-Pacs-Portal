@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
 const Add = (props) => {
+  const { PID } = props;
   const [files, setFiles] = useState([]);
 
   const handleFileSelect = (e) => {
@@ -9,9 +11,102 @@ const Add = (props) => {
     setFiles(selectedFiles);
   };
 
+
+  const createSample = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const External = formData.get("External");
+    const Accession = formData.get("Accession");
+    const type = formData.get("type");
+    const Received = formData.get("Received");
+    const Collection = formData.get("Collection");
+    const Duration = formData.get("Duration");
+    const Quantity = formData.get("Quantity");
+    const Method = formData.get("Method");
+    const Bodysite = formData.get("Bodysite");
+    const FastingStatus = formData.get("FastingStatus");
+    const Procedure = formData.get("Procedure");
+    const ProcedureTime = formData.get("ProcedureTime");
+    const Description = formData.get("Description");
+    const identifier = formData.get("identifier");
+    const Ctype = formData.get("Ctype");
+    const Capacity = formData.get("Capacity");
+    const SpecimenQuantity = formData.get("SpecimenQuantity");
+    const CDescription = formData.get("CDescription");
+
+    console.log(
+      files,
+      External,
+      Accession,
+      type,
+      Received,
+      Collection,
+      Duration,
+      Quantity,
+      Method,
+      Bodysite,
+      FastingStatus,
+      Procedure,
+      ProcedureTime,
+      Description,
+      identifier,
+      Ctype,
+      Capacity,
+      SpecimenQuantity,
+      CDescription
+    );
+
+    axios
+      .post(
+        "/api/Sample",
+        JSON.stringify({
+          files,
+          PID,
+          External,
+          Accession,
+          type,
+          Received,
+          Collection,
+          Duration,
+          Quantity,
+          Method,
+          Bodysite,
+          FastingStatus,
+          Procedure,
+          ProcedureTime,
+          Description,
+          identifier,
+          Ctype,
+          Capacity,
+          SpecimenQuantity,
+          CDescription,
+        })
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Sample added successfully");
+          console.log(files);
+          // props.setAdd(false);
+          // window.location.reload();
+        }
+      })
+      .catch((err) => {
+        if (!err.response) {
+          console.log(err);
+          alert("Network Error");
+        } else if (err.response.status === 400) {
+          alert("Invalid Request");
+        }
+      });
+  };
+
   return props.trigger ? (
     <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
-      <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg">
+      <form
+        class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg"
+        onSubmit={createSample}
+      >
         <div class="col-span-2 flex items-center justify-center">
           <h1 class="text-4xl font-bold text-green-600">Add Sample</h1>
         </div>
@@ -29,24 +124,24 @@ const Add = (props) => {
               Sample Info
             </h1>
             <div class="flex flex-col">
-              <label class="">PID</label>
-              <input class="w-52" type="text" />
+              <label>PID</label>
+              <input class="w-52" type="text" defaultValue={PID} id="PID" name="PID" />
             </div>
             <div class="flex flex-col">
-              <label class="">External Identifier</label>
-              <input class="w-52" type="text" />
+              <label>External Identifier</label>
+              <input class="w-52" type="text" id="External" name="External" />
             </div>
             <div class="flex flex-col">
-              <label class="">Accession Identifier</label>
-              <input class="w-52" type="text" />
+              <label>Accession Identifier</label>
+              <input class="w-52" type="text" id="Accession" name="Accession" />
             </div>
             <div class="flex flex-col">
-              <label class="">Type</label>
-              <input class="w-52" type="text" />
+              <label>Type</label>
+              <input class="w-52" type="text" id="type" name="type" />
             </div>
             <div class="flex flex-col">
-              <label class="">Received Time</label>
-              <input class="w-52" type="text" />
+              <label>Received Time</label>
+              <input class="w-52" type="text" id="Received" name="Received" />
             </div>
           </div>
 
@@ -55,87 +150,106 @@ const Add = (props) => {
               Collection Details
             </h1>
             <div class="flex flex-col">
-              <label class="">Collection Time</label>
-              <input class="w-52" type="text" />
+              <label>Collection Time</label>
+              <input
+                class="w-52"
+                type="text"
+                id="Collection"
+                name="Collection"
+              />
             </div>
             <div class="flex flex-col">
-              <label class="">Duration</label>
-              <input class="w-52" type="text" />
+              <label>Duration</label>
+              <input class="w-52" type="text" id="Duration" name="Duration" />
             </div>
             <div class="flex flex-col">
-              <label class="">Quantity</label>
-              <input class="w-52" type="text" />
+              <label>Quantity</label>
+              <input class="w-52" type="text" id="Quantity" name="Quantity" />
             </div>
             <div class="flex flex-col">
-              <label class="">Method</label>
-              <input class="w-52" type="text" />
+              <label>Method</label>
+              <input class="w-52" type="text" id="Method" name="Method" />
             </div>
             <div class="flex flex-col">
-              <label class="">Body Site</label>
-              <input class="w-52" type="text" />
+              <label>Body Site</label>
+              <input class="w-52" type="text" id="Bodysite" name="Bodysite" />
             </div>
             <div class="flex flex-col">
-              <label class="">Fasting Status</label>
-              <input class="w-52" type="text" />
+              <label>Fasting Status</label>
+              <input
+                class="w-52"
+                type="text"
+                id="FastingStatus"
+                name="FastingStatus"
+              />
             </div>
           </div>
 
-          <div class="col-span-8 col-start-2 row-span-2 row-start-5 grid h-full grid-cols-3 grid-rows-3">
+          <div class="col-span-8 col-start-2 row-span-1 row-start-5 grid h-full grid-cols-3 grid-rows-2">
             <h1 class="col-span-3 flex items-center text-2xl font-semibold">
-              Collection Details
+              Processing Details
             </h1>
             <div class="flex flex-col">
-              <label class="">Collection Time</label>
-              <input class="w-52" type="text" />
+              <label>Procedure</label>
+              <input class="w-52" type="text" id="Procedure" name="Procedure" />
             </div>
             <div class="flex flex-col">
-              <label class="">Duration</label>
-              <input class="w-52" type="text" />
+              <label>Processing Time</label>
+              <input
+                class="w-52"
+                type="text"
+                id="ProcedureTime"
+                name="ProcedureTime"
+              />
             </div>
             <div class="flex flex-col">
-              <label class="">Quantity</label>
-              <input class="w-52" type="text" />
-            </div>
-            <div class="flex flex-col">
-              <label class="">Method</label>
-              <input class="w-52" type="text" />
-            </div>
-            <div class="flex flex-col">
-              <label class="">Body Site</label>
-              <input class="w-52" type="text" />
-            </div>
-            <div class="flex flex-col">
-              <label class="">Fasting Status</label>
-              <input class="w-52" type="text" />
+              <label>Description</label>
+              <input
+                class="w-52"
+                type="text"
+                id="Description"
+                name="Description"
+              />
             </div>
           </div>
           <div class="col-span-8 col-start-2 row-span-2 row-start-7 grid h-full grid-cols-3 grid-rows-3">
             <h1 class="col-span-3 flex items-center text-2xl font-semibold">
-              Collection Details
+              Container
             </h1>
             <div class="flex flex-col">
-              <label class="">Collection Time</label>
-              <input class="w-52" type="text" />
+              <label>Identifier</label>
+              <input
+                class="w-52"
+                type="text"
+                id="identifier"
+                name="identifier"
+              />
             </div>
             <div class="flex flex-col">
-              <label class="">Duration</label>
-              <input class="w-52" type="text" />
+              <label>Type</label>
+              <input class="w-52" type="text" id="Ctype" name="Ctype" />
             </div>
             <div class="flex flex-col">
-              <label class="">Quantity</label>
-              <input class="w-52" type="text" />
+              <label>Capacity</label>
+              <input class="w-52" type="text" id="Capacity" name="Capacity" />
             </div>
             <div class="flex flex-col">
-              <label class="">Method</label>
-              <input class="w-52" type="text" />
+              <label>Specimen Quantity</label>
+              <input
+                class="w-52"
+                type="text"
+                id="SpecimenQuantity"
+                name="SpecimenQuantity"
+              />
             </div>
             <div class="flex flex-col">
-              <label class="">Body Site</label>
-              <input class="w-52" type="text" />
-            </div>
-            <div class="flex flex-col">
-              <label class="">Fasting Status</label>
-              <input class="w-52" type="text" />
+              <label>Description</label>
+              <input
+                class="w-52"
+                type="text"
+                id="CDescription"
+                name="CDescription"
+              />
             </div>
           </div>
 
@@ -177,7 +291,12 @@ const Add = (props) => {
           </div>
         </div>
         <div class="col-span-3 col-start-3 flex items-center justify-center">
-          <button class="h-12 w-28 text-2xl font-semibold">Add</button>
+          <button
+            class="h-12 w-28 bg-lightgreen text-2xl font-semibold"
+            type="submit"
+          >
+            Add
+          </button>
         </div>
       </form>
     </div>

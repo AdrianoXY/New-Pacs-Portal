@@ -32,8 +32,6 @@ const Create = (props) => {
     const uaddress = formData.get("uaddress");
     const upostcode = formData.get("upostcode");
 
-    console.log(name, uname, birthday);
-
     axios
       .post(
         "/api/patient",

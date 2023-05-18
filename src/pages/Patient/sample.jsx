@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import File from "./file";
 
 const Sample = () => {
   const { PID, SID } = useParams();
+  const [addf, setAddf] = useState(false);
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-9 overflow-auto">
@@ -106,8 +108,11 @@ const Sample = () => {
             <button class="mr-10 h-10 w-28 rounded-md bg-red-600 text-xl">
               Delete
             </button>
-            <button class="mr-10 h-10 w-28 rounded-md text-xl">
-              Edit File
+            <button
+              class="mr-10 h-10 w-28 rounded-md text-xl"
+              onClick={() => setAddf(true)}
+            >
+              Upload File
             </button>
           </div>
         </div>
@@ -136,7 +141,7 @@ const Sample = () => {
               <th class="border-t-2">A123456777</th>
               <th class="border-t-2">Blood</th>
               <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md">View</button>
+                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
               </th>
             </tr>
           </tbody>
@@ -165,7 +170,7 @@ const Sample = () => {
               <th class="border-t-2">A123456777</th>
               <th class="border-t-2">Blood</th>
               <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md">View</button>
+                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
               </th>
             </tr>
           </tbody>
@@ -194,7 +199,7 @@ const Sample = () => {
               <th class="border-t-2">A123456777</th>
               <th class="border-t-2">Blood</th>
               <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md">View</button>
+                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
               </th>
             </tr>
           </tbody>
@@ -223,12 +228,14 @@ const Sample = () => {
               <th class="border-t-2">A123456777</th>
               <th class="border-t-2">Blood</th>
               <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md">View</button>
+                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
               </th>
             </tr>
           </tbody>
         </table>
       </div>
+
+      <File trigger={addf} setAddf={setAddf} PID={PID} SID={SID} />
     </div>
   );
 };

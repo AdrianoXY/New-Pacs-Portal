@@ -164,7 +164,10 @@ const Patient = () => {
                 <th class="border-t-2">Blood</th>
                 <th class="border-t-2">2020-01-01</th>
                 <th class="border-t-2">
-                  <button class="h-10 w-20 rounded-md">View</button>
+                  <div class="flex flex-row items-center justify-around">
+                    <button class="h-10 w-20 rounded-md">View</button>
+                    <AiIcons.AiFillDelete class="rounded-md bg-red-600 text-2xl text-white" />
+                  </div>
                 </th>
               </tr>
             </tbody>

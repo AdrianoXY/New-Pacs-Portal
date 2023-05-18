@@ -4,12 +4,6 @@ import * as AiIcons from "react-icons/ai";
 
 const Add = (props) => {
   const { PID } = props;
-  const [files, setFiles] = useState([]);
-
-  const handleFileSelect = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    setFiles(selectedFiles);
-  };
 
   const createSample = async (e) => {
     e.preventDefault();
@@ -233,43 +227,6 @@ const Add = (props) => {
               />
             </div>
           </div>
-
-          {/* <div class="col-span-7 col-start-2 row-span-2 row-start-9 mt-7 h-full">
-            <label
-              for="dropzone-file"
-              class="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100"
-            >
-              <div class="flex h-[100%] flex-wrap items-start justify-start overflow-y-auto">
-                {files.length > 0 ? (
-                  <>
-                    {files.map((file, index) => (
-                      <div class="m-2" key={index}>
-                        <AiIcons.AiFillFileText />
-                        <p className="mb-2 text-lg text-gray-500">
-                          {file.name}
-                        </p>
-                      </div>
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    <AiIcons.AiOutlineCloudUpload class="mb-3 h-10 w-10 text-gray-400" />
-                    <p class="mb-2 text-sm text-gray-500">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                  </>
-                )}
-              </div>
-              <input
-                id="dropzone-file"
-                type="file"
-                class="hidden"
-                multiple
-                onChange={handleFileSelect}
-              />
-            </label>
-          </div> */}
         </div>
         <div class="col-span-3 col-start-3 flex items-center justify-center">
           <button

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as BsIcons from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import Add from "../Patient/add";
 import axios from "../../axios/axios";
 
 const Home = () => {
   const navigate = useNavigate();
   const [patient, setPatient] = useState(0);
   const [sample, setSample] = useState(0);
+  const [add, setAdd] = useState(false);
 
   useEffect(() => {
     axios.get("/api/count/patient").then((res) => {
@@ -43,7 +45,10 @@ const Home = () => {
       </div>
 
       <div class="col-span-4 row-span-3 row-start-4 flex items-center justify-center drop-shadow-lg">
-        <div class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out">
+        <div
+          class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
+          onClick={() => setAdd(true)}
+        >
           <div class="grid w-full grid-cols-2 items-center">
             <div>
               <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 2xl:text-9xl" />
@@ -120,6 +125,8 @@ const Home = () => {
           </table>
         </div>
       </div>
+
+      <Add trigger={add} setAdd={setAdd} />
     </div>
   );
 };

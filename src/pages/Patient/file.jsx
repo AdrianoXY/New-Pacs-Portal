@@ -14,7 +14,7 @@ const File = (props) => {
     <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
       <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg">
         <div class="col-span-2 flex items-center justify-center">
-          <h1 class="text-4xl font-bold text-green-600">Add File</h1>
+          <h1 class="text-4xl font-bold text-green-600">Upload File</h1>
         </div>
 
         <div class="col-start-7 flex justify-end">

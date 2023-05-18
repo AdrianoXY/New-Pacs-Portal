@@ -93,34 +93,6 @@ const Home = () => {
                 <td class="border-t-2 text-center">72212</td>
                 <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
               </tr>
-              <tr>
-                <td class="border-t-2 text-center">2</td>
-                <td class="border-t-2 text-center">70146</td>
-                <td class="border-t-2 text-center">77701</td>
-                <td class="border-t-2 text-center">72212</td>
-                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
-              </tr>
-              <tr>
-                <td class="border-t-2 text-center">3</td>
-                <td class="border-t-2 text-center">70146</td>
-                <td class="border-t-2 text-center">77701</td>
-                <td class="border-t-2 text-center">72212</td>
-                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
-              </tr>
-              <tr>
-                <td class="border-t-2 text-center">4</td>
-                <td class="border-t-2 text-center">70146</td>
-                <td class="border-t-2 text-center">77701</td>
-                <td class="border-t-2 text-center">72212</td>
-                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
-              </tr>
-              <tr>
-                <td class="border-t-2 text-center">5</td>
-                <td class="border-t-2 text-center">70146</td>
-                <td class="border-t-2 text-center">77701</td>
-                <td class="border-t-2 text-center">72212</td>
-                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
-              </tr>
             </tbody>
           </table>
         </div>

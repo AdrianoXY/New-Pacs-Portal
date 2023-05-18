@@ -43,7 +43,7 @@ const All = () => {
     <div class="grid h-screen w-screen grid-cols-7 grid-rows-6 overflow-auto">
       <div class="flex-rows col-start-2 flex w-full items-center justify-center">
         <input
-          class="h-12 border-2 "
+          class="h-12 w-52 border-2 "
           type="number"
           placeholder="PID"
           onChange={(e) => setPID(e.target.value)}
@@ -51,7 +51,7 @@ const All = () => {
       </div>
       <div class="flex-rows col-start-4 flex w-full items-center justify-center">
         <input
-          class="h-12 border-2"
+          class="h-12 w-52 border-2"
           type="text"
           placeholder="Patient Name"
           onChange={(e) => setname(e.target.value)}

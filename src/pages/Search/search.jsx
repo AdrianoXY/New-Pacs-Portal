@@ -6,7 +6,7 @@ const Search = () => {
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
       <div class="col-span-2 col-start-2 place-self-center">
-        <input class="h-12 w-52  rounded-lg border-2  " placeholder="PID" />
+        <input class="h-12 w-52  rounded-lg border-2" placeholder="PID" />
       </div>
 
       <div class="col-span-2 place-self-center">

@@ -14,6 +14,24 @@ const Patient = () => {
   const [add, setAdd] = useState(false);
   const navigate = useNavigate();
 
+  const sDel = (SID) => {
+    axios
+      .delete(`/api/Sample/${SID}`, { params: { SID } })
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Delete Successfully!");
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 403) {
+          console.log("Fail");
+        } else {
+          alert("Delete Fail");
+        }
+      });
+  };
+
   const Del = (PID) => {
     axios
       .delete(`/api/patient/${PID}`, { params: { PID } })
@@ -52,14 +70,14 @@ const Patient = () => {
 
   useEffect(() => {
     axios
-      .get("/api/Sample")
+      .get("/api/Sample", { params: { PID } })
       .then((res) => {
         setAsam(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [PID]);
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-6 overflow-auto">
@@ -146,7 +164,6 @@ const Patient = () => {
           <table class="w-[95%] table-auto">
             <thead>
               <tr>
-                <th class="border-b-2">No.</th>
                 <th class="border-b-2">SID</th>
                 <th class="border-b-2">External Identifier</th>
                 <th class="border-b-2">Accession Identifier</th>
@@ -156,22 +173,39 @@ const Patient = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th class="border-t-2">1</th>
-                <th class="border-t-2">1234</th>
-                <th class="border-t-2">A123456789</th>
-                <th class="border-t-2">A123456777</th>
-                <th class="border-t-2">Blood</th>
-                <th class="border-t-2">2020-01-01</th>
-                <th class="border-t-2">
-                  <div class="flex flex-row items-center justify-around">
-                    <button class="h-10 w-20">View</button>
-                    <button class="h-10 w-10 bg-red-600">
-                      <AiIcons.AiFillDelete class="ml-2 text-2xl" />
-                    </button>
-                  </div>
-                </th>
-              </tr>
+              {asam.length > 0 &&
+                asam.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <th class="border-t-2">{item.SID}</th>
+                      <th class="border-t-2">{item.External}</th>
+                      <th class="border-t-2">{item.Accession}</th>
+                      <th class="border-t-2">{item.type}</th>
+                      <th class="border-t-2">{item.Receivedtime}</th>
+                      <th class="border-t-2">
+                        <div class="flex flex-row items-center justify-around">
+                          <button
+                            class="h-10 w-20"
+                            onClick={() =>
+                              navigate(`/patient/${PID}/${item.SID}`)
+                            }
+                          >
+                            View
+                          </button>
+                          <button
+                            class="h-10 w-10 bg-red-600"
+                            onClick={() =>
+                              window.confirm("Are you sure to delete?") &&
+                              sDel(item.SID)
+                            }
+                          >
+                            <AiIcons.AiFillDelete class="ml-2 text-2xl" />
+                          </button>
+                        </div>
+                      </th>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>

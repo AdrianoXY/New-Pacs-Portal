@@ -46,7 +46,6 @@ const Search = () => {
                 <th class=" border-b-4">Window Range</th>
                 <th class=" border-b-4">Observed</th>
                 <th class=" border-b-4">Sequence Data</th>
-                <th class=" border-b-4">Detail</th>
               </tr>
             </thead>
             <tbody class="overflow-y-auto">
@@ -65,33 +64,6 @@ const Search = () => {
                 <th class="border-t-2 ">AAAAGAATACACTTTT</th>
                 <th class="border-t-2 ">
                   <button class="h-8 w-20 rounded-md">View</button>
-                </th>
-                <th class="border-t-2 ">
-                  <button class="h-8 w-10 rounded-md">
-                    <IoIcons.IoShareOutline class="ml-2 text-2xl font-bold" />
-                  </button>
-                </th>
-              </tr>
-              <tr>
-                <th class="border-t-2 ">1</th>
-                <th class="border-t-2 ">123456</th>
-                <th class="border-t-2 ">72212</th>
-                <th class="border-t-2 ">1</th>
-                <th class="border-t-2 ">DNA</th>
-                <th class="border-t-2 ">hg19</th>
-                <th class="border-t-2 ">
-                  chromosome1:
-                  <br />
-                  129275~129295
-                </th>
-                <th class="border-t-2 ">AAAAGAATACACTTTT</th>
-                <th class="border-t-2 ">
-                  <button class="h-8 w-20 rounded-md">View</button>
-                </th>
-                <th class="border-t-2 ">
-                  <button class="h-8 w-10 rounded-md">
-                    <IoIcons.IoShareOutline class="ml-2 text-2xl font-bold" />
-                  </button>
                 </th>
               </tr>
             </tbody>

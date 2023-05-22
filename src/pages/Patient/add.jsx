@@ -12,7 +12,7 @@ const Add = (props) => {
     const External = formData.get("External");
     const Accession = formData.get("Accession");
     const type = formData.get("type");
-    const Received = formData.get("Received");
+    const Receivedtime = formData.get("Receivedtime");
     const Collection = formData.get("Collection");
     const Duration = formData.get("Duration");
     const Quantity = formData.get("Quantity");
@@ -36,7 +36,7 @@ const Add = (props) => {
           External,
           Accession,
           type,
-          Received,
+          Receivedtime,
           Collection,
           Duration,
           Quantity,
@@ -116,7 +116,12 @@ const Add = (props) => {
             </div>
             <div class="flex flex-col">
               <label>Received Time</label>
-              <input class="w-52" type="text" id="Received" name="Received" />
+              <input
+                class="w-52"
+                type="text"
+                id="Receivedtime"
+                name="Receivedtime"
+              />
             </div>
           </div>
 

@@ -21,9 +21,11 @@ const File = (props) => {
         filename.push(file[i].name);
       }
     }
+
+    console.log(file);
     
 
-    axios.post("/api/file",JSON.stringify({PID,SID,filename}),file)
+    axios.post("/api/file",JSON.stringify({PID,SID,filename,file}))
     .then((response) => {
       if (response.status === 200) {
         alert("Files Add successfully!");
@@ -35,7 +37,7 @@ const File = (props) => {
       if (!err.response) {
         alert("Network Error!");
       } else if (err.response.status === 403) {
-        alert("Create Fail!");
+        alert("Add Fail!");
       }
     })
   }

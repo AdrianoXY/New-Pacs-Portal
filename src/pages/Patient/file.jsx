@@ -4,11 +4,11 @@ import axios from "../../axios/axios";
 
 const File = (props) => {
   const { PID, SID } = props;
-  const [files, setFiles] = useState([]);
+  const [file, setFile] = useState([]);
 
   const handleFileSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    setFiles(selectedFiles);
+    setFile(selectedFiles);
   };
 
   
@@ -16,14 +16,14 @@ const File = (props) => {
   const addfile = async(e) => {
     let filename = []
 
-    for (let i = 0; i < files.length; i++) {
-      if (files[i] && files[i].name) {
-        filename.push(files[i].name);
+    for (let i = 0; i < file.length; i++) {
+      if (file[i] && file[i].name) {
+        filename.push(file[i].name);
       }
     }
     
 
-    axios.post("/api/file",JSON.stringify({PID,SID,filename,files}))
+    axios.post("/api/file",JSON.stringify({PID,SID,filename}),file)
     .then((response) => {
       if (response.status === 200) {
         alert("Files Add successfully!");
@@ -60,9 +60,9 @@ const File = (props) => {
               for="dropzone-file"
               class="flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100"
             >
-              {files.length > 0 ? (
+              {file.length > 0 ? (
                 <div class="grid h-[100%]  grid-cols-5">
-                  {files.map((file, index) => (
+                  {file.map((file, index) => (
                     <div class="m-2 break-words" key={index}>
                       <AiIcons.AiFillFileText />
                       <p className="mb-2 text-lg text-gray-500">{file.name}</p>

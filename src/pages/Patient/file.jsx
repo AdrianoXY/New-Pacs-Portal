@@ -10,6 +10,40 @@ const File = (props) => {
     setFiles(selectedFiles);
   };
 
+<<<<<<< HEAD
+=======
+  
+
+  const addfile = async(e) => {
+    let filename = []
+
+    for (let i = 0; i < file.length; i++) {
+      if (file[i] && file[i].name) {
+        filename.push(file[i].name);
+      }
+    }
+
+    console.log(file);
+    
+
+    axios.post("/api/file",JSON.stringify({PID,SID,filename,file}))
+    .then((response) => {
+      if (response.status === 200) {
+        alert("Files Add successfully!");
+        props.setAddf(false);
+        window.location.reload();
+      }
+    })
+    .catch((err) => {
+      if (!err.response) {
+        alert("Network Error!");
+      } else if (err.response.status === 403) {
+        alert("Add Fail!");
+      }
+    })
+  }
+
+>>>>>>> parent of f6e00a7 (update)
   return props.trigger ? (
     <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
       <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg">

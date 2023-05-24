@@ -19,15 +19,14 @@ const File = (props) => {
         for (let i = 0; i < file.length; i++) {
             formData.append('file', file[i]);
             if (file[i] && file[i].name) {
-                formData.append('name',file[i].name);
+                filename.push(file[i].name);
             }
         }
 
-        axios.post("/api/file/0", formData, {
+        axios.post(`/api/file/${SID}/${filename}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data' // 設定正確的 Content-Type
             },
-
         })
             .then((response) => {
                 if (response.status === 200) {

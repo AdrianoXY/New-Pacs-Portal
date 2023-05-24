@@ -21,10 +21,27 @@ const File = (props) => {
       }
     }
 
-    console.log(file);
+    const data = {
+      PID: PID,
+      SID: SID,
+      filename: filename,
+    };
+  
+    e.preventDefault();
+  
+    const formData = new FormData();
+    for (let i = 0; i < file.length; i++) {
+      formData.append('files', file[i]);
+    }
+  
+    formData.append('data', JSON.stringify(data));
+  
     
 
-    axios.post("/api/file",JSON.stringify({PID,SID,filename,file}))
+    axios.post("/api/file",formData,
+    {headers : {
+      'Content-Type': 'multipart/form-data'
+    }})
     .then((response) => {
       if (response.status === 200) {
         alert("Files Add successfully!");

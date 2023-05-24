@@ -7,15 +7,34 @@ const Sample = () => {
   const { PID, SID } = useParams();
   const [addf, setAddf] = useState(false);
   const [info, setInfo] = useState([]);
+  const [file, setFile] = useState([]);
   const navigate = useNavigate();
 
   const Del = (SID) => {
     axios
-      .delete(`/api/Sample/${SID}`, { params: { SID } })
+      .delete(`/api/Sample/${SID}`)
       .then((response) => {
         if (response.status === 200) {
           alert("Delete Successfully!");
           navigate(`/patient/${PID}`);
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 403) {
+          console.log("Fail");
+        } else {
+          alert("Delete Fail");
+        }
+      });
+  };
+
+  const Delf = (path) => {
+    axios
+      .delete(`/api/Sample/${path}`)
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Delete Successfully!");
+          window.location.reload();
         }
       })
       .catch((err) => {
@@ -38,12 +57,39 @@ const Sample = () => {
       });
   }, [SID]);
 
+  useEffect(() => {
+    axios
+      .get(`/api/file`, { params: { SID } })
+      .then((res) => {
+        setFile(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const formatFileSize = (size) => {
+    const units = ["B", "KB", "MB", "GB", "TB"];
+    let fileSize = size;
+    let unitIndex = 0;
+
+    while (fileSize >= 1024 && unitIndex < units.length - 1) {
+      fileSize /= 1024;
+      unitIndex++;
+    }
+
+    const formattedSize = fileSize.toFixed(1);
+    const unit = units[unitIndex];
+
+    return `${formattedSize} ${unit}`;
+  };
+
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-9 overflow-auto">
       {info.map((item, index) => {
         return (
           <div
-            class="col-span-3 row-span-full flex h-[90%] w-[75%] flex-col items-center justify-center place-self-center rounded-md bg-white drop-shadow-md"
+            class="col-span-3 row-span-full flex h-[90%] w-[75%] flex-col items-center justify-center place-self-center rounded-md bg-white drop-shadow-sm"
             key={index}
           >
             <div class="grid h-[90%] w-[90%] grid-cols-3 grid-rows-6">
@@ -179,118 +225,160 @@ const Sample = () => {
       </div>
 
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Sequencing raw data(.fastq)
           </caption>
           <thead>
             <tr>
-              <th class="border-b-2">No.</th>
               <th class="border-b-2">File Name</th>
               <th class="border-b-2">File Size</th>
-              <th class="border-b-2">State</th>
-              <th class="border-b-2">Processing Progress</th>
               <th class="border-b-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="border-t-2">1</th>
-              <th class="border-t-2">1234</th>
-              <th class="border-t-2">A123456789</th>
-              <th class="border-t-2">A123456777</th>
-              <th class="border-t-2">Blood</th>
-              <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
-              </th>
-            </tr>
+            {file.map((file) => {
+              const extension = file.filename.split(".").pop().toLowerCase();
+
+              if (extension !== "fastq") {
+                return null;
+              }
+
+              const fileSize = formatFileSize(file.size);
+
+              return (
+                <tr key={file._id}>
+                  <th class="border-t-2">{file.filename}</th>
+                  <th class="border-t-2">{fileSize}</th>
+                  <th class="border-t-2">
+                    <button class="h-10 w-20 rounded-md bg-red-600">
+                      Delete
+                    </button>
+                  </th>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Alignment(.bam,.bai)
           </caption>
           <thead>
             <tr>
-              <th class="border-b-2">No.</th>
               <th class="border-b-2">File Name</th>
               <th class="border-b-2">File Size</th>
-              <th class="border-b-2">State</th>
-              <th class="border-b-2">Processing Progress</th>
               <th class="border-b-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="border-t-2">1</th>
-              <th class="border-t-2">1234</th>
-              <th class="border-t-2">A123456789</th>
-              <th class="border-t-2">A123456777</th>
-              <th class="border-t-2">Blood</th>
-              <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
-              </th>
-            </tr>
+            {file.map((file) => {
+              const extension = file.filename.split(".").pop().toLowerCase();
+
+              if (extension !== "bam" && extension !== "bai") {
+                return null;
+              }
+
+              const fileSize = formatFileSize(file.size);
+
+              return (
+                <tr key={file._id}>
+                  <th class="border-t-2">{file.filename}</th>
+                  <th class="border-t-2">{fileSize}</th>
+                  <th class="border-t-2">
+                    <button class="h-10 w-20 rounded-md bg-red-600">
+                      Delete
+                    </button>
+                  </th>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Variant calling (.vcf, .tbi, .idx)
           </caption>
           <thead>
             <tr>
-              <th class="border-b-2">No.</th>
               <th class="border-b-2">File Name</th>
               <th class="border-b-2">File Size</th>
-              <th class="border-b-2">State</th>
-              <th class="border-b-2">Processing Progress</th>
               <th class="border-b-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="border-t-2">1</th>
-              <th class="border-t-2">1234</th>
-              <th class="border-t-2">A123456789</th>
-              <th class="border-t-2">A123456777</th>
-              <th class="border-t-2">Blood</th>
-              <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
-              </th>
-            </tr>
+            {file.map((file) => {
+              const extension = file.filename.split(".").pop().toLowerCase();
+
+              if (
+                extension !== "vcf" &&
+                extension !== "tbi" &&
+                extension !== "idx"
+              ) {
+                return null;
+              }
+
+              const fileSize = formatFileSize(file.size);
+
+              return (
+                <tr key={file._id}>
+                  <th class="border-t-2">{file.filename}</th>
+                  <th class="border-t-2">{fileSize}</th>
+                  <th class="border-t-2">
+                    <button class="h-10 w-20 rounded-md bg-red-600">
+                      Delete
+                    </button>
+                  </th>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-md">
+        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Annotation (.csv, .xlsx)
           </caption>
           <thead>
             <tr>
-              <th class="border-b-2">No.</th>
               <th class="border-b-2">File Name</th>
               <th class="border-b-2">File Size</th>
-              <th class="border-b-2">State</th>
-              <th class="border-b-2">Processing Progress</th>
               <th class="border-b-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="border-t-2">1</th>
-              <th class="border-t-2">1234</th>
-              <th class="border-t-2">A123456789</th>
-              <th class="border-t-2">A123456777</th>
-              <th class="border-t-2">Blood</th>
-              <th class="border-t-2">
-                <button class="h-10 w-20 rounded-md bg-red-600">Delete</button>
-              </th>
-            </tr>
+            {file.map((file) => {
+              const extension = file.filename.split(".").pop().toLowerCase();
+
+              if (extension !== "csv" && extension !== "xlsx") {
+                return null;
+              }
+
+              const fileSize = formatFileSize(file.size);
+
+              return (
+                <tr key={file._id}>
+                  <th class="border-t-2">{file.filename}</th>
+                  <th class="border-t-2">{fileSize}</th>
+                  <th class="border-t-2">
+                    <button
+                      class="h-10 w-20 rounded-md bg-red-600"
+                      onClick={() =>
+                        window.confirm("Are you sure to delete?") &&
+                        Delf(file.destination)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </th>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

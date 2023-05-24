@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
+import axios from "../../axios/axios";
 
 const File = (props) => {
   const { PID, SID } = props;
+<<<<<<< HEAD
   const [files, setFiles] = useState([]);
+=======
+  const [file, setFile] = useState([]);
+>>>>>>> parent of 91b32f4 (back)
 
   const handleFileSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
@@ -43,10 +48,13 @@ const File = (props) => {
     })
   }
 
+<<<<<<< HEAD
 >>>>>>> parent of f6e00a7 (update)
+=======
+>>>>>>> parent of 91b32f4 (back)
   return props.trigger ? (
     <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
-      <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg">
+      <form class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-[95%] animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg" onSubmit={addfile}>
         <div class="col-span-2 flex items-center justify-center">
           <h1 class="text-4xl font-bold text-green-600">Upload File</h1>
         </div>
@@ -64,6 +72,7 @@ const File = (props) => {
               for="dropzone-file"
               class="flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100"
             >
+<<<<<<< HEAD
               <div class="flex h-[100%] flex-wrap items-start justify-start overflow-y-auto">
                 {files.length > 0 ? (
                   <>
@@ -86,6 +95,26 @@ const File = (props) => {
                   </>
                 )}
               </div>
+=======
+              {file.length > 0 ? (
+                <div class="grid h-[100%]  grid-cols-5">
+                  {file.map((file, index) => (
+                    <div class="m-2 break-words" key={index}>
+                      <AiIcons.AiFillFileText />
+                      <p className="mb-2 text-lg text-gray-500">{file.name}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div class="flex h-[100%] flex-wrap items-center justify-center">
+                  <AiIcons.AiOutlineCloudUpload class="mb-3 h-10 w-10 text-gray-400" />
+                  <p class="mb-2 text-sm text-gray-500">
+                    <span class="font-semibold">Click to upload</span> or drag
+                    and drop
+                  </p>
+                </div>
+              )}
+>>>>>>> parent of 91b32f4 (back)
               <input
                 id="dropzone-file"
                 type="file"

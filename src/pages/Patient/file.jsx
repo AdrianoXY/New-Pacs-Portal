@@ -12,7 +12,6 @@ const File = (props) => {
     };
 
     const formData = new FormData();
-
     const addfile = async (e) => {
         let filename = []
 
@@ -24,7 +23,7 @@ const File = (props) => {
             }
         }
 
-        axios.post("/api/file", JSON.stringify({ PID, SID, filename }), formData, {
+        axios.post("/api/file/0",formData, {
             headers: {
                 'Content-Type': 'multipart/form-data' // 設定正確的 Content-Type
             }

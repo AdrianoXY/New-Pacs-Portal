@@ -6,19 +6,45 @@ const Manage = () => {
   const [sample, setSample] = useState([]);
   const [file, setFile] = useState([]);
 
-  const Conversion = (PID, SID, fileID,index) => {
+  const Conversion = (PID, SID, fileID, index) => {
     axios
-      .post("/api/csvtojson", JSON.stringify({ PID, SID, fileID }), {
-        onUploadProgress: function (e) {
-          const percentComplete = (e.loaded / e.total) * 0;
-          console.log(percentComplete);
+      .post("/api/csvtojson", JSON.stringify({ PID, SID, fileID }))
+      .then((res) => {
+        if (res.status === 200) {
+          const uploadProgress = (e) => {
+            const percentComplete = (e.loaded / e.total) * 100;
+            console.log(percentComplete);
 
-          setProgressPercentage((prevProgressPercentages) => {
-            const updatedProgressPercentages = [...prevProgressPercentages];
-            updatedProgressPercentages[index] = percentComplete;
-            return updatedProgressPercentages;
-          });
-        },
+            setProgressPercentage((prevProgressPercentages) => {
+              const updatedProgressPercentages = [...prevProgressPercentages];
+              updatedProgressPercentages[index] = percentComplete;
+              return updatedProgressPercentages;
+            });
+          };
+
+          const config = {
+            onUploadProgress: uploadProgress,
+          };
+
+          axios
+            .post(
+              "/api/csvtojson",
+              JSON.stringify({ PID, SID, fileID }),
+              config
+            )
+            .then((res) => {
+              if (res.status === 200) {
+                alert("Conversion Successfully!");
+              }
+            })
+            .catch((err) => {
+              if (err.response.status === 403) {
+                console.log("Fail");
+              } else {
+                alert("Fail");
+              }
+            });
+        }
       })
       .catch((err) => {
         if (err.response.status === 403) {

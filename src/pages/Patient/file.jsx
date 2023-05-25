@@ -44,7 +44,7 @@ const File = (props) => {
         if (!err.response) {
           alert(formData.file);
         } else if (err.response.status === 403) {
-          alert("Create Fail!");
+          alert("Upload Fail!");
         }
       });
   };

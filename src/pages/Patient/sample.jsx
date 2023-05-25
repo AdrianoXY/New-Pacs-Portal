@@ -28,9 +28,9 @@ const Sample = () => {
       });
   };
 
-  const Delf = (path) => {
+  const Delf = (FID) => {
     axios
-      .delete(`/api/Sample/${path}`)
+      .delete(`/api/file/${FID}`)
       .then((response) => {
         if (response.status === 200) {
           alert("Delete Successfully!");
@@ -370,7 +370,7 @@ const Sample = () => {
                       class="h-10 w-20 rounded-md bg-red-600"
                       onClick={() =>
                         window.confirm("Are you sure to delete?") &&
-                        Delf(file.destination)
+                        Delf(file.FID)
                       }
                     >
                       Delete

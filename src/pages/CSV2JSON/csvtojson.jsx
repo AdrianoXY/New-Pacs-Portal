@@ -7,8 +7,9 @@ const Manage = () => {
   const [file, setFile] = useState([]);
 
   const Conversion = (PID, SID, fileID, index) => {
+    console.log(PID, SID, fileID);
     axios
-      .post("/api/csvtojson", JSON.stringify({ PID, SID, fileID }))
+      .post("/api/csv", JSON.stringify({ PID, SID, fileID }))
       .then((res) => {
         if (res.status === 200) {
           const uploadProgress = (e) => {
@@ -28,7 +29,7 @@ const Manage = () => {
 
           axios
             .post(
-              "/api/csvtojson",
+              "/api/csv",
               JSON.stringify({ PID, SID, fileID }),
               config
             )

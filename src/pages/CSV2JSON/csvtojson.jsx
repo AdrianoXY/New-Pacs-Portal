@@ -7,6 +7,7 @@ const Manage = () => {
   const [file, setFile] = useState([]);
 
   const Conversion = (PID, SID, fileID, index) => {
+    console.log(PID, SID, fileID);
     axios
       .post("/api/csv", JSON.stringify({ PID, SID, fileID }))
       .then((res) => {

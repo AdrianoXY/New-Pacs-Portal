@@ -26,6 +26,16 @@ th {
   @apply text-slate-600;
 }
 
+/* tbody {
+  @apply scrollbar ml-auto mr-auto block max-h-[125px] overflow-x-hidden overflow-y-scroll;
+  scrollbar-gutter: stable;
+}
+
+thead,
+tbody tr {
+  @apply ml-auto mr-auto table w-[100%] table-fixed;
+} */
+
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

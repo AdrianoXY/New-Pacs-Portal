@@ -34,7 +34,8 @@ const Sample = () => {
       .then((response) => {
         if (response.status === 200) {
           alert("Delete Successfully!");
-          window.location.reload();
+          console.log(FID);
+          // window.location.reload();
         }
       })
       .catch((err) => {
@@ -251,7 +252,13 @@ const Sample = () => {
                   <th class="border-t-2">{file.filename}</th>
                   <th class="border-t-2">{fileSize}</th>
                   <th class="border-t-2">
-                    <button class="h-10 w-20 rounded-md bg-red-600">
+                    <button
+                      class="h-10 w-20 rounded-md bg-red-600"
+                      onClick={() =>
+                        window.confirm("Are you sure to delete?") &&
+                        Delf(file.FID)
+                      }
+                    >
                       Delete
                     </button>
                   </th>
@@ -288,7 +295,13 @@ const Sample = () => {
                   <th class="border-t-2">{file.filename}</th>
                   <th class="border-t-2">{fileSize}</th>
                   <th class="border-t-2">
-                    <button class="h-10 w-20 rounded-md bg-red-600">
+                    <button
+                      class="h-10 w-20 rounded-md bg-red-600"
+                      onClick={() =>
+                        window.confirm("Are you sure to delete?") &&
+                        Delf(file.FID)
+                      }
+                    >
                       Delete
                     </button>
                   </th>
@@ -329,7 +342,13 @@ const Sample = () => {
                   <th class="border-t-2">{file.filename}</th>
                   <th class="border-t-2">{fileSize}</th>
                   <th class="border-t-2">
-                    <button class="h-10 w-20 rounded-md bg-red-600">
+                    <button
+                      class="h-10 w-20 rounded-md bg-red-600"
+                      onClick={() =>
+                        window.confirm("Are you sure to delete?") &&
+                        Delf(file.FID)
+                      }
+                    >
                       Delete
                     </button>
                   </th>

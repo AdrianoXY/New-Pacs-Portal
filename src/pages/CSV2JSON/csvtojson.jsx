@@ -28,11 +28,7 @@ const Manage = () => {
           };
 
           axios
-            .post(
-              "/api/csv",
-              JSON.stringify({ PID, SID, fileID }),
-              config
-            )
+            .post("/api/csv", JSON.stringify({ PID, SID, fileID }), config)
             .then((res) => {
               if (res.status === 200) {
                 alert("Conversion Successfully!");

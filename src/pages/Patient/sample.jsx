@@ -226,7 +226,7 @@ const Sample = () => {
       </div>
 
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
+        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Sequencing raw data(.fastq)
           </caption>
@@ -269,7 +269,7 @@ const Sample = () => {
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
+        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Alignment(.bam,.bai)
           </caption>
@@ -312,7 +312,7 @@ const Sample = () => {
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
+        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Variant calling (.vcf, .tbi, .idx)
           </caption>
@@ -359,7 +359,7 @@ const Sample = () => {
         </table>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-auto rounded-md bg-white drop-shadow-sm">
+        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
           <caption class="text-left text-2xl font-semibold">
             Annotation (.csv, .xlsx)
           </caption>

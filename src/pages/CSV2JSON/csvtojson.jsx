@@ -1,10 +1,34 @@
 import React, { useState, useEffect } from "react";
+import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
 const Manage = () => {
   const [progressPercentage, setProgressPercentage] = useState([]);
   const [sample, setSample] = useState([]);
   const [file, setFile] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)
+
+  
+  const itemsPerPage = 12
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < Math.ceil(sample.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   const Conversion = (PID, SID, fileID, index) => {
     console.log(PID, SID, fileID);
@@ -153,6 +177,22 @@ const Manage = () => {
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div class='col-span-1 col-start-4 bg-white place-self-end mb-10'>
+      <button className="h-10 w-10 flex justify-center items-center" onClick={goToPreviousPage}>
+            <AiIcons.AiOutlineCaretLeft />
+          </button>
+      </div>
+
+      <div class='col-span-1 col-start-5 place-self-center mb-10'>
+        {currentPage}
+      </div>
+
+      <div class='col-span-1 col-start-6 bg-white place-self-start mb-10'>
+      <button className="h-10 w-10 flex justify-center items-center" onClick={goToNextPage}>
+            <AiIcons.AiOutlineCaretRight />
+          </button>
       </div>
     </div>
   );

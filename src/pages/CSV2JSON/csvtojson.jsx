@@ -6,17 +6,12 @@ const Manage = () => {
   const [progressPercentage, setProgressPercentage] = useState([]);
   const [sample, setSample] = useState([]);
   const [file, setFile] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
 
-  
-  const itemsPerPage = 12
+  const itemsPerPage = 12;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
@@ -36,35 +31,7 @@ const Manage = () => {
       .post("/api/csv", JSON.stringify({ PID, SID, fileID }))
       .then((res) => {
         if (res.status === 200) {
-          const uploadProgress = (e) => {
-            const percentComplete = (e.loaded / e.total) * 100;
-            console.log(percentComplete);
-
-            setProgressPercentage((prevProgressPercentages) => {
-              const updatedProgressPercentages = [...prevProgressPercentages];
-              updatedProgressPercentages[index] = percentComplete;
-              return updatedProgressPercentages;
-            });
-          };
-
-          const config = {
-            onUploadProgress: uploadProgress,
-          };
-
-          axios
-            .post("/api/csv", JSON.stringify({ PID, SID, fileID }), config)
-            .then((res) => {
-              if (res.status === 200) {
-                alert("Conversion Successfully!");
-              }
-            })
-            .catch((err) => {
-              if (err.response.status === 403) {
-                console.log("Fail");
-              } else {
-                alert("Fail");
-              }
-            });
+          alert("Conversion Successfully!");
         }
       })
       .catch((err) => {
@@ -78,18 +45,24 @@ const Manage = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/sample`)
+      .get(`/api/file`)
       .then((res) => {
-        setSample(res.data);
+        setFile(res.data.filter((item) => item.filename.endsWith(".csv")));
+        console.log(file);
       })
       .catch((err) => {
         console.log(err);
       });
 
     axios
-      .get(`/api/file`)
+      .get(`/api/sample`)
       .then((res) => {
-        setFile(res.data);
+        setSample(
+          res.data.filter((sample) =>
+            file.some((fileItem) => fileItem.SID === sample.SID)
+          )
+        );
+        console.log(sample);
       })
       .catch((err) => {
         console.log(err);
@@ -128,20 +101,13 @@ const Manage = () => {
                 <th class=" border-b-4">PID</th>
                 <th class=" border-b-4">SID</th>
                 <th class=" border-b-4">FileName</th>
-                <th class=" border-b-4">Process Rate(complete/total)</th>
+                <th class=" border-b-4">Process Rate(undone/complete)</th>
                 <th class=" border-b-4">Operation</th>
               </tr>
             </thead>
             <tbody>
               {file.map((file, index) => {
-                const extension = file.filename.split(".").pop().toLowerCase();
-
-                if (extension !== "csv") {
-                  return null;
-                }
-
                 const pidArray = sample.map((item) => item.PID);
-
                 return (
                   <tr key={index}>
                     <th class="border-t-2 ">{pidArray[index]}</th>
@@ -151,7 +117,7 @@ const Manage = () => {
                       <div class="flex w-full items-center justify-center">
                         <div class="h-3 w-52 rounded-md bg-gray-300 ">
                           <div
-                            style={{ width: `${progressPercentage}%` }}
+                            style={{ width: `${progressPercentage[index]}%` }}
                             class={`h-full rounded-md ${
                               progressPercentage < 70
                                 ? "bg-red-600"
@@ -179,20 +145,26 @@ const Manage = () => {
         </div>
       </div>
 
-      <div class='col-span-1 col-start-4 bg-white place-self-end mb-10'>
-      <button className="h-10 w-10 flex justify-center items-center" onClick={goToPreviousPage}>
-            <AiIcons.AiOutlineCaretLeft />
-          </button>
+      <div class="col-span-1 col-start-4 mb-10 place-self-end bg-white">
+        <button
+          className="flex h-10 w-10 items-center justify-center"
+          onClick={goToPreviousPage}
+        >
+          <AiIcons.AiOutlineCaretLeft />
+        </button>
       </div>
 
-      <div class='col-span-1 col-start-5 place-self-center mb-10'>
+      <div class="col-span-1 col-start-5 mb-10 place-self-center">
         {currentPage}
       </div>
 
-      <div class='col-span-1 col-start-6 bg-white place-self-start mb-10'>
-      <button className="h-10 w-10 flex justify-center items-center" onClick={goToNextPage}>
-            <AiIcons.AiOutlineCaretRight />
-          </button>
+      <div class="col-span-1 col-start-6 mb-10 place-self-start bg-white">
+        <button
+          className="flex h-10 w-10 items-center justify-center"
+          onClick={goToNextPage}
+        >
+          <AiIcons.AiOutlineCaretRight />
+        </button>
       </div>
     </div>
   );

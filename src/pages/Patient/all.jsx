@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { allPatient } from "../../Redux/Slices/patient";
 import Create from "./create";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 import * as BsIcons from "react-icons/bs";
 
 const All = () => {
+  const dispatch = useDispatch();
   const [name, setname] = useState("");
   const [PID, setPID] = useState("");
-  const [acc, setAcc] = useState([]);
+  const patientData = useSelector((state) => state.Patient.data);
+  const patientStatus = useSelector((state) => state.Patient.status);
+  const patientError = useSelector((state) => state.Patient.error);
   const [create, setCreate] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const itemsPerPage = 12
+  const itemsPerPage = 12;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
@@ -28,38 +29,22 @@ const All = () => {
   };
 
   const goToNextPage = () => {
-    if (currentPage < Math.ceil(acc.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(patientData.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
 
   useEffect(() => {
-    if (name || PID) {
-      axios
-        .get("/api/patient", { params: { name, PID } })
-        .then((res) => {
-          setAcc(res.data);
-        })
-        .catch((err) => {
-          if (err.response.status === 402) {
-            console.log("fail");
-          } else if (err.response.status === 403) {
-            console.log("Fail");
-          } else {
-            console.log("No server response");
-          }
-        });
-    } else {
-      axios
-        .get("/api/patient")
-        .then((res) => {
-          setAcc(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [name, PID]);
+    dispatch(allPatient({ name, PID }));
+  }, [dispatch, name, PID]);
+
+  if (patientStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (patientStatus === "failed") {
+    console.log(patientError);
+  }
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
@@ -104,8 +89,8 @@ const All = () => {
               </tr>
             </thead>
             <tbody class="overflow-y-auto">
-              {acc.length > 0 &&
-                acc.slice(startIndex, endIndex).map((item, index) => {
+              {patientData.length > 0 &&
+                patientData.slice(startIndex, endIndex).map((item, index) => {
                   return (
                     <tr key={index}>
                       <th class="border-t-2 ">{item.URID}</th>
@@ -129,20 +114,26 @@ const All = () => {
         </div>
       </div>
 
-      <div class='col-span-1 col-start-4 bg-white place-self-end mb-10'>
-      <button className="h-10 w-10 flex justify-center items-center" onClick={goToPreviousPage}>
-            <AiIcons.AiOutlineCaretLeft />
-          </button>
+      <div class="col-span-1 col-start-4 mb-10 place-self-end bg-white">
+        <button
+          className="flex h-10 w-10 items-center justify-center"
+          onClick={goToPreviousPage}
+        >
+          <AiIcons.AiOutlineCaretLeft />
+        </button>
       </div>
 
-      <div class='col-span-1 col-start-5 place-self-center mb-10'>
+      <div class="col-span-1 col-start-5 mb-10 place-self-center">
         {currentPage}
       </div>
 
-      <div class='col-span-1 col-start-6 bg-white place-self-start mb-10'>
-      <button className="h-10 w-10 flex justify-center items-center" onClick={goToNextPage}>
-            <AiIcons.AiOutlineCaretRight />
-          </button>
+      <div class="col-span-1 col-start-6 mb-10 place-self-start bg-white">
+        <button
+          className="flex h-10 w-10 items-center justify-center"
+          onClick={goToNextPage}
+        >
+          <AiIcons.AiOutlineCaretRight />
+        </button>
       </div>
 
       <Create trigger={create} setCreate={setCreate} />

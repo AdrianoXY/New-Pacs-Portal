@@ -10,6 +10,8 @@ import Patient from "./pages/Patient/patient";
 import Sample from "./pages/Patient/sample";
 import Search from "./pages/Search/search";
 import CTJ from "./pages/CSV2JSON/csvtojson";
+import store from "./Redux/store";
+import { Provider } from "react-redux";
 
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
@@ -22,17 +24,19 @@ const AppLayout = () => (
 );
 
 root.render(
-  <HashRouter>
-    <Routes>
-      <Route index element={<Login />} />
-      <Route path="/" element={<AppLayout />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="/patient" element={<All />} />
-        <Route path="/patient/:PID" element={<Patient />} />
-        <Route path="/patient/:PID/:SID" element={<Sample />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/csvtojson" element={<CTJ />} />
-      </Route>
-    </Routes>
-  </HashRouter>
+  <Provider store={store}>
+    <HashRouter>
+      <Routes>
+        <Route index element={<Login />} />
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/patient" element={<All />} />
+          <Route path="/patient/:PID" element={<Patient />} />
+          <Route path="/patient/:PID/:SID" element={<Sample />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/csvtojson" element={<CTJ />} />
+        </Route>
+      </Routes>
+    </HashRouter>
+  </Provider>
 );

@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { allPatient } from "../../Redux/Slices/patient";
+import { sampleSlice } from "../../Redux/Slices/sample"
 import Edit from "./edit";
 import Add from "./add";
 import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 
 const Patient = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { PID } = useParams();
-  const [name, setName] = useState("");
-  const [acc, setAcc] = useState([]);
-  const [asam, setAsam] = useState([]);
   const [edited, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
-  const navigate = useNavigate();
+  const acc = useSelector((state) => state.Patient.data);
+  const patientStatus = useSelector((state) => state.Patient.status);
+  const patientError = useSelector((state) => state.Patient.error);
+  const sampleData = useSelector((state) => state.Sample.data);
+  const sampleStatus = useSelector((state) => state.Sample.status);
+  const sampleError = useSelector((state) => state.Sample.error);
 
   const sDel = (SID) => {
     axios
@@ -51,43 +58,44 @@ const Patient = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("/api/patient", { params: { PID } })
-      .then((res) => {
-        setAcc(res.data);
-        setName(res.data[0].name);
-      })
-      .catch((err) => {
-        if (err.response.status === 402) {
-          console.log("fail");
-        } else if (err.response.status === 403) {
-          console.log("Fail");
-        } else {
-          console.log("No server response");
-        }
-      });
-  }, [PID]);
+    dispatch(allPatient({ PID }));
+  }, [ PID]);
+
+  if (patientStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (patientStatus === "failed") {
+    console.log(patientError);
+  }
 
   useEffect(() => {
-    axios
-      .get("/api/Sample", { params: { PID } })
-      .then((res) => {
-        setAsam(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(sampleSlice({ PID }));
   }, [PID]);
+
+  if (sampleStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (sampleStatus === "failed") {
+    console.log(sampleError);
+  }
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-6 overflow-auto">
       <div class="col-span-3 row-span-2 flex h-full w-full items-center justify-center ">
         <div class="flex h-[90%] w-[90%] flex-col items-center justify-center rounded-lg bg-white drop-shadow-md ">
           <AiIcons.AiOutlineUser class="rounded-full border-2 p-2 text-[12rem]" />
-          <label class="mt-5">
-            Name:
-            <span class="ml-2 text-xl font-normal text-graygreen">{name}</span>
-          </label>
+          {acc.map((item) => {
+            return (
+              <label class="mt-5">
+                Name:
+                <span class="ml-2 text-xl font-normal text-graygreen">
+                  {item.name}
+                </span>
+              </label>
+            );
+          })}
         </div>
       </div>
 
@@ -173,8 +181,8 @@ const Patient = () => {
               </tr>
             </thead>
             <tbody>
-              {asam.length > 0 &&
-                asam.map((item, index) => {
+              {sampleData.length > 0 &&
+                sampleData.map((item, index) => {
                   return (
                     <tr key={index}>
                       <th class="border-t-2">{item.SID}</th>

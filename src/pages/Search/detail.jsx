@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import * as AiIcons from "react-icons/ai";
 
 const Detail = (props) => {
-    return props.trigger ? (
-        <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
+  return props.trigger ? (
+    <div class="fixed z-10 grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto bg-gray-600 bg-opacity-70">
       <form
         class="col-span-5 col-start-3 row-span-4 row-start-2 grid h-[95%] w-full animate-fadein grid-cols-7 grid-rows-6 place-self-center rounded-md bg-white drop-shadow-lg"
         // onSubmit={}
@@ -19,14 +19,12 @@ const Detail = (props) => {
           />
         </div>
 
-        <div class="scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2">
-          
-        </div>
+        <div class="scrollbar col-span-7 row-span-4 grid h-[93%] grid-cols-9 overflow-y-auto border-t-2"></div>
       </form>
     </div>
-    ) : (
-        ""
-    );
-}
+  ) : (
+    ""
+  );
+};
 
 export default Detail;

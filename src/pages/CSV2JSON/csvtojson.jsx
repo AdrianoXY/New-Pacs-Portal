@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { allSample } from "../../Redux/Slices/sample";
+import { allFile } from "../../Redux/Slices/file";
 import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
 const Manage = () => {
+  const dispatch = useDispatch();
   const [progressPercentage, setProgressPercentage] = useState([]);
-  const [sample, setSample] = useState([]);
-  const [file, setFile] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const fileData = useSelector((state) => {
+    const data = state.File.data;
+    const filteredData = data.filter((item) => item.filename.endsWith(".csv"));
+    return filteredData;
+  });
+  const sampleData = useSelector((state) => {
+    const data = state.Sample.data;
+    const filteredData = data.filter((sample) =>
+      fileData.some((fileItem) => fileItem.SID === sample.SID)
+    );
+    return filteredData;
+  });
+  const sampleStatus = useSelector((state) => state.Sample.status);
+  const sampleError = useSelector((state) => state.Sample.error);
+  
+  const fileStatus = useSelector((state) => state.File.status);
+  const fileError = useSelector((state) => state.File.error);
 
   const itemsPerPage = 12;
 
@@ -20,7 +39,7 @@ const Manage = () => {
   };
 
   const goToNextPage = () => {
-    if (currentPage < Math.ceil(sample.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(sampleData.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -44,30 +63,28 @@ const Manage = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`/api/file`)
-      .then((res) => {
-        setFile(res.data.filter((item) => item.filename.endsWith(".csv")));
-        console.log(file);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    axios
-      .get(`/api/sample`)
-      .then((res) => {
-        setSample(
-          res.data.filter((sample) =>
-            file.some((fileItem) => fileItem.SID === sample.SID)
-          )
-        );
-        console.log(sample);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(allSample());
   }, []);
+
+  if (sampleStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (sampleStatus === "failed") {
+    console.log(sampleError);
+  }
+
+  useEffect(() => {
+    dispatch(allFile());
+  }, []);
+
+  if (fileStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (fileStatus === "failed") {
+    console.log(fileError);
+  }
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
@@ -106,8 +123,8 @@ const Manage = () => {
               </tr>
             </thead>
             <tbody>
-              {file.map((file, index) => {
-                const pidArray = sample.map((item) => item.PID);
+              {fileData.map((file, index) => {
+                const pidArray = sampleData.map((item) => item.PID);
                 return (
                   <tr key={index}>
                     <th class="border-t-2 ">{pidArray[index]}</th>

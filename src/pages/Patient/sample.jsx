@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { sampleSlice } from "../../Redux/Slices/sample";
+import { fileSlice } from "../../Redux/Slices/file";
 import axios from "../../axios/axios";
 import File from "./file";
 
 const Sample = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { PID, SID } = useParams();
   const [addf, setAddf] = useState(false);
-  const [info, setInfo] = useState([]);
   const [file, setFile] = useState([]);
-  const navigate = useNavigate();
+  const sampleInfo = useSelector((state) => state.Sample.data);
+  const sampleStatus = useSelector((state) => state.Sample.status);
+  const sampleError = useSelector((state) => state.Sample.error);
+  const fileInfo = useSelector((state) => state.File.data);
+  const fileStatus = useSelector((state) => state.File.status);
+  const fileError = useSelector((state) => state.File.error);
 
   const Del = (SID) => {
     axios
@@ -48,26 +57,28 @@ const Sample = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("/api/Sample", { params: { SID } })
-      .then((res) => {
-        setInfo(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(sampleSlice({ SID }));
   }, [SID]);
 
+  if (sampleStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (sampleStatus === "failed") {
+    console.log(sampleError);
+  }
+
   useEffect(() => {
-    axios
-      .get(`/api/file`, { params: { SID } })
-      .then((res) => {
-        setFile(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    dispatch(fileSlice({ SID }));
+  }, [SID]);
+
+  if (fileStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (fileStatus === "failed") {
+    console.log(fileError);
+  }
 
   const formatFileSize = (size) => {
     const units = ["B", "KB", "MB", "GB", "TB"];
@@ -87,7 +98,7 @@ const Sample = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-10 grid-rows-9 overflow-auto">
-      {info.map((item, index) => {
+      {sampleInfo.map((item, index) => {
         return (
           <div
             class="col-span-3 row-span-full flex h-[90%] w-[75%] flex-col items-center justify-center place-self-center rounded-md bg-white drop-shadow-sm"
@@ -238,7 +249,7 @@ const Sample = () => {
             </tr>
           </thead>
           <tbody>
-            {file.map((file) => {
+            {fileInfo.map((file) => {
               const extension = file.filename.split(".").pop().toLowerCase();
 
               if (extension !== "fastq") {
@@ -281,7 +292,7 @@ const Sample = () => {
             </tr>
           </thead>
           <tbody>
-            {file.map((file) => {
+            {fileInfo.map((file) => {
               const extension = file.filename.split(".").pop().toLowerCase();
 
               if (extension !== "bam" && extension !== "bai") {
@@ -324,7 +335,7 @@ const Sample = () => {
             </tr>
           </thead>
           <tbody>
-            {file.map((file) => {
+            {fileInfo.map((file) => {
               const extension = file.filename.split(".").pop().toLowerCase();
 
               if (
@@ -371,7 +382,7 @@ const Sample = () => {
             </tr>
           </thead>
           <tbody>
-            {file.map((file) => {
+            {fileInfo.map((file) => {
               const extension = file.filename.split(".").pop().toLowerCase();
 
               if (extension !== "csv" && extension !== "xlsx") {

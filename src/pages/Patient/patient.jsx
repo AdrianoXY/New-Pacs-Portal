@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allPatient } from "../../Redux/Slices/patient";
-import { sampleSlice } from "../../Redux/Slices/sample"
+import { sampleSlice } from "../../Redux/Slices/sample";
 import Edit from "./edit";
 import Add from "./add";
 import axios from "../../axios/axios";
@@ -59,7 +59,7 @@ const Patient = () => {
 
   useEffect(() => {
     dispatch(allPatient({ PID }));
-  }, [ PID]);
+  }, [PID]);
 
   if (patientStatus === "loading") {
     console.log("loading");

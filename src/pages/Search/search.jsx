@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { csvSlice } from "../../Redux/Slices/csv";
 import View from "./detail";
 import * as AiIcons from "react-icons/ai";
-import axios from "../../axios/axios";
 
 const Search = () => {
   const dispatch = useDispatch();
   const [PID, setPID] = useState("");
   const [SID, setSID] = useState("");
+  const [GID, setGID] = useState("");
   const [view, setView] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const agen = useSelector((state) => state.CSV.data);
@@ -43,8 +43,6 @@ const Search = () => {
   if (agenStatus === "failed") {
     console.log(agenError);
   }
-
-  console.log(agen);
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
@@ -110,7 +108,10 @@ const Search = () => {
                     <th class="border-t-2 ">
                       <button
                         class="h-8 w-20 rounded-md"
-                        onClick={() => setView(true)}
+                        onClick={() => {
+                          setView(true);
+                          setGID(item.GID);
+                        }}
                       >
                         View
                       </button>
@@ -144,8 +145,7 @@ const Search = () => {
           <AiIcons.AiOutlineCaretRight />
         </button>
       </div>
-
-      <View trigger={view} setView={setView} />
+      <View trigger={view} setView={setView} GID={GID} />
     </div>
   );
 };

@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
-import * as BsIcons from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
+import { csvSlice } from "../../Redux/Slices/csv";
+import * as BsIcons from "react-icons/bs";
 import Add from "../Patient/add";
 import axios from "../../axios/axios";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [patient, setPatient] = useState(0);
   const [sample, setSample] = useState(0);
   const [add, setAdd] = useState(false);
+  const agen = useSelector((state) => {
+    const data = state.CSV.data;
+    const lastTenValues = data.slice(-14);
+    return lastTenValues;
+  });
+  const agenStatus = useSelector((state) => state.CSV.status);
+  const agenError = useSelector((state) => state.CSV.error);
 
   useEffect(() => {
     axios.get("/api/count/patient").then((res) => {
@@ -19,6 +29,18 @@ const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+    dispatch(csvSlice({}));
+  }, []);
+
+  if (agenStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (agenStatus === "failed") {
+    console.log(agenError);
+  }
+
   return (
     <div class="grid h-screen w-screen grid-cols-8 grid-rows-6 overflow-auto">
       <div class="col-span-4 row-span-3 flex items-center justify-center drop-shadow-lg">
@@ -26,19 +48,18 @@ const Home = () => {
           class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => navigate("/patient")}
         >
-          <div class="grid w-full grid-cols-2 items-center">
+          <div class="grid w-full h-full grid-cols-2 place-items-center">
             <div class="w-1/2">
               <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl text-blue-900 2xl:text-9xl" />
             </div>
 
-            <div class="row-start-2">
-              <h1 class="ml-3 mt-5 text-5xl text-blue-900">Patient</h1>
-            </div>
-
-            <div class="row-span-2">
+            <div>
               <h1 class="text-center text-8xl text-slate-400">
                 {JSON.stringify(patient)}
               </h1>
+            </div>
+            <div class='col-span-2'>
+              <h1 class="ml-3 mt-5 text-5xl text-blue-900">Patient</h1>
             </div>
           </div>
         </div>
@@ -49,19 +70,18 @@ const Home = () => {
           class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => setAdd(true)}
         >
-          <div class="grid w-full grid-cols-2 items-center">
+          <div class="grid w-full h-full grid-cols-2 place-items-center ">
             <div>
               <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 2xl:text-9xl" />
             </div>
 
-            <div class="row-start-2">
-              <h1 class="ml-3 mt-5 text-5xl text-green-900">Sample</h1>
-            </div>
-
-            <div class="row-span-2">
+            <div>
               <h1 class="text-center text-8xl text-slate-400">
                 {JSON.stringify(sample)}
               </h1>
+            </div>
+            <div class="col-span-2">
+              <h1 class="ml-3 mt-5 text-5xl text-green-900">Sample</h1>
             </div>
           </div>
         </div>
@@ -78,21 +98,27 @@ const Home = () => {
             </caption>
             <thead class="sticky">
               <tr>
-                <th class="border-b-2">No.</th>
-                <th class="border-b-2">File Name</th>
-                <th class="border-b-2">Status</th>
-                <th class="border-b-2">Process Rate</th>
-                <th class="border-b-2">Operation</th>
+                <th class="border-b-2">GID</th>
+                <th class="border-b-2">Chr</th>
+                <th class="border-b-2">Ref</th>
+                <th class="border-b-2">Alt</th>
+                <th class="border-b-2">Start</th>
+                <th class="border-b-2">End</th>
               </tr>
             </thead>
             <tbody class="overflow-y-scroll">
-              <tr>
-                <td class="border-t-2 text-center">1</td>
-                <td class="border-t-2 text-center">70146</td>
-                <td class="border-t-2 text-center">77701</td>
-                <td class="border-t-2 text-center">72212</td>
-                <td class="border-t-2 text-center">AAAGAATACTTTTAC</td>
+              {agen.map((item,index) => {
+                return(
+                  <tr key={index}>
+                <td class="border-t-2 text-center">{item.GID}</td>
+                <td class="border-t-2 text-center">{item.Chr}</td>
+                <td class="border-t-2 text-center">{item.Ref}</td>
+                <td class="border-t-2 text-center">{item.Alt}</td>
+                <td class="border-t-2 text-center">{item.Start}</td>
+                <td class="border-t-2 text-center">{item.End}</td>
               </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

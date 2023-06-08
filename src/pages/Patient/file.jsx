@@ -42,7 +42,7 @@ const File = (props) => {
       })
       .catch((err) => {
         if (!err.response) {
-          alert(formData.file);
+          alert("error");
         } else if (err.response.status === 403) {
           alert("Upload Fail!");
         }

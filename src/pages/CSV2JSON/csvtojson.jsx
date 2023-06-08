@@ -89,7 +89,7 @@ const Manage = () => {
 
     if (fileData.length > 0) {
       for (let index = 0; index < fileData.length; index++) {
-        progressPercentage.push(0);
+        progressPercentage.push("undone");
       }
     }
   }
@@ -138,20 +138,7 @@ const Manage = () => {
                     <th class="border-t-2 ">{pidArray[index]}</th>
                     <th class="border-t-2 ">{file.SID}</th>
                     <th class="border-t-2 ">{file.filename}</th>
-                    <th class="border-t-2 ">
-                      <div class="flex w-full items-center justify-center">
-                        <div class="h-3 w-52 rounded-md bg-gray-300 ">
-                          <div
-                            style={{ width: `${progressPercentage[index]}%` }}
-                            class={`h-full rounded-md ${
-                              progressPercentage < 70
-                                ? "bg-red-600"
-                                : "bg-green-600"
-                            }`}
-                          />
-                        </div>
-                      </div>
-                    </th>
+                    <th class="border-t-2 ">{progressPercentage[index]}</th>
                     <th class="border-t-2">
                       <button
                         class="h-10 w-36 rounded-md"

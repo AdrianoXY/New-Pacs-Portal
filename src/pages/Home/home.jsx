@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { csvSlice } from "../../Redux/Slices/csv";
 import * as BsIcons from "react-icons/bs";
 import Add from "../Patient/add";
@@ -48,7 +48,7 @@ const Home = () => {
           class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => navigate("/patient")}
         >
-          <div class="grid w-full h-full grid-cols-2 place-items-center">
+          <div class="grid h-full w-full grid-cols-2 place-items-center">
             <div class="w-1/2">
               <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl text-blue-900 2xl:text-9xl" />
             </div>
@@ -58,7 +58,7 @@ const Home = () => {
                 {JSON.stringify(patient)}
               </h1>
             </div>
-            <div class='col-span-2'>
+            <div class="col-span-2">
               <h1 class="ml-3 mt-5 text-5xl text-blue-900">Patient</h1>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Home = () => {
           class="h-[55%] w-1/2 cursor-pointer rounded-xl bg-white transition-all duration-300 ease-in-out hover:h-[58%] hover:w-[55%] hover:transition-all hover:duration-300 hover:ease-in-out"
           onClick={() => setAdd(true)}
         >
-          <div class="grid w-full h-full grid-cols-2 place-items-center ">
+          <div class="grid h-full w-full grid-cols-2 place-items-center ">
             <div>
               <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 2xl:text-9xl" />
             </div>
@@ -107,17 +107,17 @@ const Home = () => {
               </tr>
             </thead>
             <tbody class="overflow-y-scroll">
-              {agen.map((item,index) => {
-                return(
+              {agen.map((item, index) => {
+                return (
                   <tr key={index}>
-                <td class="border-t-2 text-center">{item.GID}</td>
-                <td class="border-t-2 text-center">{item.Chr}</td>
-                <td class="border-t-2 text-center">{item.Ref}</td>
-                <td class="border-t-2 text-center">{item.Alt}</td>
-                <td class="border-t-2 text-center">{item.Start}</td>
-                <td class="border-t-2 text-center">{item.End}</td>
-              </tr>
-                )
+                    <td class="border-t-2 text-center">{item.GID}</td>
+                    <td class="border-t-2 text-center">{item.Chr}</td>
+                    <td class="border-t-2 text-center">{item.Ref}</td>
+                    <td class="border-t-2 text-center">{item.Alt}</td>
+                    <td class="border-t-2 text-center">{item.Start}</td>
+                    <td class="border-t-2 text-center">{item.End}</td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>

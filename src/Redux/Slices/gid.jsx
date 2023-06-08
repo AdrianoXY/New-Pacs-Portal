@@ -1,13 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios/axios";
 
-export const csvGID = createAsyncThunk(
-  "csv/csvGID",
-  async ({ GID }) => {
-    const res = await axios.get("/api/csv", { params: { GID } });
-    return res.data;
-  }
-);
+export const csvGID = createAsyncThunk("csv/csvGID", async ({ GID }) => {
+  const res = await axios.get("/api/csv", { params: { GID } });
+  return res.data;
+});
 
 const Csv = createSlice({
   name: "csv",

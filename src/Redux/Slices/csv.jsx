@@ -3,8 +3,8 @@ import axios from "../../axios/axios";
 
 export const csvSlice = createAsyncThunk(
   "csv/csvSlice",
-  async ({ PID, SID,limit }) => {
-    const res = await axios.get("/api/csv", { params: { PID, SID,limit } });
+  async ({ PID, SID, limit }) => {
+    const res = await axios.get("/api/csv", { params: { PID, SID, limit } });
     return res.data;
   }
 );
@@ -29,7 +29,7 @@ const Csv = createSlice({
       .addCase(csvSlice.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
+      });
   },
 });
 

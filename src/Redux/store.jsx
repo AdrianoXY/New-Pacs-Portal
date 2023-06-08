@@ -3,7 +3,7 @@ import patient from "./Slices/patient";
 import sample from "./Slices/sample";
 import file from "./Slices/file";
 import csv from "./Slices/csv";
-import gid from "./Slices/gid"
+import gid from "./Slices/gid";
 
 export default configureStore({
   reducer: {

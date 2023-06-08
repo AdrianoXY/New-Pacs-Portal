@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
 const File = (props) => {
-  const { PID, SID } = props;
+  const { SID } = props;
   const [file, setFile] = useState([]);
 
   const handleFileSelect = (e) => {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allSample } from "../../Redux/Slices/sample";
 import { allFile } from "../../Redux/Slices/file";
-import { csvSlice } from "../../Redux/Slices/csv";
 import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
@@ -131,7 +130,7 @@ const Manage = () => {
               </tr>
             </thead>
             <tbody>
-              {fileData.map((file, index) => {
+              {fileData.slice(startIndex, endIndex).map((file, index) => {
                 const pidArray = sampleData.map((item) => item.PID);
                 return (
                   <tr key={index}>

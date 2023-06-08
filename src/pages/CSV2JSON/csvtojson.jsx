@@ -7,8 +7,8 @@ import axios from "../../axios/axios";
 
 const Manage = () => {
   const dispatch = useDispatch();
-  const [progressPercentage, setProgressPercentage] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isMounted, setIsMounted] = useState(false);
   const fileData = useSelector((state) => {
     const data = state.File.data;
     const filteredData = data.filter((item) => item.filename.endsWith(".csv"));
@@ -23,7 +23,6 @@ const Manage = () => {
   });
   const sampleStatus = useSelector((state) => state.Sample.status);
   const sampleError = useSelector((state) => state.Sample.error);
-
   const fileStatus = useSelector((state) => state.File.status);
   const fileError = useSelector((state) => state.File.error);
 
@@ -76,10 +75,6 @@ const Manage = () => {
 
   useEffect(() => {
     dispatch(allFile());
-    setProgressPercentage([]);
-    for (let index = 0; index < fileData.length; index++) {
-      progressPercentage.push(0);
-    }
   }, []);
 
   if (fileStatus === "loading") {
@@ -89,6 +84,16 @@ const Manage = () => {
   if (fileStatus === "failed") {
     console.log(fileError);
   }
+
+  if(fileData.length > 0 ) {
+    var progressPercentage = [];
+      if(fileData.length > 0){
+        for (let index = 0; index < fileData.length; index++) {
+          progressPercentage.push(0);
+        }
+      }
+  }
+  
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">

@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { csvSlice } from "../../Redux/Slices/csv";
 import View from "./detail";
 import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
 const Search = () => {
-  const [agen, setAgen] = useState([]);
+  const dispatch = useDispatch();
+  const [PID, setPID] = useState("");
+  const [SID, setSID] = useState("");
   const [view, setView] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const agen = useSelector((state) => state.CSV.data);
+  const agenStatus = useSelector((state) => state.CSV.status);
+  const agenError = useSelector((state) => state.CSV.error);
+
   const itemsPerPage = 12;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -26,27 +33,35 @@ const Search = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("/api/csv")
-      .then((res) => {
-        {
-          setAgen(res.data);
-          console.log(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    dispatch(csvSlice({ PID, SID }));
+  }, [dispatch, PID, SID]);
+
+  if (agenStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (agenStatus === "failed") {
+    console.log(agenError);
+  }
+
+  console.log(agen);
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
       <div class="col-span-2 col-start-2 place-self-center">
-        <input class="h-12 w-52  rounded-lg border-2" placeholder="PID" />
+        <input
+          class="h-12 w-52  rounded-lg border-2"
+          onChange={(e) => setPID(e.target.value)}
+          placeholder="PID"
+        />
       </div>
 
       <div class="col-span-2 place-self-center">
-        <input class="h-12 w-52 rounded-lg border-2" placeholder="SID" />
+        <input
+          class="h-12 w-52 rounded-lg border-2"
+          onChange={(e) => setSID(e.target.value)}
+          placeholder="SID"
+        />
       </div>
 
       <div class="col-span-4 flex -translate-y-3 flex-col place-self-center">

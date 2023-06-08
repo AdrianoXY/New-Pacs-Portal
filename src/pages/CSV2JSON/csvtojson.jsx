@@ -8,7 +8,6 @@ import axios from "../../axios/axios";
 const Manage = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const [isMounted, setIsMounted] = useState(false);
   const fileData = useSelector((state) => {
     const data = state.File.data;
     const filteredData = data.filter((item) => item.filename.endsWith(".csv"));
@@ -85,16 +84,15 @@ const Manage = () => {
     console.log(fileError);
   }
 
-  if(fileData.length > 0 ) {
+  if (fileData.length > 0) {
     var progressPercentage = [];
 
-      if(fileData.length > 0){
-        for (let index = 0; index < fileData.length; index++) {
-          progressPercentage.push(0);
-        }
+    if (fileData.length > 0) {
+      for (let index = 0; index < fileData.length; index++) {
+        progressPercentage.push(0);
       }
+    }
   }
-  
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">

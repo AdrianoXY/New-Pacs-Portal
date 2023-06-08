@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allSample } from "../../Redux/Slices/sample";
 import { allFile } from "../../Redux/Slices/file";
+import { csvSlice } from "../../Redux/Slices/csv";
 import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
@@ -43,7 +44,6 @@ const Manage = () => {
   };
 
   const Conversion = (PID, SID, fileID, index) => {
-    console.log(PID, SID, fileID);
     axios
       .post("/api/csv", JSON.stringify({ PID, SID, fileID }))
       .then((res) => {

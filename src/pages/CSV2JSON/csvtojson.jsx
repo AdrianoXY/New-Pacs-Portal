@@ -87,6 +87,7 @@ const Manage = () => {
 
   if(fileData.length > 0 ) {
     var progressPercentage = [];
+
       if(fileData.length > 0){
         for (let index = 0; index < fileData.length; index++) {
           progressPercentage.push(0);

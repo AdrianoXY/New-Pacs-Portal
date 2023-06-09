@@ -14,7 +14,7 @@ const Home = () => {
   const [add, setAdd] = useState(false);
   const agen = useSelector((state) => {
     const data = state.CSV.data;
-    const lastTenValues = data.slice(-14);
+    const lastTenValues = data.slice(-13);
     return lastTenValues;
   });
   const agenStatus = useSelector((state) => state.CSV.status);
@@ -106,7 +106,7 @@ const Home = () => {
                 <th class="border-b-2">End</th>
               </tr>
             </thead>
-            <tbody class="overflow-y-scroll">
+            <tbody>
               {agen.map((item, index) => {
                 return (
                   <tr key={index}>

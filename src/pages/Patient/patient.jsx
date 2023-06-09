@@ -161,11 +161,12 @@ const Patient = () => {
         <div class="flex h-[96.5%] w-[95%] flex-col items-center rounded-lg bg-white drop-shadow-md">
           <div class="flex w-full items-center justify-between">
             <label class="ml-5 mt-5 text-5xl font-black">Sample</label>
-            <button class="mr-10 mt-5 flex h-12 w-52 flex-row items-center justify-center rounded-md">
+            <button
+              class="mr-10 mt-5 flex h-12 w-52 flex-row items-center justify-center rounded-md"
+              onClick={() => setAdd(true)}
+            >
               <AiIcons.AiFillFolderAdd class="text-4xl" />
-              <h2 class="text-2xl" onClick={() => setAdd(true)}>
-                Add Sample
-              </h2>
+              <h2 class="text-2xl">Add Sample</h2>
             </button>
           </div>
 

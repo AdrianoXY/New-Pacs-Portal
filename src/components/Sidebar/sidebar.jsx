@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { SidebarData } from "./data";
 import { Link, useNavigate } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
 import * as RiIcons from "react-icons/ri";
+import myImage from "./Logo.jpg";
 import axios from "../../axios/axios";
 
 const Sidebar = () => {
@@ -46,62 +46,29 @@ const Sidebar = () => {
 
   return (
     <div
-      class="grid h-screen w-[80px] bg-gren transition-all delay-75 duration-500 hover:w-[250px] hover:transition-all hover:duration-500"
+      class="grid h-screen w-[80px] bg-gren transition-all delay-75 duration-500 "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseOut}
     >
-      <div
-        class={`${
-          isHovered
-            ? "rounded-2xl p-6 text-3xl text-white transition-all delay-200"
-            : "p-6 text-3xl text-white delay-200"
-        }`}
-      >
-        <span>
-          <FaIcons.FaRegUserCircle />
-        </span>
-        <div
-          class={`${
-            isHovered
-              ? "pt-5 text-white delay-150 duration-500"
-              : "opacity-0 delay-150 duration-500"
-          }`}
-        >
-          <span class="cursor-pointer">Username</span>
-        </div>
+      <div>
+        <img src={myImage} class="rounded-full p-2" />
       </div>
 
       {SidebarData.map((item, index) => {
         return (
           <div key={index} class="flex space-x-4">
             <Link to={item.path} class="grid grid-cols-2 items-start">
-              <span class="p-6 pt-5 text-3xl text-white">{item.icon}</span>
-              <div
-                class={`${
-                  isHovered
-                    ? "pt-6 text-white delay-150 duration-500"
-                    : "opacity-0 delay-150 duration-500"
-                }`}
-              >
-                {item.title}
-              </div>
+              <span class="p-6 pt-5 text-3xl text-white hover:text-5xl hover:transition-all hover:p-4 hover:duration-200">
+                {item.icon}
+              </span>
             </Link>
           </div>
         );
       })}
 
       <div class="flex p-6 text-white" onClick={Logout}>
-        <span class="items-start text-3xl">
+        <span class="cursor-pointer items-start text-3xl ">
           <RiIcons.RiLogoutCircleLine />
-        </span>
-        <span
-          class={`${
-            isHovered
-              ? "cursor-pointer pt-1 text-white delay-150 duration-500"
-              : "opacity-0 delay-150 duration-500"
-          }`}
-        >
-          Logout
         </span>
       </div>
     </div>

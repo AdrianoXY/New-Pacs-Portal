@@ -46,22 +46,34 @@ tbody tr {
 
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
-    width: 20px;
-    height: 20px;
+    width: 0.5em;
+    background-color: transparent;
   }
 
-  .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background: #f7f4ed;
-  }
-
+  /* 滾動條滾動時的樣式 */
   .scrollbar::-webkit-scrollbar-thumb {
-    background: #05ac90;
-    border-radius: 100vh;
-    border: 3px solid #f6f7ed;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.25em;
   }
 
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #05ac0d;
+  /* 滾動條的輪廓 */
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  /* 滾動條的角落 */
+  .scrollbar::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  /* 滾動條在 hover 時顯示 */
+  .scrollbar::-webkit-scrollbar:hover {
+    width: 0.5em;
+  }
+
+  /* 滾動條在 hover 時顯示，滾動時持續顯示 */
+  .scroll::-webkit-scrollbar-thumb:hover,
+  .scroll::-webkit-scrollbar-thumb:active {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }

@@ -50,7 +50,7 @@ const Home = () => {
         >
           <div class="grid h-full w-full grid-cols-2 place-items-center">
             <div class="w-1/2">
-              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-6xl text-blue-900 2xl:text-9xl" />
+              <BsIcons.BsPeopleFill class="ml-2 mt-5 text-8xl text-blue-900" />
             </div>
 
             <div>
@@ -72,7 +72,7 @@ const Home = () => {
         >
           <div class="grid h-full w-full grid-cols-2 place-items-center ">
             <div>
-              <BsIcons.BsClipboardData class="ml-2 mt-5 text-6xl text-green-900 2xl:text-9xl" />
+              <BsIcons.BsClipboardData class="ml-2 mt-5 text-8xl text-green-900" />
             </div>
 
             <div>
@@ -88,39 +88,41 @@ const Home = () => {
       </div>
 
       <div
-        class="col-span-4 col-start-5 row-span-6 flex h-[88%] w-5/6 cursor-pointer flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg transition-all duration-300 ease-in-out hover:h-[90%] hover:w-[85%] hover:transition-all hover:duration-300 hover:ease-in-out "
+        class="col-span-4 col-start-5 row-span-6 flex h-[85%] w-5/6 cursor-pointer flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg"
         onClick={() => navigate("/search")}
       >
-        <div class="flex h-5/6 w-full flex-col items-center">
-          <table class="mt-5 w-[90%] table-auto">
-            <caption class="mb-4 text-left text-5xl font-black text-blue-400">
-              Variation Point
-            </caption>
-            <thead class="sticky">
-              <tr>
-                <th class="border-b-2">GID</th>
-                <th class="border-b-2">Chr</th>
-                <th class="border-b-2">Ref</th>
-                <th class="border-b-2">Alt</th>
-                <th class="border-b-2">Start</th>
-                <th class="border-b-2">End</th>
-              </tr>
-            </thead>
-            <tbody>
-              {agen.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td class="border-t-2 text-center">{item.GID}</td>
-                    <td class="border-t-2 text-center">{item.Chr}</td>
-                    <td class="border-t-2 text-center">{item.Ref}</td>
-                    <td class="border-t-2 text-center">{item.Alt}</td>
-                    <td class="border-t-2 text-center">{item.Start}</td>
-                    <td class="border-t-2 text-center">{item.End}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div class="flex h-[95%] w-full flex-col items-center">
+          <h1 class="mt-4 text-5xl font-black text-blue-400">
+            Variation Point
+          </h1>
+          <div class="mt-5 w-[90%] overflow-y-hidden">
+            <table class="w-full table-auto">
+              <thead class="sticky top-0 bg-white">
+                <tr>
+                  <th class="border-b-2 px-6 py-3">GID</th>
+                  <th class="border-b-2 px-6 py-3">Chr</th>
+                  <th class="border-b-2 px-6 py-3">Ref</th>
+                  <th class="border-b-2 px-6 py-3">Alt</th>
+                  <th class="border-b-2 px-6 py-3">Start</th>
+                  <th class="border-b-2 px-6 py-3">End</th>
+                </tr>
+              </thead>
+              <tbody class="h-[100%] divide-y">
+                {agen.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td class="text-center">{item.GID}</td>
+                      <td class="text-center">{item.Chr}</td>
+                      <td class="text-center">{item.Ref}</td>
+                      <td class="text-center">{item.Alt}</td>
+                      <td class="text-center">{item.Start}</td>
+                      <td class="text-center">{item.End}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

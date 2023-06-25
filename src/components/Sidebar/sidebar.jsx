@@ -58,7 +58,7 @@ const Sidebar = () => {
         return (
           <div key={index} class="flex space-x-4">
             <Link to={item.path} class="grid grid-cols-2 items-start">
-              <span class="p-6 pt-5 text-3xl text-white hover:text-5xl hover:transition-all hover:p-4 hover:duration-200">
+              <span class="p-6 pt-5 text-3xl text-white hover:p-4 hover:text-5xl hover:transition-all hover:duration-200">
                 {item.icon}
               </span>
             </Link>

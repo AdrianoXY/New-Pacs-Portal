@@ -21,7 +21,7 @@ const Sample = () => {
 
   const Del = (SID) => {
     axios
-      .delete(`/api/Sample/${SID}`)
+      .delete(`/api/Sample/${SID}`, JSON.stringify(PID))
       .then((response) => {
         if (response.status === 200) {
           alert("Delete Successfully!");

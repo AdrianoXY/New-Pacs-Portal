@@ -48,6 +48,7 @@ const Manage = () => {
       .then((res) => {
         if (res.status === 200) {
           alert("Conversion Successfully!");
+          window.location.reload();
         }
       })
       .catch((err) => {
@@ -58,6 +59,8 @@ const Manage = () => {
         }
       });
   };
+
+  console.log(fileData);
 
   useEffect(() => {
     dispatch(allSample());
@@ -137,7 +140,7 @@ const Manage = () => {
                     <th class="border-t-2 ">{pidArray[index]}</th>
                     <th class="border-t-2 ">{file.SID}</th>
                     <th class="border-t-2 ">{file.filename}</th>
-                    <th class="border-t-2 ">{progressPercentage[index]}</th>
+                    <th class="border-t-2 ">{file.state}</th>
                     <th class="border-t-2">
                       <button
                         class="h-10 w-36 rounded-md"

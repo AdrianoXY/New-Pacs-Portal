@@ -99,12 +99,12 @@ const Home = () => {
             <table class="w-full table-auto">
               <thead class="sticky top-0 bg-white">
                 <tr>
-                  <th class="border-b-2 px-6 py-3">GID</th>
-                  <th class="border-b-2 px-6 py-3">Chr</th>
-                  <th class="border-b-2 px-6 py-3">Ref</th>
-                  <th class="border-b-2 px-6 py-3">Alt</th>
-                  <th class="border-b-2 px-6 py-3">Start</th>
-                  <th class="border-b-2 px-6 py-3">End</th>
+                  <th class="border-b-2">GID</th>
+                  <th class="border-b-2">Chr</th>
+                  <th class="border-b-2">Ref</th>
+                  <th class="border-b-2">Alt</th>
+                  <th class="border-b-2">Start</th>
+                  <th class="border-b-2">End</th>
                 </tr>
               </thead>
               <tbody class="h-[100%] divide-y">

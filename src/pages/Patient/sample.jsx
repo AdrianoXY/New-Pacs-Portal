@@ -268,7 +268,7 @@ const Sample = () => {
                         class="h-10 w-20 rounded-md bg-red-600"
                         onClick={() =>
                           window.confirm("Are you sure to delete?") &&
-                          Delf(file.FID)
+                          Delf(file._id)
                         }
                       >
                         Delete
@@ -311,7 +311,7 @@ const Sample = () => {
                         class="h-10 w-20 rounded-md bg-red-600"
                         onClick={() =>
                           window.confirm("Are you sure to delete?") &&
-                          Delf(file.FID)
+                          Delf(file._id)
                         }
                       >
                         Delete
@@ -360,7 +360,7 @@ const Sample = () => {
                         class="h-10 w-20 rounded-md bg-red-600"
                         onClick={() =>
                           window.confirm("Are you sure to delete?") &&
-                          Delf(file.FID)
+                          Delf(file._id)
                         }
                       >
                         Delete
@@ -405,7 +405,7 @@ const Sample = () => {
                         class="h-10 w-20 rounded-md bg-red-600"
                         onClick={() =>
                           window.confirm("Are you sure to delete?") &&
-                          Delf(file.FID)
+                          Delf(file._id)
                         }
                       >
                         Delete

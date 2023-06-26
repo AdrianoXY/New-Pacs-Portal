@@ -44,7 +44,7 @@ const Sample = () => {
         if (response.status === 200) {
           alert("Delete Successfully!");
           console.log(FID);
-          // window.location.reload();
+          window.location.reload();
         }
       })
       .catch((err) => {
@@ -237,180 +237,186 @@ const Sample = () => {
       </div>
 
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
-          <caption class="text-left text-2xl font-semibold">
-            Sequencing raw data(.fastq)
-          </caption>
-          <thead>
-            <tr>
-              <th class="border-b-2">File Name</th>
-              <th class="border-b-2">File Size</th>
-              <th class="border-b-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fileInfo.map((file) => {
-              const extension = file.filename.split(".").pop().toLowerCase();
+        <h1 class="text-left text-2xl font-semibold">
+          Sequencing raw data(.fastq)
+        </h1>
+        <div class="scrollbar h-[80%] w-[95%] overflow-y-auto">
+          <table class="w-full table-fixed rounded-md bg-white drop-shadow-sm">
+            <thead class="sticky top-0 bg-white">
+              <tr>
+                <th class="border-b-2">File Name</th>
+                <th class="border-b-2">File Size</th>
+                <th class="border-b-2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              {fileInfo.map((file) => {
+                const extension = file.filename.split(".").pop().toLowerCase();
 
-              if (extension !== "fastq") {
-                return null;
-              }
+                if (extension !== "fastq") {
+                  return null;
+                }
 
-              const fileSize = formatFileSize(file.size);
+                const fileSize = formatFileSize(file.size);
 
-              return (
-                <tr key={file._id}>
-                  <th class="border-t-2">{file.filename}</th>
-                  <th class="border-t-2">{fileSize}</th>
-                  <th class="border-t-2">
-                    <button
-                      class="h-10 w-20 rounded-md bg-red-600"
-                      onClick={() =>
-                        window.confirm("Are you sure to delete?") &&
-                        Delf(file.FID)
-                      }
-                    >
-                      Delete
-                    </button>
-                  </th>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                return (
+                  <tr key={file._id}>
+                    <th>{file.filename}</th>
+                    <th>{fileSize}</th>
+                    <th>
+                      <button
+                        class="h-10 w-20 rounded-md bg-red-600"
+                        onClick={() =>
+                          window.confirm("Are you sure to delete?") &&
+                          Delf(file.FID)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </th>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
-          <caption class="text-left text-2xl font-semibold">
-            Alignment(.bam,.bai)
-          </caption>
-          <thead>
-            <tr>
-              <th class="border-b-2">File Name</th>
-              <th class="border-b-2">File Size</th>
-              <th class="border-b-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fileInfo.map((file) => {
-              const extension = file.filename.split(".").pop().toLowerCase();
+        <h1 class="text-left text-2xl font-semibold">Alignment(.bam,.bai)</h1>
+        <div class="scrollbar h-[80%] w-[95%] overflow-y-auto">
+          <table class="w-full table-fixed rounded-md bg-white drop-shadow-sm">
+            <thead class="sticky top-0 bg-white">
+              <tr>
+                <th class="border-b-2">File Name</th>
+                <th class="border-b-2">File Size</th>
+                <th class="border-b-2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              {fileInfo.map((file) => {
+                const extension = file.filename.split(".").pop().toLowerCase();
 
-              if (extension !== "bam" && extension !== "bai") {
-                return null;
-              }
+                if (extension !== "bam" && extension !== "bai") {
+                  return null;
+                }
 
-              const fileSize = formatFileSize(file.size);
+                const fileSize = formatFileSize(file.size);
 
-              return (
-                <tr key={file._id}>
-                  <th class="border-t-2">{file.filename}</th>
-                  <th class="border-t-2">{fileSize}</th>
-                  <th class="border-t-2">
-                    <button
-                      class="h-10 w-20 rounded-md bg-red-600"
-                      onClick={() =>
-                        window.confirm("Are you sure to delete?") &&
-                        Delf(file.FID)
-                      }
-                    >
-                      Delete
-                    </button>
-                  </th>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                return (
+                  <tr key={file._id}>
+                    <th>{file.filename}</th>
+                    <th>{fileSize}</th>
+                    <th>
+                      <button
+                        class="h-10 w-20 rounded-md bg-red-600"
+                        onClick={() =>
+                          window.confirm("Are you sure to delete?") &&
+                          Delf(file.FID)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </th>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
-          <caption class="text-left text-2xl font-semibold">
-            Variant calling (.vcf, .tbi, .idx)
-          </caption>
-          <thead>
-            <tr>
-              <th class="border-b-2">File Name</th>
-              <th class="border-b-2">File Size</th>
-              <th class="border-b-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fileInfo.map((file) => {
-              const extension = file.filename.split(".").pop().toLowerCase();
+        <h1 class="text-left text-2xl font-semibold">
+          Variant calling (.vcf, .tbi, .idx)
+        </h1>
+        <div class="scrollbar h-[80%] w-[95%] overflow-y-auto">
+          <table class="w-full table-fixed rounded-md bg-white drop-shadow-sm">
+            <thead class="sticky top-0 bg-white">
+              <tr>
+                <th class="border-b-2">File Name</th>
+                <th class="border-b-2">File Size</th>
+                <th class="border-b-2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              {fileInfo.map((file) => {
+                const extension = file.filename.split(".").pop().toLowerCase();
 
-              if (
-                extension !== "vcf" &&
-                extension !== "tbi" &&
-                extension !== "idx"
-              ) {
-                return null;
-              }
+                if (
+                  extension !== "vcf" &&
+                  extension !== "tbi" &&
+                  extension !== "idx"
+                ) {
+                  return null;
+                }
 
-              const fileSize = formatFileSize(file.size);
+                const fileSize = formatFileSize(file.size);
 
-              return (
-                <tr key={file._id}>
-                  <th class="border-t-2">{file.filename}</th>
-                  <th class="border-t-2">{fileSize}</th>
-                  <th class="border-t-2">
-                    <button
-                      class="h-10 w-20 rounded-md bg-red-600"
-                      onClick={() =>
-                        window.confirm("Are you sure to delete?") &&
-                        Delf(file.FID)
-                      }
-                    >
-                      Delete
-                    </button>
-                  </th>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                return (
+                  <tr key={file._id}>
+                    <th>{file.filename}</th>
+                    <th>{fileSize}</th>
+                    <th>
+                      <button
+                        class="h-10 w-20 rounded-md bg-red-600"
+                        onClick={() =>
+                          window.confirm("Are you sure to delete?") &&
+                          Delf(file.FID)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </th>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="col-span-7 col-start-4 row-span-2">
-        <table class="w-[95%] table-fixed rounded-md bg-white drop-shadow-sm">
-          <caption class="text-left text-2xl font-semibold">
-            Annotation (.csv, .xlsx)
-          </caption>
-          <thead>
-            <tr>
-              <th class="border-b-2">File Name</th>
-              <th class="border-b-2">File Size</th>
-              <th class="border-b-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fileInfo.map((file) => {
-              const extension = file.filename.split(".").pop().toLowerCase();
+        <h1 class="text-left text-2xl font-semibold">
+          Annotation (.csv, .xlsx)
+        </h1>
+        <div class="scrollbar h-[80%] w-[95%] overflow-y-auto">
+          <table class="w-full table-fixed rounded-md bg-white drop-shadow-sm">
+            <thead class="sticky top-0 bg-white">
+              <tr>
+                <th class="border-b-2">File Name</th>
+                <th class="border-b-2">File Size</th>
+                <th class="border-b-2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              {fileInfo.map((file) => {
+                const extension = file.filename.split(".").pop().toLowerCase();
 
-              if (extension !== "csv" && extension !== "xlsx") {
-                return null;
-              }
+                if (extension !== "csv" && extension !== "xlsx") {
+                  return null;
+                }
 
-              const fileSize = formatFileSize(file.size);
+                const fileSize = formatFileSize(file.size);
 
-              return (
-                <tr key={file._id}>
-                  <th class="border-t-2">{file.filename}</th>
-                  <th class="border-t-2">{fileSize}</th>
-                  <th class="border-t-2">
-                    <button
-                      class="h-10 w-20 rounded-md bg-red-600"
-                      onClick={() =>
-                        window.confirm("Are you sure to delete?") &&
-                        Delf(file.FID)
-                      }
-                    >
-                      Delete
-                    </button>
-                  </th>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                return (
+                  <tr key={file._id}>
+                    <th>{file.filename}</th>
+                    <th>{fileSize}</th>
+                    <th>
+                      <button
+                        class="h-10 w-20 rounded-md bg-red-600"
+                        onClick={() =>
+                          window.confirm("Are you sure to delete?") &&
+                          Delf(file.FID)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </th>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <File trigger={addf} setAddf={setAddf} PID={PID} SID={SID} />

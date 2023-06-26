@@ -82,45 +82,47 @@ const Search = () => {
       </div>
 
       <div class="col-span-full col-start-1 row-span-6 row-start-2 flex h-[95%] w-[95%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
-        <div class="flex justify-center">
-          <table class="mt-5 w-[95%] table-auto">
-            <thead>
-              <tr>
-                <th class=" border-b-4">PID</th>
-                <th class=" border-b-4">SID</th>
-                <th class=" border-b-4">GID</th>
-                <th class=" border-b-4">Ref</th>
-                <th class=" border-b-4">Start</th>
-                <th class=" border-b-4">End</th>
-                <th class=" border-b-4">Active</th>
-              </tr>
-            </thead>
-            <tbody class="overflow-y-auto">
-              {agen.slice(startIndex, endIndex).map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <th class="border-t-2 ">{item.PID}</th>
-                    <th class="border-t-2 ">{item.SID}</th>
-                    <th class="border-t-2 ">{item.GID}</th>
-                    <th class="border-t-2 ">{item.Chr}</th>
-                    <th class="border-t-2 ">{item.Start}</th>
-                    <th class="border-t-2 ">{item.End}</th>
-                    <th class="border-t-2 ">
-                      <button
-                        class="h-8 w-20 rounded-md"
-                        onClick={() => {
-                          setView(true);
-                          setGID(item.GID);
-                        }}
-                      >
-                        View
-                      </button>
-                    </th>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div class="flex h-[95%] justify-center">
+          <div class="scrollbar mt-5 w-[95%] overflow-y-auto">
+            <table class="w-full table-auto">
+              <thead class="sticky top-0 bg-white">
+                <tr>
+                  <th class=" border-b-4">PID</th>
+                  <th class=" border-b-4">SID</th>
+                  <th class=" border-b-4">GID</th>
+                  <th class=" border-b-4">Ref</th>
+                  <th class=" border-b-4">Start</th>
+                  <th class=" border-b-4">End</th>
+                  <th class=" border-b-4">Active</th>
+                </tr>
+              </thead>
+              <tbody class=" divide-y">
+                {agen.slice(startIndex, endIndex).map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <th>{item.PID}</th>
+                      <th>{item.SID}</th>
+                      <th>{item.GID}</th>
+                      <th>{item.Chr}</th>
+                      <th>{item.Start}</th>
+                      <th>{item.End}</th>
+                      <th>
+                        <button
+                          class="h-8 w-20 rounded-md"
+                          onClick={() => {
+                            setView(true);
+                            setGID(item.GID);
+                          }}
+                        >
+                          View
+                        </button>
+                      </th>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

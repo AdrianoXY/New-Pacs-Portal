@@ -170,53 +170,55 @@ const Patient = () => {
             </button>
           </div>
 
-          <table class="w-[95%] table-auto">
-            <thead>
-              <tr>
-                <th class="border-b-2">SID</th>
-                <th class="border-b-2">External Identifier</th>
-                <th class="border-b-2">Accession Identifier</th>
-                <th class="border-b-2">Type</th>
-                <th class="border-b-2">Received Time</th>
-                <th class="border-b-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sampleData.length > 0 &&
-                sampleData.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <th class="border-t-2">{item.SID}</th>
-                      <th class="border-t-2">{item.External}</th>
-                      <th class="border-t-2">{item.Accession}</th>
-                      <th class="border-t-2">{item.type}</th>
-                      <th class="border-t-2">{item.Receivedtime}</th>
-                      <th class="border-t-2">
-                        <div class="flex flex-row items-center justify-around">
-                          <button
-                            class="h-10 w-20"
-                            onClick={() =>
-                              navigate(`/patient/${PID}/${item.SID}`)
-                            }
-                          >
-                            View
-                          </button>
-                          <button
-                            class="h-10 w-10 bg-red-600"
-                            onClick={() =>
-                              window.confirm("Are you sure to delete?") &&
-                              sDel(item.SID)
-                            }
-                          >
-                            <AiIcons.AiFillDelete class="ml-2 text-2xl" />
-                          </button>
-                        </div>
-                      </th>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+          <div class="scrollbar mt-5 h-[85%] w-[95%] overflow-y-auto">
+            <table class="w-full table-auto">
+              <thead class="sticky top-0 bg-white">
+                <tr>
+                  <th class="border-b-2">SID</th>
+                  <th class="border-b-2">External Identifier</th>
+                  <th class="border-b-2">Accession Identifier</th>
+                  <th class="border-b-2">Type</th>
+                  <th class="border-b-2">Received Time</th>
+                  <th class="border-b-2">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                {sampleData.length > 0 &&
+                  sampleData.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <th>{item.SID}</th>
+                        <th>{item.External}</th>
+                        <th>{item.Accession}</th>
+                        <th>{item.type}</th>
+                        <th>{item.Receivedtime}</th>
+                        <th>
+                          <div class="flex flex-row items-center justify-around">
+                            <button
+                              class="h-10 w-20"
+                              onClick={() =>
+                                navigate(`/patient/${PID}/${item.SID}`)
+                              }
+                            >
+                              View
+                            </button>
+                            <button
+                              class="h-10 w-10 bg-red-600"
+                              onClick={() =>
+                                window.confirm("Are you sure to delete?") &&
+                                sDel(item.SID)
+                              }
+                            >
+                              <AiIcons.AiFillDelete class="ml-2 text-2xl" />
+                            </button>
+                          </div>
+                        </th>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

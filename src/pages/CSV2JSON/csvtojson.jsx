@@ -121,41 +121,48 @@ const Manage = () => {
       </div>
 
       <div class="col-span-9 col-start-1 row-span-5 row-start-2 flex h-[95%] w-[95%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
-        <div class="flex justify-center">
-          <table class="mt-5 w-[95%] table-auto">
-            <thead>
-              <tr>
-                <th class=" border-b-4">PID</th>
-                <th class=" border-b-4">SID</th>
-                <th class=" border-b-4">FileName</th>
-                <th class=" border-b-4">Process Rate(undone/complete)</th>
-                <th class=" border-b-4">Operation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {fileData.slice(startIndex, endIndex).map((file, index) => {
-                const pidArray = sampleData.map((item) => item.PID);
-                return (
-                  <tr key={index}>
-                    <th class="border-t-2 ">{pidArray[index]}</th>
-                    <th class="border-t-2 ">{file.SID}</th>
-                    <th class="border-t-2 ">{file.filename}</th>
-                    <th class="border-t-2 ">{file.state}</th>
-                    <th class="border-t-2">
-                      <button
-                        class="h-10 w-36 rounded-md"
-                        onClick={() =>
-                          Conversion(pidArray[index], file.SID, file._id, index)
-                        }
-                      >
-                        conversion
-                      </button>
-                    </th>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div class="flex h-[95%] justify-center">
+          <div class="scrollbar mt-5 w-[95%] overflow-y-auto">
+            <table class="w-full table-auto">
+              <thead class="sticky top-0 bg-white">
+                <tr>
+                  <th class=" border-b-4">PID</th>
+                  <th class=" border-b-4">SID</th>
+                  <th class=" border-b-4">FileName</th>
+                  <th class=" border-b-4">Process Rate(undone/complete)</th>
+                  <th class=" border-b-4">Operation</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                {fileData.slice(startIndex, endIndex).map((file, index) => {
+                  const pidArray = sampleData.map((item) => item.PID);
+                  return (
+                    <tr key={index}>
+                      <th>{pidArray[index]}</th>
+                      <th>{file.SID}</th>
+                      <th>{file.filename}</th>
+                      <th>{file.state}</th>
+                      <th>
+                        <button
+                          class="h-10 w-36 rounded-md"
+                          onClick={() =>
+                            Conversion(
+                              pidArray[index],
+                              file.SID,
+                              file._id,
+                              index
+                            )
+                          }
+                        >
+                          conversion
+                        </button>
+                      </th>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

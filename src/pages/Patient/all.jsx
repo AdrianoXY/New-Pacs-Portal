@@ -77,41 +77,41 @@ const All = () => {
 
       <div class="col-span-full row-span-5 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex h-[95%] justify-center">
-          <div class="mt-5 overflow-y-auto w-[90%] scrollbar">
-          <table class="w-full table-auto">
-            <thead class='sticky top-0 bg-white'>
-              <tr>
-                <th class=" border-b-4 px-6 py-3">No.</th>
-                <th class=" border-b-4 px-6 py-3">PID</th>
-                <th class=" border-b-4 px-6 py-3">Patient Name</th>
-                <th class=" border-b-4 px-6 py-3">Gender</th>
-                <th class=" border-b-4 px-6 py-3">Birth</th>
-                <th class=" border-b-4 px-6 py-3">Sample</th>
-              </tr>
-            </thead>
-            <tbody class="h-[100%] divide-y">
-              {patientData.length > 0 &&
-                patientData.slice(startIndex, endIndex).map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <th>{item.URID}</th>
-                      <th>{item.PID}</th>
-                      <th>{item.name}</th>
-                      <th>{item.gender}</th>
-                      <th>{item.birthday}</th>
-                      <th>
-                        <button
-                          class="h-10 w-32"
-                          onClick={() => navigate(`/patient/${item.PID}`)}
-                        >
-                          Sample
-                        </button>
-                      </th>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+          <div class="scrollbar mt-5 w-[90%] overflow-y-auto">
+            <table class="w-full table-auto">
+              <thead class="sticky top-0 bg-white">
+                <tr>
+                  <th class=" border-b-4 px-6 py-3">No.</th>
+                  <th class=" border-b-4 px-6 py-3">PID</th>
+                  <th class=" border-b-4 px-6 py-3">Patient Name</th>
+                  <th class=" border-b-4 px-6 py-3">Gender</th>
+                  <th class=" border-b-4 px-6 py-3">Birth</th>
+                  <th class=" border-b-4 px-6 py-3">Sample</th>
+                </tr>
+              </thead>
+              <tbody class=" divide-y">
+                {patientData.length > 0 &&
+                  patientData.slice(startIndex, endIndex).map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <th>{item.URID}</th>
+                        <th>{item.PID}</th>
+                        <th>{item.name}</th>
+                        <th>{item.gender}</th>
+                        <th>{item.birthday}</th>
+                        <th>
+                          <button
+                            class="h-10 w-32"
+                            onClick={() => navigate(`/patient/${item.PID}`)}
+                          >
+                            Sample
+                          </button>
+                        </th>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

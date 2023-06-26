@@ -261,7 +261,7 @@ const Sample = () => {
 
                 return (
                   <tr key={file._id}>
-                    <th class='break-words'>{file.filename}</th>
+                    <th class="break-words">{file.filename}</th>
                     <th>{fileSize}</th>
                     <th>
                       <button
@@ -304,7 +304,7 @@ const Sample = () => {
 
                 return (
                   <tr key={file._id}>
-                    <th class='break-words'>{file.filename}</th>
+                    <th class="break-words">{file.filename}</th>
                     <th>{fileSize}</th>
                     <th>
                       <button
@@ -353,7 +353,7 @@ const Sample = () => {
 
                 return (
                   <tr key={file._id}>
-                    <th class='break-words'>{file.filename}</th>
+                    <th class="break-words">{file.filename}</th>
                     <th>{fileSize}</th>
                     <th>
                       <button
@@ -398,7 +398,7 @@ const Sample = () => {
 
                 return (
                   <tr key={file._id}>
-                    <th class='break-words'>{file.filename}</th>
+                    <th class="break-words">{file.filename}</th>
                     <th>{fileSize}</th>
                     <th>
                       <button

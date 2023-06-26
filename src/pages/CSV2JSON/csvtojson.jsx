@@ -60,8 +60,6 @@ const Manage = () => {
       });
   };
 
-  console.log(fileData);
-
   useEffect(() => {
     dispatch(allSample());
   }, []);

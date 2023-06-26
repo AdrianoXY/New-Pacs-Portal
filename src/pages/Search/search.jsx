@@ -1,22 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csvSlice } from "../../Redux/Slices/csv";
-import View from "./detail";
+import { allSample } from "../../Redux/Slices/sample";
+import { allFile } from "../../Redux/Slices/file";
+import View from "./variation";
 import * as AiIcons from "react-icons/ai";
 
 const Search = () => {
   const dispatch = useDispatch();
   const [PID, setPID] = useState("");
   const [SID, setSID] = useState("");
-  const [GID, setGID] = useState("");
+  const [dsid, setDsid] = useState("");
   const [view, setView] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   const agen = useSelector((state) => state.CSV.data);
   const agenStatus = useSelector((state) => state.CSV.status);
   const agenError = useSelector((state) => state.CSV.error);
+  const fileData = useSelector((state) => {
+    const data = state.File.data;
+    const filteredData = data.filter((item) => item.state === "done");
+    return filteredData;
+  });
+  const sampleData = useSelector((state) => {
+    const data = state.Sample.data;
+    const filteredData = data.filter((sample) =>
+      fileData.some((fileItem) => fileItem.SID === sample.SID)
+    );
+    return filteredData;
+  });
+  const sampleStatus = useSelector((state) => state.Sample.status);
+  const sampleError = useSelector((state) => state.Sample.error);
+  const fileStatus = useSelector((state) => state.File.status);
+  const fileError = useSelector((state) => state.File.error);
 
   const itemsPerPage = 12;
-
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
@@ -42,6 +60,30 @@ const Search = () => {
 
   if (agenStatus === "failed") {
     console.log(agenError);
+  }
+
+  useEffect(() => {
+    dispatch(allSample());
+  }, []);
+
+  if (sampleStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (sampleStatus === "failed") {
+    console.log(sampleError);
+  }
+
+  useEffect(() => {
+    dispatch(allFile());
+  }, []);
+
+  if (fileStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (fileStatus === "failed") {
+    console.log(fileError);
   }
 
   return (
@@ -89,29 +131,25 @@ const Search = () => {
                 <tr>
                   <th class=" border-b-4">PID</th>
                   <th class=" border-b-4">SID</th>
-                  <th class=" border-b-4">GID</th>
-                  <th class=" border-b-4">Ref</th>
-                  <th class=" border-b-4">Start</th>
-                  <th class=" border-b-4">End</th>
+                  <th class=" border-b-4">Total Variation</th>
                   <th class=" border-b-4">Active</th>
                 </tr>
               </thead>
               <tbody class=" divide-y">
-                {agen.slice(startIndex, endIndex).map((item, index) => {
+                {sampleData.slice(startIndex, endIndex).map((item, index) => {
+                  const total = agen.filter((count) => count.SID === item.SID);
+                  const tal = total.length;
                   return (
                     <tr key={index}>
                       <th>{item.PID}</th>
                       <th>{item.SID}</th>
-                      <th>{item.GID}</th>
-                      <th>{item.Chr}</th>
-                      <th>{item.Start}</th>
-                      <th>{item.End}</th>
+                      <th>{tal}</th>
                       <th>
                         <button
                           class="h-8 w-20 rounded-md"
                           onClick={() => {
                             setView(true);
-                            setGID(item.GID);
+                            setDsid(item.SID)
                           }}
                         >
                           View
@@ -147,7 +185,7 @@ const Search = () => {
           <AiIcons.AiOutlineCaretRight />
         </button>
       </div>
-      <View trigger={view} setView={setView} GID={GID} />
+      <View trigger={view} setView={setView} SID={dsid} />
     </div>
   );
 };

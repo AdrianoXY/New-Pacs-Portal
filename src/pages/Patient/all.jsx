@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allPatient } from "../../Redux/Slices/patient";
 import Create from "./create";
-import axios from "../../axios/axios";
 import * as AiIcons from "react-icons/ai";
 import * as BsIcons from "react-icons/bs";
 

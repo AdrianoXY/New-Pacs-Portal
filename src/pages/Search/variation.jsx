@@ -37,7 +37,7 @@ const Variation = (props) => {
           />
         </div>
 
-        <div class="col-span-full col-start-1 row-span-6 row-start-2 flex h-[95%] w-[95%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
+        <div class="col-span-full col-start-1 row-span-6 row-start-2 flex h-full w-full flex-col place-self-center rounded-2xl bg-white ">
         <div class="flex h-[95%] justify-center">
           <div class="scrollbar mt-5 w-[95%] overflow-y-auto">
             <table class="w-full table-auto">

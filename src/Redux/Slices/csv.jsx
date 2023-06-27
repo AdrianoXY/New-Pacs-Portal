@@ -9,6 +9,11 @@ export const csvSlice = createAsyncThunk(
   }
 );
 
+export const allCSV = createAsyncThunk("csv/allCSV", async ({}) => {
+  const res = await axios.get("/api/csv");
+  return res.data;
+});
+
 const Csv = createSlice({
   name: "csv",
   initialState: {
@@ -27,6 +32,17 @@ const Csv = createSlice({
         state.data = action.payload;
       })
       .addCase(csvSlice.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(allCSV.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(allCSV.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(allCSV.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

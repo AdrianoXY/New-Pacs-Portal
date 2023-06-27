@@ -137,19 +137,21 @@ const Manage = () => {
                       <th>{file.filename}</th>
                       <th>{file.state}</th>
                       <th>
-                        <button
-                          class="h-10 w-36 rounded-md"
-                          onClick={() =>
-                            Conversion(
-                              pidArray[index],
-                              file.SID,
-                              file._id,
-                              index
-                            )
-                          }
-                        >
-                          conversion
-                        </button>
+                        {file.state !== "done" && (
+                          <button
+                            className="h-10 w-36 rounded-md"
+                            onClick={() =>
+                              Conversion(
+                                pidArray[index],
+                                file.SID,
+                                file._id,
+                                index
+                              )
+                            }
+                          >
+                            conversion
+                          </button>
+                        )}
                       </th>
                     </tr>
                   );

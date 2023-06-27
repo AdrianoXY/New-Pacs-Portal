@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csvSlice } from "../../Redux/Slices/csv";
-import { allSample } from "../../Redux/Slices/sample";
-import { allFile } from "../../Redux/Slices/file";
+import { sampleSlice } from "../../Redux/Slices/sample";
+import { fileSlice } from "../../Redux/Slices/file";
 import View from "./variation";
 import * as AiIcons from "react-icons/ai";
 
@@ -45,14 +45,14 @@ const Search = () => {
   };
 
   const goToNextPage = () => {
-    if (currentPage < Math.ceil(agen.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(fileData.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
 
   useEffect(() => {
-    dispatch(csvSlice({ PID, SID }));
-  }, [PID, SID]);
+    dispatch(csvSlice());
+  }, []);
 
   if (agenStatus === "loading") {
     console.log("loading");
@@ -63,8 +63,9 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(allSample());
-  }, []);
+    dispatch(sampleSlice({SID}));
+  }, [PID,SID]);
+  console.log(PID,SID);
 
   if (sampleStatus === "loading") {
     console.log("loading");
@@ -75,8 +76,8 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(allFile());
-  }, []);
+    dispatch(fileSlice({PID,SID}));
+  }, [SID]);
 
   if (fileStatus === "loading") {
     console.log("loading");
@@ -88,7 +89,7 @@ const Search = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
-      <div class="col-span-2 col-start-2 place-self-center">
+      <div class="col-span-2 col-start-3 place-self-center">
         <input
           class="h-12 w-52  rounded-lg border-2"
           onChange={(e) => setPID(e.target.value)}
@@ -96,7 +97,7 @@ const Search = () => {
         />
       </div>
 
-      <div class="col-span-2 place-self-center">
+      <div class="col-span-2 col-start-6 place-self-center">
         <input
           class="h-12 w-52 rounded-lg border-2"
           onChange={(e) => setSID(e.target.value)}
@@ -104,7 +105,7 @@ const Search = () => {
         />
       </div>
 
-      <div class="col-span-full col-start-1 row-span-6 row-start-2 flex h-[95%] w-[95%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
+      <div class="col-span-full col-start-1 row-span-6 row-start-2 flex h-[95%] w-[85%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex h-[95%] justify-center">
           <div class="scrollbar mt-5 w-[95%] overflow-y-auto">
             <table class="w-full table-auto">

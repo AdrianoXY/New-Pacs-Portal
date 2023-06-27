@@ -6,11 +6,6 @@ export const fileSlice = createAsyncThunk("file/fileSlice", async ({ SID }) => {
   return res.data;
 });
 
-export const allFile = createAsyncThunk("file/fileData", async () => {
-  const res = await axios.get("/api/file");
-  return res.data;
-});
-
 const File = createSlice({
   name: "file",
   initialState: {
@@ -32,17 +27,6 @@ const File = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(allFile.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(allFile.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.data = action.payload;
-      })
-      .addCase(allFile.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
   },
 });
 

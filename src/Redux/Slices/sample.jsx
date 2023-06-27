@@ -9,11 +9,6 @@ export const sampleSlice = createAsyncThunk(
   }
 );
 
-export const allSample = createAsyncThunk("patient/sampleData", async () => {
-  const res = await axios.get("/api/sample");
-  return res.data;
-});
-
 const Sample = createSlice({
   name: "sample",
   initialState: {
@@ -35,17 +30,6 @@ const Sample = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(allSample.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(allSample.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.data = action.payload;
-      })
-      .addCase(allSample.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
   },
 });
 

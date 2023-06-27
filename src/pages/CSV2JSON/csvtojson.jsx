@@ -86,16 +86,6 @@ const Manage = () => {
     console.log(fileError);
   }
 
-  if (fileData.length > 0) {
-    var progressPercentage = [];
-
-    if (fileData.length > 0) {
-      for (let index = 0; index < fileData.length; index++) {
-        progressPercentage.push("undone");
-      }
-    }
-  }
-
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
       <div class="col-start-3 place-self-center">

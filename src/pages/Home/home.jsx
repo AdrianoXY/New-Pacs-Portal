@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { csvSlice } from "../../Redux/Slices/csv";
+import { sampleSlice } from "../../Redux/Slices/sample";
+import { fileSlice } from "../../Redux/Slices/file";
+import axios from "../../axios/axios"
 import * as BsIcons from "react-icons/bs";
 import Add from "../Patient/add";
-import axios from "../../axios/axios";
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [patient, setPatient] = useState(0);
   const [sample, setSample] = useState(0);
+  const [PID, setPID] = useState("");
+  const [SID, setSID] = useState("");
   const [add, setAdd] = useState(false);
-  const agen = useSelector((state) => {
-    const data = state.CSV.data;
-    const lastTenValues = data.slice(-13);
+  const fileData = useSelector((state) => {
+    const data = state.File.data;
+    const filteredData = data.filter((item) => item.filename.endsWith(".csv"));
+    const lastTenValues = filteredData.slice(-13);
     return lastTenValues;
   });
-  const agenStatus = useSelector((state) => state.CSV.status);
-  const agenError = useSelector((state) => state.CSV.error);
+  const sampleData = useSelector((state) => {
+    const data = state.Sample.data;
+    const filteredData = data.filter((sample) =>
+      fileData.some((fileItem) => fileItem.SID === sample.SID)
+    );
+    const lastTenValues = filteredData.slice(-13);
+    return lastTenValues;
+  });
+  const sampleStatus = useSelector((state) => state.Sample.status);
+  const sampleError = useSelector((state) => state.Sample.error);
+  const fileStatus = useSelector((state) => state.File.status);
+  const fileError = useSelector((state) => state.File.error);
 
   useEffect(() => {
     axios.get("/api/count/patient").then((res) => {
@@ -30,15 +44,27 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(csvSlice({}));
-  }, []);
+    dispatch(sampleSlice({PID, SID}));
+  }, [PID,SID]);
 
-  if (agenStatus === "loading") {
+  if (sampleStatus === "loading") {
     console.log("loading");
   }
 
-  if (agenStatus === "failed") {
-    console.log(agenError);
+  if (sampleStatus === "failed") {
+    console.log(sampleError);
+  }
+
+  useEffect(() => {
+    dispatch(fileSlice({SID}));
+  }, [SID]);
+
+  if (fileStatus === "loading") {
+    console.log("loading");
+  }
+
+  if (fileStatus === "failed") {
+    console.log(fileError);
   }
 
   return (
@@ -89,34 +115,31 @@ const Home = () => {
 
       <div
         class="col-span-4 col-start-5 row-span-6 flex h-[85%] w-5/6 cursor-pointer flex-col items-center place-self-center rounded-2xl bg-white drop-shadow-lg"
-        onClick={() => navigate("/search")}
+        onClick={() => navigate("/csvtojson")}
       >
         <div class="flex h-[95%] w-full flex-col items-center">
           <h1 class="mt-4 text-5xl font-black text-blue-400">
-            Variation Point
+            CSV to JSON
           </h1>
           <div class="mt-5 w-[90%] overflow-y-hidden">
             <table class="w-full table-auto">
               <thead class="sticky top-0 bg-white">
                 <tr>
-                  <th class="border-b-2">GID</th>
-                  <th class="border-b-2">Chr</th>
-                  <th class="border-b-2">Ref</th>
-                  <th class="border-b-2">Alt</th>
-                  <th class="border-b-2">Start</th>
-                  <th class="border-b-2">End</th>
+                <th class=" border-b-4">PID</th>
+                  <th class=" border-b-4">SID</th>
+                  <th class=" border-b-4">FileName</th>
+                  <th class=" border-b-4">Process Rate(undone/done)</th>
                 </tr>
               </thead>
               <tbody class="h-[100%] divide-y">
-                {agen.map((item, index) => {
+              {fileData.map((file, index) => {
+                  const pidArray = sampleData.map((item) => item.PID);
                   return (
                     <tr key={index}>
-                      <td class="text-center">{item.GID}</td>
-                      <td class="text-center">{item.Chr}</td>
-                      <td class="text-center">{item.Ref}</td>
-                      <td class="text-center">{item.Alt}</td>
-                      <td class="text-center">{item.Start}</td>
-                      <td class="text-center">{item.End}</td>
+                      <th>{pidArray[index]}</th>
+                      <th>{file.SID}</th>
+                      <th class='break-words'>{file.filename}</th>
+                      <th>{file.state}</th>
                     </tr>
                   );
                 })}

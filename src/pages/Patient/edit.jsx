@@ -173,6 +173,7 @@ const Edit = (props) => {
                 name="firstName"
                 defaultValue={firstName}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div class="col-start-3 flex flex-col">
@@ -182,6 +183,7 @@ const Edit = (props) => {
                 name="lastName"
                 defaultValue={lastName}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div class="row-start-3 flex flex-col">
@@ -286,6 +288,7 @@ const Edit = (props) => {
                 name="ufirstName"
                 defaultValue={ufirstName}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div class="col-start-3 flex flex-col">
@@ -295,6 +298,7 @@ const Edit = (props) => {
                 name="ulastName"
                 defaultValue={ulastName}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div class="row-start-3 flex flex-col">

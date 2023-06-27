@@ -100,6 +100,7 @@ const Create = (props) => {
               <input
                 type="text"
                 onChange={(e) => setfirstName(e.target.value)}
+                required
               />
             </div>
             <div class="col-start-3 flex flex-col">
@@ -107,6 +108,7 @@ const Create = (props) => {
               <input
                 type="text"
                 onChange={(e) => setLastName(e.target.value)}
+                required
               />
             </div>
             <div class="row-start-3 flex flex-col">
@@ -116,6 +118,7 @@ const Create = (props) => {
                 id="gender"
                 name="gender"
                 type="text"
+                required
               >
                 <option>Male</option>
                 <option>Female</option>
@@ -123,35 +126,35 @@ const Create = (props) => {
             </div>
             <div class="row-start-3 flex flex-col">
               <label class="">Birth</label>
-              <input type="date" id="birthday" name="birthday" />
+              <input type="date" id="birthday" name="birthday" required/>
             </div>
             <div class="row-start-3 flex flex-col">
               <label class="">ID</label>
-              <input type="text" id="identifier" name="identifier" />
+              <input type="text" id="identifier" name="identifier" required/>
             </div>
             <div class="row-start-4 flex flex-col">
               <label class="">Phone</label>
-              <input type="text" id="phone" name="phone" />
+              <input type="text" id="phone" name="phone" required/>
             </div>
             <div class="col-start-3 row-start-4 flex flex-col">
               <label class="">Email</label>
-              <input type="email" id="email" name="email" />
+              <input type="email" id="email" name="email" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">City</label>
-              <input type="text" id="city" name="city" />
+              <input type="text" id="city" name="city" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">Province</label>
-              <input type="text" id="area" name="area" />
+              <input type="text" id="area" name="area" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">Address</label>
-              <input type="text" id="address" name="address" />
+              <input type="text" id="address" name="address" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">Postal Code</label>
-              <input type="text" id="postalcode" name="postcode" />
+              <input type="text" id="postalcode" name="postcode" required/>
             </div>
           </div>
 
@@ -164,6 +167,7 @@ const Create = (props) => {
               <input
                 type="text"
                 onChange={(e) => setufirstName(e.target.value)}
+                required
               />
             </div>
             <div class="col-start-3 flex flex-col">
@@ -171,6 +175,7 @@ const Create = (props) => {
               <input
                 type="text"
                 onChange={(e) => setulastName(e.target.value)}
+                required
               />
             </div>
             <div class="row-start-3 flex flex-col">
@@ -180,6 +185,7 @@ const Create = (props) => {
                 type="text"
                 id="ugender"
                 name="ugender"
+                required
               >
                 <option>Male</option>
                 <option>Female</option>
@@ -187,27 +193,27 @@ const Create = (props) => {
             </div>
             <div class="col-start-3 row-start-3 flex flex-col">
               <label class="">Relation</label>
-              <input type="text" id="relation" name="relation" />
+              <input type="text" id="relation" name="relation" required/>
             </div>
             <div class="row-start-4 flex flex-col">
               <label class="">Phone</label>
-              <input type="text" id="uphone" name="uphone" />
+              <input type="text" id="uphone" name="uphone" required/>
             </div>
             <div class="col-start-3 row-start-4 flex flex-col">
               <label class="">Email</label>
-              <input type="email" id="uemail" name="uemail" />
+              <input type="email" id="uemail" name="uemail" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">City</label>
-              <input type="text" id="ucity" name="ucity" />
+              <input type="text" id="ucity" name="ucity" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">Province</label>
-              <input type="text" id="uarea" name="uarea" />
+              <input type="text" id="uarea" name="uarea" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">Address</label>
-              <input type="text" id="uaddress" name="uaddress" />
+              <input type="text" id="uaddress" name="uaddress" required/>
             </div>
             <div class="row-start-5 flex flex-col">
               <label class="">Postal Code</label>
@@ -216,6 +222,7 @@ const Create = (props) => {
                 type="text"
                 id="upostalcode"
                 name="upostcode"
+                required
               />
             </div>
           </div>

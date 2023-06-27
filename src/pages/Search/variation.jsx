@@ -42,7 +42,7 @@ const Variation = (props) => {
         </div>
 
         <div class="col-span-2 flex h-full w-full flex-col place-self-center">
-          <div>
+          <div class='translate-y-3'>
             <span>Window Range</span>
           </div>
           <div class="flex-rows flex h-full w-full -translate-y-3 items-center">

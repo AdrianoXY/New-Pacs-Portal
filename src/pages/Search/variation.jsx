@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csvSlice } from "../../Redux/Slices/csv";
-import View from "./detail"
+import View from "./detail";
 import * as AiIcons from "react-icons/ai";
 
 const Variation = (props) => {
@@ -34,28 +34,28 @@ const Variation = (props) => {
           <h1 class="text-4xl font-bold text-green-600">Variation</h1>
         </div>
 
-        <div class="col-span-2 place-self-center">
+        <div class="col-span-2 flex h-full w-full items-center justify-center">
           <input
-            class="h-12 w-52 rounded-lg border-2"
+            class="h-[35%] w-[50%] rounded-lg border-2"
             onChange={(e) => setGID(e.target.value)}
             placeholder="GID"
           />
         </div>
 
-        <div class="col-span-2 flex -translate-y-3 flex-col place-self-center">
+        <div class="col-span-2 flex h-full w-full flex-col place-self-center">
           <div>
             <span>Window Range</span>
           </div>
-          <div class="flex-rows flex items-center">
+          <div class="flex-rows flex h-full w-full -translate-y-3 items-center">
             <input
               type="number"
-              class="h-12 rounded-lg border-2 "
+              class="h-[45%] w-[40%] rounded-lg border-2 "
               placeholder="Min"
             />
             <div class="text-4xl ">-</div>
             <input
               type="number"
-              class="h-12 rounded-lg border-2"
+              class="h-[45%] w-[40%] rounded-lg border-2"
               placeholder="Max"
             />
           </div>
@@ -96,10 +96,10 @@ const Variation = (props) => {
                         <th>
                           <button
                             class="h-8 w-20 rounded-md"
-                              onClick={() => {
-                                setView(true);
-                                setDgid(item.GID);
-                              }}
+                            onClick={() => {
+                              setView(true);
+                              setDgid(item.GID);
+                            }}
                           >
                             View
                           </button>
@@ -113,7 +113,7 @@ const Variation = (props) => {
           </div>
         </div>
       </div>
-      <View trigger={view} setView = {setView} GID={dgid} />
+      <View trigger={view} setView={setView} GID={dgid} />
     </div>
   ) : (
     ""

@@ -63,9 +63,9 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(sampleSlice({SID}));
-  }, [PID,SID]);
-  console.log(PID,SID);
+    dispatch(sampleSlice({ SID }));
+  }, [PID, SID]);
+  console.log(PID, SID);
 
   if (sampleStatus === "loading") {
     console.log("loading");
@@ -76,7 +76,7 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(fileSlice({PID,SID}));
+    dispatch(fileSlice({ PID, SID }));
   }, [SID]);
 
   if (fileStatus === "loading") {
@@ -89,17 +89,17 @@ const Search = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
-      <div class="col-span-2 col-start-3 place-self-center">
+      <div class="col-span-2 col-start-3 flex h-full w-full items-center justify-center">
         <input
-          class="h-12 w-52  rounded-lg border-2"
+          class="h-[35%] w-[55%]  rounded-lg border-2"
           onChange={(e) => setPID(e.target.value)}
           placeholder="PID"
         />
       </div>
 
-      <div class="col-span-2 col-start-6 place-self-center">
+      <div class="col-span-2 col-start-6 flex h-full w-full items-center justify-center">
         <input
-          class="h-12 w-52 rounded-lg border-2"
+          class="h-[35%] w-[55%] rounded-lg border-2"
           onChange={(e) => setSID(e.target.value)}
           placeholder="SID"
         />

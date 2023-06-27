@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allSample } from "../../Redux/Slices/sample";
-import { allFile } from "../../Redux/Slices/file";
+import { sampleSlice } from "../../Redux/Slices/sample";
+import { fileSlice } from "../../Redux/Slices/file";
 import * as AiIcons from "react-icons/ai";
 import axios from "../../axios/axios";
 
 const Manage = () => {
   const dispatch = useDispatch();
+  const [PID, setPID] = useState("");
+  const [SID, setSID] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const fileData = useSelector((state) => {
     const data = state.File.data;
@@ -61,8 +63,8 @@ const Manage = () => {
   };
 
   useEffect(() => {
-    dispatch(allSample());
-  }, []);
+    dispatch(sampleSlice({ PID, SID }));
+  }, [PID, SID]);
 
   if (sampleStatus === "loading") {
     console.log("loading");
@@ -73,8 +75,8 @@ const Manage = () => {
   }
 
   useEffect(() => {
-    dispatch(allFile());
-  }, []);
+    dispatch(fileSlice({ SID }));
+  }, [SID]);
 
   if (fileStatus === "loading") {
     console.log("loading");
@@ -96,25 +98,19 @@ const Manage = () => {
 
   return (
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
-      <div class="col-start-2 place-self-center">
-        <input class="h-12 w-52 rounded-lg border-2" placeholder="PID" />
-      </div>
-
-      <div class="col-start-4 place-self-center">
-        <input class="h-12 w-52 rounded-lg border-2" placeholder="SID" />
+      <div class="col-start-3 place-self-center">
+        <input
+          class="h-12 w-52 rounded-lg border-2"
+          onChange={(e) => setPID(e.target.value)}
+          placeholder="PID"
+        />
       </div>
 
       <div class="col-start-6 place-self-center">
         <input
           class="h-12 w-52 rounded-lg border-2"
-          placeholder="Sequence Type"
-        />
-      </div>
-
-      <div class="col-start-8 place-self-center">
-        <input
-          class="h-12 w-52 rounded-lg border-2"
-          placeholder="Analysis Type"
+          onChange={(e) => setSID(e.target.value)}
+          placeholder="SID"
         />
       </div>
 

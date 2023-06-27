@@ -49,7 +49,7 @@ const All = () => {
     <div class="grid h-screen w-screen grid-cols-9 grid-rows-6 overflow-auto">
       <div class="flex-rows col-start-3 flex w-full items-center justify-center">
         <input
-          class="h-12 w-52 border-2 "
+          class="h-[35%] w-[100%] border-2 "
           type="number"
           placeholder="PID"
           onChange={(e) => setPID(e.target.value)}
@@ -57,16 +57,16 @@ const All = () => {
       </div>
       <div class="flex-rows col-start-5 flex w-full items-center justify-center">
         <input
-          class="h-12 w-52 border-2"
+          class="h-[35%] w-[100%] border-2"
           type="text"
           placeholder="Patient Name"
           onChange={(e) => setname(e.target.value)}
         />
       </div>
 
-      <div class="col-start-7 place-self-center">
+      <div class="col-start-7 flex h-full w-full items-center justify-center">
         <button
-          class=" flex h-16 w-48 flex-row items-center justify-center"
+          class=" flex h-[40%] w-[100%] flex-row items-center justify-center"
           onClick={() => setCreate(true)}
         >
           <BsIcons.BsPersonFillAdd class="text-5xl" />

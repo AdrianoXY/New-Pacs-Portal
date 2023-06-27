@@ -52,7 +52,7 @@ const Search = () => {
 
   useEffect(() => {
     dispatch(csvSlice({ PID, SID }));
-  }, [dispatch, PID, SID]);
+  }, [PID, SID]);
 
   if (agenStatus === "loading") {
     console.log("loading");
@@ -104,25 +104,6 @@ const Search = () => {
         />
       </div>
 
-      <div class="col-span-4 flex -translate-y-3 flex-col place-self-center">
-        <div>
-          <span>Window Range</span>
-        </div>
-        <div class="flex-rows flex items-center">
-          <input
-            type="number"
-            class="h-12 rounded-lg border-2 "
-            placeholder="Min"
-          />
-          <div class="text-4xl ">-</div>
-          <input
-            type="number"
-            class="h-12 rounded-lg border-2"
-            placeholder="Max"
-          />
-        </div>
-      </div>
-
       <div class="col-span-full col-start-1 row-span-6 row-start-2 flex h-[95%] w-[95%] flex-col place-self-center rounded-2xl bg-white drop-shadow-xl ">
         <div class="flex h-[95%] justify-center">
           <div class="scrollbar mt-5 w-[95%] overflow-y-auto">
@@ -149,7 +130,7 @@ const Search = () => {
                           class="h-8 w-20 rounded-md"
                           onClick={() => {
                             setView(true);
-                            setDsid(item.SID)
+                            setDsid(item.SID);
                           }}
                         >
                           View
@@ -185,7 +166,7 @@ const Search = () => {
           <AiIcons.AiOutlineCaretRight />
         </button>
       </div>
-      <View trigger={view} setView={setView} SID={dsid} />
+      <View trigger={view} setView={setView} dsid={dsid} />
     </div>
   );
 };

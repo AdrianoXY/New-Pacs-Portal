@@ -15,6 +15,19 @@ const File = (props) => {
 
   const addfile = async (e) => {
     let filename = [];
+    const allowedExtensions = [".csv", ".xlsx",".fastq",".bam",".bai",".vcf",".tbi",".idx"];
+
+  for (let i = 0; i < file.length; i++) {
+    if (file[i] && file[i].name) {
+      const fileExtension = file[i].name.split(".").pop().toLowerCase();
+      if (allowedExtensions.includes("." + fileExtension)) {
+        filename.push(file[i].name);
+      } else {
+        alert(`Invalid file format: ${file[i].name}`);
+        return;
+      }
+    }
+  }
 
     for (let i = 0; i < file.length; i++) {
       if (file[i] && file[i].name) {

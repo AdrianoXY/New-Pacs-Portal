@@ -63,7 +63,7 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(sampleSlice({ PID,SID }));
+    dispatch(sampleSlice({ PID, SID }));
   }, [PID, SID]);
 
   if (sampleStatus === "loading") {

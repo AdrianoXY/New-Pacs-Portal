@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { sampleSlice } from "../../Redux/Slices/sample";
 import { fileSlice } from "../../Redux/Slices/file";
-import axios from "../../axios/axios"
+import axios from "../../axios/axios";
 import * as BsIcons from "react-icons/bs";
 import Add from "../Patient/add";
 
@@ -44,8 +44,8 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(sampleSlice({PID, SID}));
-  }, [PID,SID]);
+    dispatch(sampleSlice({ PID, SID }));
+  }, [PID, SID]);
 
   if (sampleStatus === "loading") {
     console.log("loading");
@@ -56,7 +56,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    dispatch(fileSlice({SID}));
+    dispatch(fileSlice({ SID }));
   }, [SID]);
 
   if (fileStatus === "loading") {
@@ -118,27 +118,25 @@ const Home = () => {
         onClick={() => navigate("/csvtojson")}
       >
         <div class="flex h-[95%] w-full flex-col items-center">
-          <h1 class="mt-4 text-5xl font-black text-blue-400">
-            CSV to JSON
-          </h1>
+          <h1 class="mt-4 text-5xl font-black text-blue-400">CSV to JSON</h1>
           <div class="mt-5 w-[90%] overflow-y-hidden">
             <table class="w-full table-auto">
               <thead class="sticky top-0 bg-white">
                 <tr>
-                <th class=" border-b-4">PID</th>
+                  <th class=" border-b-4">PID</th>
                   <th class=" border-b-4">SID</th>
                   <th class=" border-b-4">FileName</th>
                   <th class=" border-b-4">Process Rate(undone/done)</th>
                 </tr>
               </thead>
               <tbody class="h-[100%] divide-y">
-              {fileData.map((file, index) => {
+                {fileData.map((file, index) => {
                   const pidArray = sampleData.map((item) => item.PID);
                   return (
                     <tr key={index}>
                       <th>{pidArray[index]}</th>
                       <th>{file.SID}</th>
-                      <th class='break-words'>{file.filename}</th>
+                      <th class="break-words">{file.filename}</th>
                       <th>{file.state}</th>
                     </tr>
                   );

@@ -29,7 +29,7 @@ const Sample = createSlice({
       .addCase(sampleSlice.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
+      });
   },
 });
 

@@ -26,7 +26,7 @@ const File = createSlice({
       .addCase(fileSlice.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
+      });
   },
 });
 

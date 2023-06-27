@@ -29,7 +29,7 @@ const Csv = createSlice({
       .addCase(csvSlice.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
+      });
   },
 });
 

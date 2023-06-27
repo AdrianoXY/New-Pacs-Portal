@@ -4,7 +4,7 @@ import sample from "./Slices/sample";
 import file from "./Slices/file";
 import csv from "./Slices/csv";
 import gid from "./Slices/gid";
-import acsv from "./Slices/allcsv"
+import acsv from "./Slices/allcsv";
 
 export default configureStore({
   reducer: {

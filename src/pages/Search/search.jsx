@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { csvSlice } from "../../Redux/Slices/csv";
+import { allCSV } from "../../Redux/Slices/allcsv";
 import { sampleSlice } from "../../Redux/Slices/sample";
 import { fileSlice } from "../../Redux/Slices/file";
 import View from "./variation";
@@ -14,9 +14,9 @@ const Search = () => {
   const [view, setView] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const agen = useSelector((state) => state.CSV.data);
-  const agenStatus = useSelector((state) => state.CSV.status);
-  const agenError = useSelector((state) => state.CSV.error);
+  const agen = useSelector((state) => state.ACSV.data);
+  const agenStatus = useSelector((state) => state.ACSV.status);
+  const agenError = useSelector((state) => state.ACSV.error);
   const fileData = useSelector((state) => {
     const data = state.File.data;
     const filteredData = data.filter((item) => item.state === "done");
@@ -51,7 +51,7 @@ const Search = () => {
   };
 
   useEffect(() => {
-    dispatch(csvSlice());
+    dispatch(allCSV());
   }, []);
 
   if (agenStatus === "loading") {
@@ -63,9 +63,8 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(sampleSlice({ SID }));
+    dispatch(sampleSlice({ PID,SID }));
   }, [PID, SID]);
-  console.log(PID, SID);
 
   if (sampleStatus === "loading") {
     console.log("loading");
@@ -76,7 +75,7 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(fileSlice({ PID, SID }));
+    dispatch(fileSlice({ SID }));
   }, [SID]);
 
   if (fileStatus === "loading") {

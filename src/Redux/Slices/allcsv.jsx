@@ -1,16 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios/axios";
 
-export const csvSlice = createAsyncThunk(
-  "csv/csvSlice",
-  async ({ PID, SID, GID }) => {
-    const res = await axios.get("/api/csv", { params: { PID, SID, GID } });
-    return res.data;
-  }
-);
+export const allCSV = createAsyncThunk("csv/allCSV", async () => {
+  const res = await axios.get("/api/csv");
+  return res.data;
+});
 
-const Csv = createSlice({
-  name: "csv",
+const ACsv = createSlice({
+  name: "acsv",
   initialState: {
     data: [],
     status: "idle",
@@ -19,18 +16,18 @@ const Csv = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(csvSlice.pending, (state) => {
+      .addCase(allCSV.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(csvSlice.fulfilled, (state, action) => {
+      .addCase(allCSV.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(csvSlice.rejected, (state, action) => {
+      .addCase(allCSV.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
+      });
   },
 });
 
-export default Csv.reducer;
+export default ACsv.reducer;

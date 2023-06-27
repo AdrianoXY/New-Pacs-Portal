@@ -5,19 +5,18 @@ import View from "./detail";
 import * as AiIcons from "react-icons/ai";
 
 const Variation = (props) => {
-  const { SID } = props;
+  const {dsid} = props
   const [GID, setGID] = useState("");
   const [dgid, setDgid] = useState("");
+  const [view, setView] = useState(false);
   const dispatch = useDispatch();
   const vari = useSelector((state) => state.CSV.data);
   const variStatus = useSelector((state) => state.CSV.status);
   const variError = useSelector((state) => state.CSV.error);
 
-  const [view, setView] = useState(false);
-
   useEffect(() => {
-    dispatch(csvSlice({ SID, GID }));
-  }, [SID, GID]);
+    dispatch(csvSlice({SID: dsid, GID }));
+  }, [dsid,GID]);
 
   if (variStatus === "loading") {
     console.log("loading");

@@ -80,7 +80,6 @@ const Variation = (props) => {
                     <th class=" border-b-4">PID</th>
                     <th class=" border-b-4">SID</th>
                     <th class=" border-b-4">GID</th>
-                    <th class=" border-b-4">Ref</th>
                     <th class=" border-b-4">Start</th>
                     <th class=" border-b-4">End</th>
                     <th class=" border-b-4">Active</th>
@@ -93,7 +92,6 @@ const Variation = (props) => {
                         <th>{item.PID}</th>
                         <th>{item.SID}</th>
                         <th>{item.GID}</th>
-                        <th>{item.Chr}</th>
                         <th>{item.Start}</th>
                         <th>{item.End}</th>
                         <th>

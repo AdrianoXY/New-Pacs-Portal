@@ -100,20 +100,19 @@ const Add = (props) => {
                 defaultValue={PID}
                 id="PID"
                 name="PID"
-                required
               />
             </div>
             <div class="flex flex-col">
               <label>External Identifier</label>
-              <input class="w-52" type="text" id="External" name="External" required/>
+              <input class="w-52" type="text" id="External" name="External" />
             </div>
             <div class="flex flex-col">
               <label>Accession Identifier</label>
-              <input class="w-52" type="text" id="Accession" name="Accession" required/>
+              <input class="w-52" type="text" id="Accession" name="Accession" />
             </div>
             <div class="flex flex-col">
               <label>Type</label>
-              <input class="w-52" type="text" id="type" name="type" required/>
+              <input class="w-52" type="text" id="type" name="type" />
             </div>
             <div class="flex flex-col">
               <label>Received Time</label>
@@ -122,7 +121,6 @@ const Add = (props) => {
                 type="text"
                 id="Receivedtime"
                 name="Receivedtime"
-                required
               />
             </div>
           </div>
@@ -138,24 +136,23 @@ const Add = (props) => {
                 type="text"
                 id="Collection"
                 name="Collection"
-                required
               />
             </div>
             <div class="flex flex-col">
               <label>Duration</label>
-              <input class="w-52" type="text" id="Duration" name="Duration" required/>
+              <input class="w-52" type="text" id="Duration" name="Duration" />
             </div>
             <div class="flex flex-col">
               <label>Quantity</label>
-              <input class="w-52" type="text" id="Quantity" name="Quantity" required/>
+              <input class="w-52" type="text" id="Quantity" name="Quantity" />
             </div>
             <div class="flex flex-col">
               <label>Method</label>
-              <input class="w-52" type="text" id="Method" name="Method" required/>
+              <input class="w-52" type="text" id="Method" name="Method" />
             </div>
             <div class="flex flex-col">
               <label>Body Site</label>
-              <input class="w-52" type="text" id="Bodysite" name="Bodysite" required/>
+              <input class="w-52" type="text" id="Bodysite" name="Bodysite" />
             </div>
             <div class="flex flex-col">
               <label>Fasting Status</label>
@@ -164,7 +161,6 @@ const Add = (props) => {
                 type="text"
                 id="FastingStatus"
                 name="FastingStatus"
-                required
               />
             </div>
           </div>
@@ -175,7 +171,7 @@ const Add = (props) => {
             </h1>
             <div class="flex flex-col">
               <label>Procedure</label>
-              <input class="w-52" type="text" id="Procedure" name="Procedure" required/>
+              <input class="w-52" type="text" id="Procedure" name="Procedure" />
             </div>
             <div class="flex flex-col">
               <label>Processing Time</label>
@@ -184,7 +180,6 @@ const Add = (props) => {
                 type="text"
                 id="ProcedureTime"
                 name="ProcedureTime"
-                required
               />
             </div>
             <div class="flex flex-col">
@@ -194,7 +189,6 @@ const Add = (props) => {
                 type="text"
                 id="Description"
                 name="Description"
-                required
               />
             </div>
           </div>
@@ -209,16 +203,15 @@ const Add = (props) => {
                 type="text"
                 id="identifier"
                 name="identifier"
-                required
               />
             </div>
             <div class="flex flex-col">
               <label>Type</label>
-              <input class="w-52" type="text" id="Ctype" name="Ctype" required/>
+              <input class="w-52" type="text" id="Ctype" name="Ctype" />
             </div>
             <div class="flex flex-col">
               <label>Capacity</label>
-              <input class="w-52" type="text" id="Capacity" name="Capacity" required/>
+              <input class="w-52" type="text" id="Capacity" name="Capacity" />
             </div>
             <div class="flex flex-col">
               <label>Specimen Quantity</label>
@@ -227,7 +220,6 @@ const Add = (props) => {
                 type="text"
                 id="SpecimenQuantity"
                 name="SpecimenQuantity"
-                required
               />
             </div>
             <div class="flex flex-col">
@@ -237,7 +229,6 @@ const Add = (props) => {
                 type="text"
                 id="CDescription"
                 name="CDescription"
-                required
               />
             </div>
           </div>

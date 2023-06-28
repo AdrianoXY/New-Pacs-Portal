@@ -39,6 +39,7 @@ const Variation = (props) => {
           <input
             class="h-[35%] w-[50%] rounded-lg border-2"
             onChange={(e) => setGID(e.target.value)}
+            type="number"
             placeholder="GID"
           />
         </div>
@@ -51,14 +52,14 @@ const Variation = (props) => {
             <input
               type="number"
               class="h-[45%] w-[40%] rounded-lg border-2 "
-              placeholder="Min"
+              placeholder="Start"
               onChange={(e) => setMin(e.target.value)}
             />
             <div class="text-4xl ">-</div>
             <input
               type="number"
               class="h-[45%] w-[40%] rounded-lg border-2"
-              placeholder="Max"
+              placeholder="End"
               onChange={(e) => setMax(e.target.value)}
             />
           </div>

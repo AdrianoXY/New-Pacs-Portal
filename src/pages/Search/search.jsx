@@ -91,6 +91,7 @@ const Search = () => {
       <div class="col-span-2 col-start-3 flex h-full w-full items-center justify-center">
         <input
           class="h-[35%] w-[55%]  rounded-lg border-2"
+          type="number"
           onChange={(e) => setPID(e.target.value)}
           placeholder="PID"
         />
@@ -99,6 +100,7 @@ const Search = () => {
       <div class="col-span-2 col-start-6 flex h-full w-full items-center justify-center">
         <input
           class="h-[35%] w-[55%] rounded-lg border-2"
+          type="number"
           onChange={(e) => setSID(e.target.value)}
           placeholder="SID"
         />

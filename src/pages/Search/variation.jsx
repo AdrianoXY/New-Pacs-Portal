@@ -8,6 +8,8 @@ const Variation = (props) => {
   const { dsid } = props;
   const [GID, setGID] = useState("");
   const [dgid, setDgid] = useState("");
+  const [max, setMax] = useState("");
+  const [min, setMin] = useState("");
   const [view, setView] = useState(false);
   const dispatch = useDispatch();
   const vari = useSelector((state) => state.CSV.data);
@@ -15,8 +17,8 @@ const Variation = (props) => {
   const variError = useSelector((state) => state.CSV.error);
 
   useEffect(() => {
-    dispatch(csvSlice({ SID: dsid, GID }));
-  }, [dsid, GID]);
+    dispatch(csvSlice({ SID: dsid, GID, max, min }));
+  }, [dsid, GID, max, min]);
 
   if (variStatus === "loading") {
     console.log("loading");
@@ -50,12 +52,14 @@ const Variation = (props) => {
               type="number"
               class="h-[45%] w-[40%] rounded-lg border-2 "
               placeholder="Min"
+              onChange={(e) => setMin(e.target.value)}
             />
             <div class="text-4xl ">-</div>
             <input
               type="number"
               class="h-[45%] w-[40%] rounded-lg border-2"
               placeholder="Max"
+              onChange={(e) => setMax(e.target.value)}
             />
           </div>
         </div>

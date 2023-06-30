@@ -7,13 +7,12 @@ const File = (props) => {
   const [file, setFile] = useState([]);
 
   const handleFileSelect = (e) => {
-    e.preventDefault();
-
     const selectedFiles = Array.from(e.target.files);
     setFile(selectedFiles);
   };
 
   const addfile = async (e) => {
+    e.preventDefault()
     let filename = [];
     const allowedExtensions = [
       ".csv",
@@ -38,17 +37,11 @@ const File = (props) => {
       }
     }
 
-    for (let i = 0; i < file.length; i++) {
-      if (file[i] && file[i].name) {
-        filename.push(file[i].name);
-      }
-    }
-
     const formData = new FormData();
     for (let i = 0; i < file.length; i++) {
       formData.append("file", file[i]);
     }
-
+    console.log("isOK")
     axios
       .post(`/api/file/${SID}/${filename}`, formData, {
         headers: {

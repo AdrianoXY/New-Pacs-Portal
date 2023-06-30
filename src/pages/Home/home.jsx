@@ -130,16 +130,22 @@ const Home = () => {
                 </tr>
               </thead>
               <tbody class="h-[100%] divide-y">
-                {fileData.map((file, index) => {
-                  const pidArray = sampleData.map((item) => item.PID);
-                  return (
-                    <tr key={index}>
-                      <th>{pidArray[index]}</th>
-                      <th>{file.SID}</th>
-                      <th class="break-words">{file.filename}</th>
-                      <th>{file.state}</th>
-                    </tr>
+              {sampleData.map((sample) => {
+                  const filterFile = fileData.filter(
+                    (item) => item.SID === sample.SID
                   );
+                  const filemap = filterFile.map((file, fileIndex) => {
+                    return (
+                      <tr key={fileIndex}>
+                        <th>{sample.PID}</th>
+                        <th>{sample.SID}</th>
+                        <th>{file.filename}</th>
+                        <th>{file.state}</th>
+                      </tr>
+                    );
+                  });
+
+                  return filemap;
                 })}
               </tbody>
             </table>

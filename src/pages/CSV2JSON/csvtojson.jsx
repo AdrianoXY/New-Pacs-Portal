@@ -92,6 +92,7 @@ const Manage = () => {
         <input
           class="h-12 w-52 rounded-lg border-2"
           onChange={(e) => setPID(e.target.value)}
+          type="number"
           placeholder="PID"
         />
       </div>
@@ -100,6 +101,7 @@ const Manage = () => {
         <input
           class="h-12 w-52 rounded-lg border-2"
           onChange={(e) => setSID(e.target.value)}
+          type="number"
           placeholder="SID"
         />
       </div>
@@ -118,33 +120,39 @@ const Manage = () => {
                 </tr>
               </thead>
               <tbody class="divide-y">
-                {fileData.slice(startIndex, endIndex).map((file, index) => {
-                  const pidArray = sampleData.map((item) => item.PID);
-                  return (
-                    <tr key={index}>
-                      <th>{pidArray[index]}</th>
-                      <th>{file.SID}</th>
-                      <th>{file.filename}</th>
-                      <th>{file.state}</th>
-                      <th>
-                        {file.state !== "done" && (
-                          <button
-                            className="h-10 w-36 rounded-md"
-                            onClick={() =>
-                              Conversion(
-                                pidArray[index],
-                                file.SID,
-                                file._id,
-                                index
-                              )
-                            }
-                          >
-                            conversion
-                          </button>
-                        )}
-                      </th>
-                    </tr>
+                {sampleData.slice(startIndex, endIndex).map((sample) => {
+                  const filterFile = fileData.filter(
+                    (item) => item.SID === sample.SID
                   );
+                  const filemap = filterFile.map((file, fileIndex) => {
+                    return (
+                      <tr key={fileIndex}>
+                        <th>{sample.PID}</th>
+                        <th>{sample.SID}</th>
+                        <th>{file.filename}</th>
+                        <th>{file.state}</th>
+                        <th>
+                          {file.state !== "done" && (
+                            <button
+                              className="h-10 w-36 rounded-md"
+                              onClick={() =>
+                                Conversion(
+                                  sample.PID,
+                                  file.SID,
+                                  file._id,
+                                  fileIndex
+                                )
+                              }
+                            >
+                              conversion
+                            </button>
+                          )}
+                        </th>
+                      </tr>
+                    );
+                  });
+
+                  return filemap;
                 })}
               </tbody>
             </table>

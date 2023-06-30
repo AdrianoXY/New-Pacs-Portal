@@ -35,14 +35,14 @@ const Sidebar = () => {
 
   useEffect(() => {
     axios
-      .post('/auth/verify')
+      .post("/auth/verify")
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
-        navigate('/')
-      })
-  })
+        navigate("/");
+      });
+  });
 
   return (
     <div

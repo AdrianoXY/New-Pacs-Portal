@@ -8,6 +8,8 @@ const Variation = (props) => {
   const { dsid } = props;
   const [GID, setGID] = useState("");
   const [dgid, setDgid] = useState("");
+  const [max, setMax] = useState("");
+  const [min, setMin] = useState("");
   const [view, setView] = useState(false);
   const dispatch = useDispatch();
   const vari = useSelector((state) => state.CSV.data);
@@ -15,8 +17,8 @@ const Variation = (props) => {
   const variError = useSelector((state) => state.CSV.error);
 
   useEffect(() => {
-    dispatch(csvSlice({ SID: dsid, GID }));
-  }, [dsid, GID]);
+    dispatch(csvSlice({ SID: dsid, GID, max, min }));
+  }, [dsid, GID, max, min]);
 
   if (variStatus === "loading") {
     console.log("loading");
@@ -37,6 +39,7 @@ const Variation = (props) => {
           <input
             class="h-[35%] w-[50%] rounded-lg border-2"
             onChange={(e) => setGID(e.target.value)}
+            type="number"
             placeholder="GID"
           />
         </div>
@@ -49,13 +52,15 @@ const Variation = (props) => {
             <input
               type="number"
               class="h-[45%] w-[40%] rounded-lg border-2 "
-              placeholder="Min"
+              placeholder="Start"
+              onChange={(e) => setMin(e.target.value)}
             />
             <div class="text-4xl ">-</div>
             <input
               type="number"
               class="h-[45%] w-[40%] rounded-lg border-2"
-              placeholder="Max"
+              placeholder="End"
+              onChange={(e) => setMax(e.target.value)}
             />
           </div>
         </div>
@@ -76,7 +81,6 @@ const Variation = (props) => {
                     <th class=" border-b-4">PID</th>
                     <th class=" border-b-4">SID</th>
                     <th class=" border-b-4">GID</th>
-                    <th class=" border-b-4">Ref</th>
                     <th class=" border-b-4">Start</th>
                     <th class=" border-b-4">End</th>
                     <th class=" border-b-4">Active</th>
@@ -89,7 +93,6 @@ const Variation = (props) => {
                         <th>{item.PID}</th>
                         <th>{item.SID}</th>
                         <th>{item.GID}</th>
-                        <th>{item.Chr}</th>
                         <th>{item.Start}</th>
                         <th>{item.End}</th>
                         <th>

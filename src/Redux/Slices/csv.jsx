@@ -3,8 +3,10 @@ import axios from "../../axios/axios";
 
 export const csvSlice = createAsyncThunk(
   "csv/csvSlice",
-  async ({ PID, SID, GID }) => {
-    const res = await axios.get("/api/csv", { params: { PID, SID, GID } });
+  async ({ PID, SID, GID, min, max }) => {
+    const res = await axios.get("/api/csv", {
+      params: { PID, SID, GID, min, max },
+    });
     return res.data;
   }
 );

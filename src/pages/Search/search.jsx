@@ -122,6 +122,7 @@ const Search = () => {
                 {sampleData.slice(startIndex, endIndex).map((item, index) => {
                   const total = agen.filter((count) => count.SID === item.SID);
                   const tal = total.length;
+                  console.log(tal);
                   return (
                     <tr key={index}>
                       <th>{item.PID}</th>

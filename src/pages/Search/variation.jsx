@@ -68,7 +68,14 @@ const Variation = (props) => {
         <div class="col-start-7 flex justify-end">
           <AiIcons.AiOutlineClose
             class="cursor-pointer text-7xl"
-            onClick={() => props.setView(false)}
+            onClick={() => 
+              {
+                props.setView(false)
+                setGID("")
+                setMax("")
+                setMin("")
+              }
+              }
           />
         </div>
 
